@@ -1,0 +1,42 @@
+body {
+   /*background-color: lavender;*/
+   background-color: #CCF6FA ;
+   font-family: ‘Comfortaa’, cursive;
+   font-size: 170%;
+   padding-top: 50px;
+   text-align: justify;
+}
+
+.pointer:hover {
+   background-color: #fff !important;
+   cursor: pointer;
+   cursor: hand;
+}
+
+table {
+    margin-top: 1em;
+}
+
+.red {
+    background-color: RED;
+}
+
+.yellow {
+    background-color: YELLOW;
+}
+.green {
+    background-color: GREEN;
+}
+.completed {
+    color: GRAY;
+    text-decoration: line-through;
+}
+
+.incomplete {
+    color: BLACK;
+    text-decoration: none;
+}
+
+.noselect {
+    user-select: none;
+}
