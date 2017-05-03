@@ -1,19 +1,19 @@
 package data;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Item;
 import entities.User;
 
+@Transactional
 public class ItemDAOImpl implements ItemDAO {
 
 	@PersistenceContext
