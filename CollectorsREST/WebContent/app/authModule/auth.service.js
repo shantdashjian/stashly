@@ -1,63 +1,59 @@
-angular.module('authModule').factory('authService', function($http, $cookies) {
-	var service = {};
-	var Base_Url = 'http://localhost:8080/CollectorsREST/'
-	var saveToken = function(user) {
-		$cookies.put('userId', user.id);
-		$cookies.put('userEmail', user.email);
-	}
+angular.module('authModule').factory('authService',
+		function($http, $cookies, $location) {
+			var service = {};
+			var Base_Url = 'http://localhost:8080/CollectorsREST/'
+			var saveToken = function(user) {
+				$cookies.put('id', user.id);
+				$cookies.put('username', user.username);
+			}
 
-	service.getToken = function() {
-		return {
-			id : $cookies.get('userId'),
-			email : $cookies.get('userEmail')
-		}
-	}
+			service.getToken = function() {
+				return {
+					id : $cookies.get('id'),
+					username : $cookies.get('username')
+				}
+			}
 
-	var removeToken = function() {
-		$cookies.remove('userId', 'email');
-	}
+			var removeToken = function() {
+				$cookies.remove('id', 'email');
+			}
 
-	service.login = function(user) {
-		return $http({
-			method : 'POST',
-			url : Base_Url + 'rest/login',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			data : user
-		}).then(function(res) {
-			saveToken(data.res);
+			service.login = function(user) {
+				return $http({
+					method : 'POST',
+					url : Base_Url + 'rest/login',
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					data : user
+				}).then(function(res) {
+					saveToken(res.data);
+				})
+
+			}
+
+			service.signup = function(user) {
+				console.log(user)
+				return $http({
+					method : 'POST',
+					url : Base_Url + 'rest/signup',
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					data : user
+				}).then(function(res) {
+					saveToken(res.data);
+				})
+
+			}
+
+			service.logout = function() {
+				return $http({
+					method : 'POST',
+					url : Base_Url + 'rest/logout',
+				})
+
+			}
+
+			return service;
 		})
-
-	}
-
-	service.signup = function(user) {
-		return $http({
-			method : 'POST',
-			url : Base_Url + 'rest/signup',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			data : user
-		}).then(function(res) {
-			saveToken(data.res);
-		})
-
-	}
-
-	service.logout = function() {
-		return $http({
-			method : 'PUT',
-			url : Base_Url + 'rest/logout',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			data : user
-		}).then(function(res) {
-			removeToken(data.res);
-		})
-
-	}
-
-	return service;
-})
