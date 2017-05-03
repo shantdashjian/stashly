@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<mvc:annotation-driven />
+
+	<context:component-scan base-package="controllers" />
+
+	<bean id="userdao" class="data.UserDAOImpl" />
+	<bean id="itemdao" class="data.ItemDAOImpl" />
+	<bean id="pricedao" class="data.PriceDAOImpl" />
+	<bean id="categorydao" class="data.CategoryDAOImpl" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/*/item/**" />
+			<bean id="DataSecurityInterceptor" class="security.DataSecurityInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- bcrypt bean -->
+	<bean id="bCryptPasswordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<bean id="myEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="Collectors" />
+	</bean>
+
+	<bean id="myTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="myEntityManagerFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="myTransactionManager" />
+
+
+
+</beans>
