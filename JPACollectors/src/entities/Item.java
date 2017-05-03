@@ -29,11 +29,11 @@ public class Item {
 	private String notes;
 	
 	@Column(name="purchase_price")
-	private double purchasePrice;
+	private Double purchasePrice;
 	
 	@Column(name="current_value")
-	private double currentValue;
-	
+	private Double currentValue;
+
 	@Column(name="purchase_date")
 	private String purchaseDate;
 	
@@ -41,7 +41,7 @@ public class Item {
 	private String soldDate;
 	
 	@Column(name="sold_price")
-	private double soldPrice;
+	private Double soldPrice;
 	
 	private boolean retired;
 	
@@ -53,9 +53,10 @@ public class Item {
 	@JsonBackReference
 	private User user;
 	
-	@OneToOne
-    @JoinColumn(name="category_id")
-    private Category category;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	@JsonBackReference
+	private Category category;
 
 	public int getId() {
 		return id;
@@ -97,19 +98,19 @@ public class Item {
 		this.notes = notes;
 	}
 
-	public double getPurchasePrice() {
+	public Double getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(double purchasePrice) {
+	public void setPurchasePrice(Double purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public double getCurrentValue() {
+	public Double getCurrentValue() {
 		return currentValue;
 	}
 
-	public void setCurrentValue(double currentValue) {
+	public void setCurrentValue(Double currentValue) {
 		this.currentValue = currentValue;
 	}
 
@@ -129,11 +130,11 @@ public class Item {
 		this.soldDate = soldDate;
 	}
 
-	public double getSoldPrice() {
+	public Double getSoldPrice() {
 		return soldPrice;
 	}
 
-	public void setSoldPrice(double soldPrice) {
+	public void setSoldPrice(Double soldPrice) {
 		this.soldPrice = soldPrice;
 	}
 
@@ -176,5 +177,5 @@ public class Item {
 				+ ", purchaseDate=" + purchaseDate + ", soldDate=" + soldDate + ", soldPrice=" + soldPrice
 				+ ", retired=" + retired + ", imageUrl=" + imageUrl + ", user=" + user + ", category=" + category + "]";
 	}
-	
+
 }
