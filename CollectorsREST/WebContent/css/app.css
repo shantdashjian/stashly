@@ -1,10 +1,13 @@
 body {
    /*background-color: lavender;*/
-   background-color: #CCF6FA ;
+   background-image: url('../images/background.jpg');
    font-family: ‘Comfortaa’, cursive;
    font-size: 170%;
    padding-top: 50px;
    text-align: justify;
+   background-repeat: no-repeat;
+   background-size: cover;
+   
 }
 
 .pointer:hover {

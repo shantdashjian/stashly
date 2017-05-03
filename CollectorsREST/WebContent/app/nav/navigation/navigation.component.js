@@ -2,7 +2,7 @@ angular.module('nav')
 .component('navigation', {
 	
 	templateUrl: 'app/nav/navigation/navigation.component.html',
-	controller: function(authService, $location){
+	controller: function(){
 		var vm = this;
 //
 //vm.userLoggedIn = function(){
