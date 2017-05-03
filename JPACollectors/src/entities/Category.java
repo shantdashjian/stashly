@@ -1,10 +1,12 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +19,8 @@ public class Category {
 	
 	private String name;
 	
-	@OneToOne(mappedBy="category")
-    private Item item;
+	@OneToMany(mappedBy="category")
+    private List<Item> items;
 
 	public int getId() {
 		return id;
@@ -36,18 +38,17 @@ public class Category {
 		this.name = name;
 	}
 
-	public Item getItem() {
-		return item;
+	public List<Item> getItems() {
+		return items;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 	@Override
 	public String toString() {
-		return "CategoryController [id=" + id + ", name=" + name + ", item=" + item + "]";
+		return "Category [id=" + id + ", name=" + name + ", items=" + items + "]";
 	}
-
 
 }

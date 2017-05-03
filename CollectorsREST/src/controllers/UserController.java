@@ -14,11 +14,15 @@ import data.UserDAO;
 import entities.User;
 
 @RestController
-@RequestMapping("/auth")
 public class UserController {
   
   @Autowired
   private UserDAO userDAO;
+  
+  @RequestMapping(path = "/ping", method = RequestMethod.GET)
+  public String pong(){
+	  return "pong";
+  }
 
   @RequestMapping(path = "/register", method = RequestMethod.POST)
   public User register(HttpSession session, @RequestBody User user) {
