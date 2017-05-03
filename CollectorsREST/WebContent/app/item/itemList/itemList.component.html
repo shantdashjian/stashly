@@ -3,32 +3,32 @@
 		<div class = 'col-md-offset-2 col-md-8 light-background'>
 			<table class = 'table table-bordered'>
 				<thead>
-				<tr> 
+				<tr  class= 'pointer noselect'> 
 					<th>
 					 Icon
 					</th>
 				
 				
-					<th>
+					<th ng-click = "vm.changeOrderBy('name')">
 					 Name 
 					</th>
 				
 				  
-					<th>
+					<th ng-click = "vm.changeOrderBy('currentValue')">
 					 Current Value
 					</th>
-					<th>
+						<th ng-click = "vm.changeOrderBy('PurchasePrice')">
 					Purchase Price
 					</th>
-					<th>
+					<th ng-click = "vm.changeOrderBy('PurchaseDate')">
 					Purchase Date
 					</th>
 					
 			  </tr>
 				</thead>
 					<tbody>
-					<tr class= 'pointer' ng-repeat= 'item in vm.items | orderBy: name' ng-click = 'vm.showItem(item)'>
-					<td> <img src = "item.imageUrl"></td>
+					<tr class= 'pointer' ng-repeat= 'item in vm.items | orderBy: vm.orderBy: vm.reverse' ng-click = 'vm.showItem(item)'>
+					<td> <img class= 'icon' src ="{{item.imageUrl}}"></td>
 					<td>{{item.name}}  </td>
 						<td>{{item.currentValue}}</td>
 						<td>{{item.purchasePrice}}</td>

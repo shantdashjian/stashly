@@ -49,12 +49,12 @@ public class Item {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	@JsonBackReference
+	@JsonBackReference(value="user-movement")
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
-	@JsonBackReference
+	@JsonBackReference(value="category-movement")
 	private Category category;
 
 	public int getId() {

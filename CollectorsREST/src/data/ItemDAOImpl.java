@@ -37,7 +37,7 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public Item show(int iid) {
+	public Item show(int uid, int iid) {
 		Item i = em.find(Item.class, iid);
 		return i;
 	}

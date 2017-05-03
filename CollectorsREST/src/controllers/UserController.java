@@ -34,7 +34,7 @@ public class UserController {
   
   @RequestMapping(path = "/login", method = RequestMethod.POST)
   public User login(HttpSession session, @RequestBody User user) {
-
+	  System.out.println(user);
         User sessionUser = userDAO.login(user);
         session.setAttribute("user", sessionUser);
 

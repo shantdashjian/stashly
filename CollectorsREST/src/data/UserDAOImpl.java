@@ -31,8 +31,13 @@ public class UserDAOImpl implements UserDAO {
 	public User login(User user) {
 		User managedUser = null;
 
-		String query = "Select u from User u Where u.username = :username";
-		managedUser = em.createQuery(query, User.class).setParameter("username", user.getUsername()).getSingleResult();
+		try {
+			String query = "Select u from User u JOIN FETCH u.items Where u.username = :username";
+			managedUser = em.createQuery(query, User.class).setParameter("username", user.getUsername()).getSingleResult();
+		} catch (Exception e) {
+			String query = "Select u from User u Where u.username = :username";
+			managedUser = em.createQuery(query, User.class).setParameter("username", user.getUsername()).getSingleResult();
+		}
 
 		return managedUser;
 	}
