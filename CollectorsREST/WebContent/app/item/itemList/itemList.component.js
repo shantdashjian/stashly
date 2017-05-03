@@ -41,6 +41,23 @@ angular.module('item')
             }
 			
 		}
+		vm.currentTotalValue = function (){
+			var total = 0; 
+			vm.items.forEach(function(item){
+				total += item.currentValue;
+			
+			})
+			return total;
+		}
+		vm.totalPurchasePrice = function (){
+			var total = 0; 
+			vm.items.forEach(function(item){
+				total += item.purchasePrice;
+			
+			})
+			return total;
+		}
+		
 		vm.reload();
 	},
 	
