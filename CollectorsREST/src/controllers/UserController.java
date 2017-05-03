@@ -24,7 +24,7 @@ public class UserController {
 	  return "pong";
   }
 
-  @RequestMapping(path = "/register", method = RequestMethod.POST)
+  @RequestMapping(path = "/signUp", method = RequestMethod.POST)
   public User register(HttpSession session, @RequestBody User user) {
 
     User sessionUser = userDAO.signUp(user);

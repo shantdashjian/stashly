@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Category;
+import entities.Item;
 
-public class CategoryTest {
+public class ItemTest {
 
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
@@ -21,7 +21,6 @@ public class CategoryTest {
 	public void setUp() throws Exception {
 		emf = Persistence.createEntityManagerFactory("Collectors");
 		em = emf.createEntityManager();
-
 	}
 
 	@After
@@ -32,8 +31,8 @@ public class CategoryTest {
 	
 	@Test
 	public void test_username() {
-		Category c = em.find(Category.class, 1);
-		assertEquals("comic", c.getName());
+		Item i = em.find(Item.class, 1);
+		assertEquals("poor", i.getCondition());
 
 	}
 }

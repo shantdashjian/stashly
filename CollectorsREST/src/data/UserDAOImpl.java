@@ -5,9 +5,11 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 import entities.User;
 
+@Transactional
 public class UserDAOImpl implements UserDAO {
 
 	@PersistenceContext

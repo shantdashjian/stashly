@@ -10,6 +10,12 @@ body {
    
 }
 
+.light-background {
+	background-color: #fff;
+	opacity: 0.95;
+
+}
+
 .pointer:hover {
    background-color: #fff !important;
    cursor: pointer;

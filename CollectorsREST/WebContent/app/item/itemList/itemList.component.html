@@ -1,0 +1,48 @@
+<div class='container'>
+	<div class='row'>
+		<div class = 'col-md-offset-2 col-md-8 light-background'>
+			<table class = 'table table-bordered'>
+				<thead>
+				<tr> 
+					<th>
+					 Icon
+					</th>
+				
+				
+					<th>
+					 Name 
+					</th>
+				
+				  
+					<th>
+					 Current Value
+					</th>
+					<th>
+					Purchase Price
+					</th>
+					<th>
+					Purchase Date
+					</th>
+					
+			  </tr>
+				</thead>
+					<tbody>
+					<tr class= 'pointer' ng-repeat= 'item in vm.items | orderBy: name' ng-click = 'vm.showItem(item)'>
+					<td> <img src = "item.imageUrl"></td>
+					<td>{{item.name}}  </td>
+						<td>{{item.currentValue}}</td>
+						<td>{{item.purchasePrice}}</td>
+						<td>{{item.purchaseDate}}</td>
+					</tr>
+					</tbody>
+						<tfoot>
+						</tfoot>
+			</table>
+		</div>
+	
+	</div>
+
+
+
+
+</div>
