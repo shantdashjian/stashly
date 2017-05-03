@@ -16,7 +16,7 @@
 	  	<!-- Make connection to db -->
 	  		<property name="javax.persistence.jdbc.url"
 	          value="jdbc:mysql://localhost:3306/collectorsdb" />
-	  		<property name="javax.persistence.jdbc.user" value="collector"/>
+	  		<property name="javax.persistence.jdbc.user" value="collectors"/>
 	  		<property name="javax.persistence.jdbc.password" value="comic" />
 	  		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 	  		
