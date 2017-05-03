@@ -28,7 +28,7 @@
 				</thead>
 					<tbody>
 					<tr class= 'pointer' ng-repeat= 'item in vm.items | orderBy: name' ng-click = 'vm.showItem(item)'>
-					<td> <img src = "item.imageUrl"></td>
+					<td> <img class= 'icon' src ="{{item.imageUrl}}"></td>
 					<td>{{item.name}}  </td>
 						<td>{{item.currentValue}}</td>
 						<td>{{item.purchasePrice}}</td>
