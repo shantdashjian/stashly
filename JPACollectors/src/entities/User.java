@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="user")
 public class User {
@@ -22,6 +24,7 @@ public class User {
 	private String password;
 
 	@OneToMany(mappedBy = "user")
+	@JsonManagedReference(value="user-movement")
 	private List<Item> items;
 
 	public int getId() {
