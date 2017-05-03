@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import entities.User;
 
-public class CollectorTest {
+public class UserTest {
 
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
