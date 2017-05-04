@@ -55,3 +55,15 @@ table {
 .noselect {
     user-select: none;
 }
+
+.margin-top {
+	margin-top: 5%;
+}
+
+tfoot tr {
+	font-weight: bold;
+}
+
+tfoot td:nth-child(1) {
+	text-align: right;
+}
