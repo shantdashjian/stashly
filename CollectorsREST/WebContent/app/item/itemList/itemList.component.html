@@ -18,7 +18,7 @@
 				
 				  
 					<th ng-click = "vm.changeOrderBy('currentValue')">
-					 Current Value
+					 Current High Bid on eBay
 					</th>
 						<th ng-click = "vm.changeOrderBy('PurchasePrice')">
 					Purchase Price
@@ -47,7 +47,7 @@
 						<td>
 						{{vm.totalPurchasePrice() | currency}}
 						</td>
-						<td><button ng-click="vm.updateCurrentValues()">Update Current Values</button></td>
+						<td><button ng-click="vm.updateCurrentValues()">Update Bidding History</button></td>
 						</tr>
 						</tfoot>
 			</table>
