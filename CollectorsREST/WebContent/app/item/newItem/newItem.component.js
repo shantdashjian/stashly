@@ -1,7 +1,7 @@
 angular.module('item')
 	.component('newItem', {
 		templateUrl: 'app/item/newItem/newItem.component.html',
-		controller: function(itemService, $location) {
+		controller: function(itemService, categoryService, $location) {
 			var vm = this;
 			
 			vm.conditions = [
@@ -12,6 +12,18 @@ angular.module('item')
 				'excellent',
 				'mint/unopened'
 			];
+			
+			vm.categories = [];
+			
+			var getCategories = function() {
+				categoryService.index().then(function(res){
+					res.data.forEach(function(v,i,a){
+						categories.push(v);
+					});
+				});
+			};
+			
+			getCategories();
 			
 			vm.create = function(item) {
 				console.log(item);
