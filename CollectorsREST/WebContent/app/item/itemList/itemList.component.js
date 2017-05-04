@@ -64,11 +64,15 @@ angular.module('item')
 		}
 
 		vm.updateCurrentValues = function(){
+			vm.reload();
+
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+					
 					itemService.update(item);
+					
 				})
 
 			})

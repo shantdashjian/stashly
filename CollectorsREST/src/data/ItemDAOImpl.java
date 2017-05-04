@@ -87,7 +87,7 @@ public class ItemDAOImpl implements ItemDAO {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return i;
 	}
 
 	@Override
