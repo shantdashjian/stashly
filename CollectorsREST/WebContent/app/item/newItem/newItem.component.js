@@ -4,6 +4,8 @@ angular.module('item')
 		controller: function(itemService, categoryService, $location) {
 			var vm = this;
 			
+			vm.categories = [];
+			
 			vm.conditions = [
 				'poor',
 				'fair',
@@ -13,9 +15,8 @@ angular.module('item')
 				'mint/unopened'
 			];
 			
-			vm.categories = [];
-			
 			var getCategories = function() {
+				var categories = [];
 				categoryService.index().then(function(res){
 					res.data.forEach(function(v,i,a){
 						vm.categories.push(v);
@@ -26,11 +27,11 @@ angular.module('item')
 			getCategories();
 			
 			vm.create = function(item) {
-				console.log(item);
+
 				itemService.create(item).then(function(res) {
 					$location.path('/itemList');
 				})
-			}
+			};
 		},
 		controllerAs: 'vm'
 	})

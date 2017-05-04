@@ -1,6 +1,6 @@
 angular.module('item')
 .factory('itemService', 
-		function( $http, $filter, $location, authService){
+		function( $http, $filter, $location, authService, categoryService){
 		var service = {}
 		
 		var BASE_URL= "http://localhost:8080/CollectorsREST/rest/user/";
@@ -76,8 +76,8 @@ angular.module('item')
 		
 		service.create = function(item) {
 			item.retired = false;
-			console.log(item);
 			checkLogin();
+
 			return $http({
 				method : 'POST',
 				url : BASE_URL + authService.getToken().id + "/item",
@@ -87,8 +87,24 @@ angular.module('item')
 				data : item
 			}).then(function(res) {
 				return res;
-			})
-		}
+			});
+		};
+		
+		service.update = function(item) {
+			item.retired = false;
+			checkLogin();
+
+			return $http({
+				method : 'PUT',
+				url : BASE_URL + authService.getToken().id + "/item",
+				header : {
+					'Content-Type' : 'application/json'
+				},
+				data : item
+			}).then(function(res) {
+				return res;
+			});
+		};
 	
 	return service;
 	
