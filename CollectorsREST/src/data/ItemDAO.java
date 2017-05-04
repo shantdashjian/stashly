@@ -9,4 +9,5 @@ public interface ItemDAO {
 	public Item show(int uid, int iid);
 	public Item create(int uid, String itemJson);
 	public Item update(int uid, int iid, String itemJson);
+	public boolean retire(int iid, String itemJson);
 }

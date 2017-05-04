@@ -5,10 +5,9 @@ angular.module("authModule").component("login", {
 		
 		vm.login = function(user) {
 			authService.login(user).then(function(res) {
+				console.log(user);
 				$location.path('/itemList')
-
 			})
-
 		}
 	},
 	controllerAs : 'vm'

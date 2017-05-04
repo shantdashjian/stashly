@@ -92,4 +92,20 @@ public class ItemDAOImpl implements ItemDAO {
 		return null;
 	}
 
+	@Override
+	public boolean retire(int iid, String itemJson) {
+		Item item = em.find(Item.class, iid);
+		
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			Item retiredItem = mapper.readValue(itemJson, Item.class);
+			item.setRetired(retiredItem.isRetired());
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

@@ -28,6 +28,7 @@ angular.module('authModule').factory('authService',
 					data : user
 				}).then(function(res) {
 					saveToken(res.data);
+					return res;
 				})
 
 			}
@@ -52,7 +53,7 @@ angular.module('authModule').factory('authService',
 					method : 'POST',
 					url : Base_Url + 'rest/logout',
 			}).then(function(res) {
-				removeToken(data.res);
+				removeToken(res.data);
 			})
 
 			}

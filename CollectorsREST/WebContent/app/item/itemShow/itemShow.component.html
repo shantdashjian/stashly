@@ -1,0 +1,36 @@
+<navigation>Load nav</navigation>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-md-offset-2 col-md-8 light-background'>
+			<table class='table table-bordered'>
+				<thead>
+					<tr class='pointer noselect'>
+						<th>Icon</th>
+						<th>Name</th>
+						<th>Current Value</th>
+						<th>Purchase Price</th>
+						<th>Purchase Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><img class='icon' src="{{vm.item.imageUrl}}"></td>
+						<td>{{vm.item.name}}</td>
+						<td>{{vm.item.currentValue | currency}}</td>
+						<td>{{vm.item.purchasePrice | currency}}</td>
+						<td>{{vm.item.purchaseDate}}</td>
+						<td>
+							<button>Edit Item</button>
+						</td>
+						<td>
+							<button ng-click="vm.retireItem()">Retire Item</button>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+			<button ng-click="vm.goBackToItemList()">Go Back</button>
+		</div>
+	</div>
+</div>

@@ -20,12 +20,21 @@ angular.module('item')
 		}
 		
 		service.index = function (){
-			
 			return $http({
 				method:'GET',
-				url: BASE_URL + '/' + uid + '/item'
+				url: BASE_URL + uid + '/item'
+				
 			})
-		}
+			
+		};
+		
+		service.show = function (iid){
+			return $http({
+				method:'GET',
+				url: BASE_URL + uid + '/item/' + iid
+			})
+		};
+		
 		
 		service.updateCurrentValue = function(keywords){
 			return $http({
@@ -38,6 +47,18 @@ angular.module('item')
 
 			})
 			
+		};
+		
+		service.retire = function(item){
+			vm.item.retired = true;
+			return $http({
+				method : 'PUT',
+				url : BASE_URL + uid + '/item/' + iid,
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : item
+			})
 		}
 		
 		service.create = function(item) {
