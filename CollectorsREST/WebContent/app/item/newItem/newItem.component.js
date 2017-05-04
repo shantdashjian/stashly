@@ -18,7 +18,7 @@ angular.module('item')
 			var getCategories = function() {
 				categoryService.index().then(function(res){
 					res.data.forEach(function(v,i,a){
-						categories.push(v);
+						vm.categories.push(v);
 					});
 				});
 			};

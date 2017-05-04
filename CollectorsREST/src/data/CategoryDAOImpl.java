@@ -16,7 +16,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	private EntityManager em;
 
 	@Override
-	public List<Category> index(int cid) {
+	public List<Category> index() {
 		
 		String q = "SELECT c FROM Category c";
 		List<Category> categories = em.createQuery(q, Category.class).getResultList();

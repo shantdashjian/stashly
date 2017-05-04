@@ -52,6 +52,7 @@ public class ItemDAOImpl implements ItemDAO {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			Item newItem = mapper.readValue(itemJson, Item.class);
+			System.out.println("##############" + newItem.toString());
 			u = em.find(User.class, uid);
 			c = em.find(Category.class, newItem.getCategory().getId());
 			newItem.setUser(u);

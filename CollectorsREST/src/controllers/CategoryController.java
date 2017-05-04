@@ -27,9 +27,9 @@ public class CategoryController {
 	}
 	
 //	WORKS
-	@RequestMapping(path = "user/{cid}/category", method = RequestMethod.GET)
-	public List<Category> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) {
-		return categoryDao.index(cid);
+	@RequestMapping(path = "/category", method = RequestMethod.GET)
+	public List<Category> index(HttpServletRequest req, HttpServletResponse res) {
+		return categoryDao.index();
 	}
 	
 }
