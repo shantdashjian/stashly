@@ -1,5 +1,6 @@
 package data;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -28,18 +29,26 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User login(User user) {
-		User managedUser = null;
-
-		try {
-			String query = "Select u from User u JOIN FETCH u.items Where u.username = :username";
-			managedUser = em.createQuery(query, User.class).setParameter("username", user.getUsername()).getSingleResult();
-		} catch (Exception e) {
-			String query = "Select u from User u Where u.username = :username";
-			managedUser = em.createQuery(query, User.class).setParameter("username", user.getUsername()).getSingleResult();
-		}
-
-		return managedUser;
+    public User login(User user) {
+        User managedUser = null;
+        try {
+            String q ="Select u from User u JOIN FETCH u.items Where u.username = :username";
+            managedUser = em.createQuery(q, User.class).setParameter("username", user.getUsername()).getSingleResult();
+            if (encoder.matches(user.getPassword(), managedUser.getPassword())) {
+                return managedUser;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            String q = "Select u from User u Where u.username = :username";
+            managedUser = em.createQuery(q, User.class).setParameter("username", user.getUsername()).getSingleResult();
+            if (encoder.matches(user.getPassword(), managedUser.getPassword())) {
+                return managedUser;
+            } else {
+                return null;
+            }
+        }
 	}
-
 }

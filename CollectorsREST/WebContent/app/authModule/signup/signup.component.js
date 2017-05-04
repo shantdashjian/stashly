@@ -1,4 +1,4 @@
-angular.module("authModule").component("signup", {
+angular.module("authModule").component("signup",{
 	templateUrl : 'app/authModule/signup	/signup.component.html',
 	controller : function(authService, $location) {
 		var vm = this;
