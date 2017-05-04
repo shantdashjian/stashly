@@ -33,7 +33,9 @@ angular.module('item')
 		vm.currentTotalValue = function (){
 			var total = 0; 
 			vm.items.forEach(function(item){
-				total += parseFloat(item.currentValue);
+				if (!item.retired){
+					total += parseFloat(item.currentValue);
+				}
 			
 			})
 			return total;
@@ -41,7 +43,10 @@ angular.module('item')
 		vm.totalPurchasePrice = function (){
 			var total = 0; 
 			vm.items.forEach(function(item){
-				total += item.purchasePrice;
+				if (!item.retired){
+					
+					total += item.purchasePrice;
+				}
 			
 			})
 			return total;
@@ -52,6 +57,7 @@ angular.module('item')
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+					itemService.update(item);
 				})
 				
 			})
