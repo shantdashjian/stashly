@@ -4,7 +4,7 @@ import entities.User;
 
 public interface UserDAO {
 
-	User signUp(User user);
+	User signup(User user);
 
 	User login(User user);
 

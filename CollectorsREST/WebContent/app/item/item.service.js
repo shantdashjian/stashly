@@ -10,6 +10,7 @@ angular.module('item')
 		var APP_NAME = 'ShaunDas-Collecto-PRD-308fef0ab-269be395';
 			
 		var uid = 1;
+
 		var items = [];
 		service.index = function (){
 			return $http({
