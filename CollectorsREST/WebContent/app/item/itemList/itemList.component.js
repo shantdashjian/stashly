@@ -4,6 +4,7 @@ angular.module('item')
 	controller: function(itemService, $location){
 		var vm = this;
 		vm.items = [];
+		vm.categories = [];
 		
 		vm.reload = function(){
 			itemService.index()
@@ -12,8 +13,17 @@ angular.module('item')
 
 			})
 		}
-		
 		vm.reload();
+		
+		vm.category = function(){
+			itemService.getCategories()
+			.then(function(category){
+				vm.categories = category.data;
+				})
+			}
+		vm.category();
+		
+		
 		
 		vm.orderBy = null;
 		vm.reverse = false;
