@@ -45,16 +45,20 @@ public class ItemDAOImpl implements ItemDAO {
 
 	@Override
 	public Item create(int uid, String itemJson) {
-		User u = em.find(User.class, uid);
-		Category c = em.find(Category.class, 1);
+		User u = null;
+		Category c = null;
+				
 		
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			Item newItem = mapper.readValue(itemJson, Item.class);
+			u = em.find(User.class, uid);
+			c = em.find(Category.class, newItem.getCategory().getId());
 			newItem.setUser(u);
 			newItem.setCategory(c);
 			System.out.println("****************sadfasdf" + newItem.toString());
 			em.persist(newItem);
+//			em.persist();
 			em.flush();
 			return newItem;
 		} catch (Exception e) {
@@ -86,6 +90,22 @@ public class ItemDAOImpl implements ItemDAO {
 		}
 		
 		return null;
+	}
+
+	@Override
+	public boolean retire(int iid, String itemJson) {
+		Item item = em.find(Item.class, iid);
+		
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			Item retiredItem = mapper.readValue(itemJson, Item.class);
+			item.setRetired(retiredItem.isRetired());
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
