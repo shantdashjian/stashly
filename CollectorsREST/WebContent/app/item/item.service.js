@@ -9,12 +9,13 @@ angular.module('item')
 		
 		var APP_NAME = 'ShaunDas-Collecto-PRD-308fef0ab-269be395';
 			
-		var uid = 1;
 
 		var items = [];
 		
+
+		
 		var checkLogin = function() {
-			if(!authService.getToken()) {
+			if(!authService.getToken().id) {
 				$location.path('/login');
 			}
 		}
@@ -22,7 +23,7 @@ angular.module('item')
 		service.index = function (){
 			return $http({
 				method:'GET',
-				url: BASE_URL + uid + '/item'
+				url: BASE_URL + authService.getToken().id + '/item'
 				
 			})
 			
@@ -31,7 +32,7 @@ angular.module('item')
 		service.show = function (iid){
 			return $http({
 				method:'GET',
-				url: BASE_URL + uid + '/item/' + iid
+				url: BASE_URL + authService.getToken().id + '/item/' + iid
 			})
 		};
 		
@@ -54,7 +55,7 @@ angular.module('item')
 			item.retired = true;
 			return $http({
 				method : 'PUT',
-				url : BASE_URL + uid + '/item/' + item.id,
+				url : BASE_URL + authService.getToken().id + '/item/' + item.id,
 				headers : {
 					'Content-Type' : 'application/json'
 				},

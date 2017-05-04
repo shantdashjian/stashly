@@ -27,6 +27,11 @@ body {
    cursor: pointer;
    cursor: hand;
 }
+.navbar-pointer:hover {
+   background-color: #999 !important;
+   cursor: pointer;
+   cursor: hand;
+}
 
 table {
     margin-top: 1em;
