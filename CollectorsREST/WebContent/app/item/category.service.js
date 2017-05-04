@@ -10,6 +10,15 @@ angular.module('item').factory('categoryService',
 				url: BASE_URL
 			})
 		};
+		
+		service.conditions = [
+			'poor',
+			'fair',
+			'good',
+			'very good',
+			'excellent',
+			'mint/unopened'
+		];
 	
 		return service;
 })

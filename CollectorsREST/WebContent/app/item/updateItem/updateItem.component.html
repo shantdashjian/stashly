@@ -1,15 +1,15 @@
 <navigation></navigation>
 <div>
 	<form>
-		<input type="text" value={{vm.item.name}} ng-model="item.name"/>
-		<input type="text" value={{vm.item.description}} ng-model="item.description"/>
-		<select ng-model="item.condition" value={{vm.item.condition}}>
+		<input type="text" ng-model="vm.editItem.name"/>
+		<input type="text" ng-model="vm.editItem.description"/>
+		<select ng-model="vm.editItem.condition">
 			<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
 		</select>
-		<select ng-model="item.category" value={{vm.item.category}} ng-options="cat.name for cat in vm.categories"></select>
-		<input type="text" value={{vm.item.purchasePrice}} ng-model="item.purchasePrice"/>
-		<input type="text" value={{vm.item.purchaseDate}} ng-model="item.purchaseDate"/>
-		<input type="text" value={{vm.item.imageUrl}} ng-model="item.imageUrl"/>
-		<input type="submit" value="Submit" ng-click="vm.update(item)"/>
+		<select ng-model="vm.editItem.category" ng-options="cat.name for cat in vm.categories track by cat.name"></select>
+		<input type="text" ng-model="vm.editItem.purchasePrice"/>
+		<input type="text" ng-model="vm.editItem.purchaseDate"/>
+		<input type="text" ng-model="vm.editItem.imageUrl"/>
+		<input type="submit" value="Submit" ng-click="vm.update(vm.editItem)"/>
 	</form>
 </div>

@@ -1,6 +1,6 @@
 angular.module('item')
 .factory('itemService', 
-		function( $http, $filter, $location, authService, categoryService){
+		function( $http, $filter, $location, authService){
 		var service = {}
 		
 		var BASE_URL= "http://localhost:8080/CollectorsREST/rest/user/";
@@ -11,8 +11,6 @@ angular.module('item')
 			
 
 		var items = [];
-		
-
 		
 		var checkLogin = function() {
 			if(!authService.getToken().id) {
@@ -82,10 +80,10 @@ angular.module('item')
 		service.update = function(item) {
 			item.retired = false;
 			checkLogin();
-
+			
 			return $http({
 				method : 'PUT',
-				url : BASE_URL + authService.getToken().id + "/item",
+				url : BASE_URL + authService.getToken().id + "/item/" + item.id,
 				header : {
 					'Content-Type' : 'application/json'
 				},
