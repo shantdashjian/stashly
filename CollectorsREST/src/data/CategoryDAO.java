@@ -1,5 +1,10 @@
 package data;
 
-public interface CategoryDAO {
+import java.util.List;
 
+import entities.Category;
+
+public interface CategoryDAO {
+	public List<Category> index(int cid);
+	
 }

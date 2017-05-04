@@ -42,6 +42,7 @@ public class ItemController {
 	
 	@RequestMapping(path = "user/{uid}/item", method = RequestMethod.POST)
 	public Item create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String itemJson) {
+		System.out.println(itemJson);
 		return itemDao.create(uid, itemJson);
 	}
 
