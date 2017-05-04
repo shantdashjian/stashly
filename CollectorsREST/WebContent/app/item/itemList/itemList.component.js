@@ -1,7 +1,7 @@
 angular.module('item')
 .component('itemList', {
 	templateUrl: 'app/item/itemList/itemList.component.html',
-	controller: function(itemService){
+	controller: function(itemService, $location){
 		var vm = this;
 		vm.items = [];
 		
@@ -55,6 +55,10 @@ angular.module('item')
 				})
 				
 			})
+		}
+		
+		vm.showItem = function(item){
+			$location.path('/itemShow/'+item.id);
 		}
 		
 	},
