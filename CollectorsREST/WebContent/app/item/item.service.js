@@ -63,6 +63,17 @@ angular.module('item')
 			})
 		}
 		
+		service.update = function(item){
+			return $http({
+				method : 'PUT',
+				url : BASE_URL + authService.getToken().id + '/item/' + item.id,
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : item
+			})
+		}
+		
 		service.create = function(item) {
 			item.retired = false;
 			console.log(item);
