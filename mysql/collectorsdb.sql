@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
-  `condition` VARCHAR(255) NULL,
+  `item_condition` VARCHAR(255) NULL,
   `notes` VARCHAR(255) NULL,
   `purchase_price` DECIMAL(11,2) NOT NULL DEFAULT 0,
   `current_value` DECIMAL(11,2) NULL,
@@ -104,6 +104,7 @@ CREATE USER 'collectors'@'localhost' IDENTIFIED BY 'comic';
 GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'collectors'@'localhost';
 
 
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -137,9 +138,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `collectorsdb`;
-INSERT INTO `item` (`id`, `name`, `description`, `condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (1, 'Uncanny X-Men (1963 1st Series) #2 FR 1.0', 'Published 1963 by Marvel. Grade: FR 1.0', 'poor', 'I got this from a friend of mine on Christmas.', 0.12, 220.00, '1963-11-02', '', NULL, 0, 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg', 1, 1);
-INSERT INTO `item` (`id`, `name`, `description`, `condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (2, 'The X-Men #11 (May 1965, Marvel) ', 'Published 1965 by Marvel', 'very good', 'Bought this at ComicCon San Diego', 0.12, 28.00, '1965-05-11', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/tvIAAOSwzqFY~l2E/s-l1600.jpg', 1, 1);
-INSERT INTO `item` (`id`, `name`, `description`, `condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (3, 'Teenage Mutant Ninja Turtles: Donatello S.H.Figuarts Action Figure', 'Teenage Mutant Ninja Turtles (TMNT): Donatello S.H.Figuarts Action Figure', 'excellent', 'Given to me on my 8th birthday', 8.99, 59.33, '1980-09-27', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/yhMAAOSwmfhX263D/s-l1600.jpg', 1, 2);
+INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (1, 'Uncanny X-Men (1963 1st Series) #2 FR 1.0', 'Published 1963 by Marvel. Grade: FR 1.0', 'poor', 'I got this from a friend of mine on Christmas.', 0.12, 220.00, '1963-11-02', '', NULL, 0, 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg', 1, 1);
+INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (2, 'The X-Men #11 (May 1965, Marvel) ', 'Published 1965 by Marvel', 'very good', 'Bought this at ComicCon San Diego', 0.12, 28.00, '1965-05-11', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/tvIAAOSwzqFY~l2E/s-l1600.jpg', 1, 1);
+INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (3, 'Teenage Mutant Ninja Turtles: Donatello S.H.Figuarts Action Figure', 'Teenage Mutant Ninja Turtles (TMNT): Donatello S.H.Figuarts Action Figure', 'excellent', 'Given to me on my 8th birthday', 8.99, 59.33, '1980-09-27', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/yhMAAOSwmfhX263D/s-l1600.jpg', 1, 2);
 
 COMMIT;
 

@@ -33,6 +33,5 @@ public class ItemTest {
 	public void test_username() {
 		Item i = em.find(Item.class, 1);
 		assertEquals("poor", i.getCondition());
-
 	}
 }
