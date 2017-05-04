@@ -39,7 +39,8 @@ angular.module('item')
 		service.updateCurrentValue = function(keywords){
 			return $http({
 				method:'GET',
-				url: 'https://crossorigin.me/' + EBAY_URL + 'OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.12.0&SECURITY-APPNAME='
+				url: 'https://crossorigin.me/' + EBAY_URL 
+				+ 'OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.12.0&SECURITY-APPNAME='
 				+ APP_NAME
 				+ '&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&'
 				+ 'keywords=' + keywords
