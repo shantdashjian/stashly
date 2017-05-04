@@ -3,28 +3,14 @@ angular.module('item')
 	templateUrl: 'app/item/itemList/itemList.component.html',
 	controller: function(itemService){
 		var vm = this;
-		vm.items = []
+		vm.items = [];
+		
 		vm.reload = function(){
-//			itemService.index().then(function(response){
-//				vm.items = response.data
-				vm.items = [{
-						imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-						name: "Uncanny X-Men (1963 1st Series) #2 FR 1.0",
-						currentValue: 220,
-						purchasePrice : 10,
-						purchaseDate: '1989-07-07'
-				},
-				{					
-                    imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-					name: "The X-Men #11 (May 1965, Marvel)",
-					currentValue: 500,
-					purchasePrice : 9000,
-					purchaseDate: '2001-07-07'
-					
-				}
-				]
-			
-//			})
+			itemService.index()
+			.then(function(response){
+				vm.items = response.data;
+
+			})
 		}
 		
 		vm.reload();
@@ -76,3 +62,22 @@ angular.module('item')
 	controllerAs: 'vm'
 	
 })
+
+//				vm.items = [{
+//						imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
+//						name: "Uncanny X-Men (1963 1st Series) #2 FR 1.0",
+//						currentValue: 220,
+//						purchasePrice : 10,
+//						purchaseDate: '1989-07-07'
+//				},
+//				{					
+//                    imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
+//					name: "The X-Men #11 (May 1965, Marvel)",
+//					currentValue: 500,
+//					purchasePrice : 9000,
+//					purchaseDate: '2001-07-07'
+//					
+//				}
+//				]
+			
+//			})

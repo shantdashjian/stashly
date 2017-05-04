@@ -3,7 +3,7 @@ angular.module('item')
 		function( $http, $filter, $location){
 		var service = {}
 		
-		var BASE_URL= "/rest/user/";
+		var BASE_URL= "http://localhost:8080/CollectorsREST/rest/user/";
 		
 		var EBAY_URL = "http://svcs.ebay.com/services/search/FindingService/v1?";
 		
@@ -12,10 +12,9 @@ angular.module('item')
 		var uid = 1;
 		var items = [];
 		service.index = function (){
-			
 			return $http({
 				method:'GET',
-				url: BASE_URL + '/' + uid + '/item'
+				url: BASE_URL + uid + '/item'
 				
 			})
 			
