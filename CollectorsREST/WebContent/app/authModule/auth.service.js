@@ -28,6 +28,7 @@ angular.module('authModule').factory('authService',
 					data : user
 				}).then(function(res) {
 					saveToken(res.data);
+					return res;
 				})
 
 			}
