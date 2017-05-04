@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import entities.Category;
 import entities.Item;
 import entities.User;
 
@@ -45,12 +46,16 @@ public class ItemDAOImpl implements ItemDAO {
 	@Override
 	public Item create(int uid, String itemJson) {
 		User u = em.find(User.class, uid);
+		Category c = em.find(Category.class, 1);
 		
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			Item newItem = mapper.readValue(itemJson, Item.class);
 			newItem.setUser(u);
+			newItem.setCategory(c);
+			System.out.println("****************sadfasdf" + newItem.toString());
 			em.persist(newItem);
+			em.flush();
 			return newItem;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,15 +88,4 @@ public class ItemDAOImpl implements ItemDAO {
 		return null;
 	}
 
-	@Override
-	public Boolean destroy(int iid) {
-		Item i = em.find(Item.class, iid);
-		
-		if(em.find(Item.class, iid) == null) {
-			return false;
-		} else {
-			em.remove(i);
-			return true;
-		}
-	}
 }

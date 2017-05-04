@@ -174,7 +174,7 @@ public class Item {
 		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", condition=" + condition
 				+ ", notes=" + notes + ", purchasePrice=" + purchasePrice + ", currentValue=" + currentValue
 				+ ", purchaseDate=" + purchaseDate + ", soldDate=" + soldDate + ", soldPrice=" + soldPrice
-				+ ", retired=" + retired + ", imageUrl=" + imageUrl + ", user=" + user + ", category=" + category + "]";
+				+ ", retired=" + retired + ", imageUrl=" + imageUrl + "category=" + category + "]";
 	}
 
 }
