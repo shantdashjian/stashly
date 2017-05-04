@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
 	private PasswordEncoder encoder;
 
 	@Override
-	public User signUp(User user) {
+	public User signup(User user) {
 		String passwordSha = encoder.encode(user.getPassword());
 		user.setPassword(passwordSha);
 		em.persist(user);

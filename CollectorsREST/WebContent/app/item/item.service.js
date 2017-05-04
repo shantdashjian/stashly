@@ -4,7 +4,7 @@ angular.module('item')
 		var service = {}
 		
 		var BASE_URL= "/rest/user/";
-		var uid = 1;
+//		var uid = 1;
 		var items = [];
 		service.index = function (){
 			

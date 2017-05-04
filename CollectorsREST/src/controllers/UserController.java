@@ -24,10 +24,10 @@ public class UserController {
 	  return "pong";
   }
 
-  @RequestMapping(path = "/signUp", method = RequestMethod.POST)
-  public User register(HttpSession session, @RequestBody User user) {
+  @RequestMapping(path = "/signup", method = RequestMethod.POST)
+  public User signup(HttpSession session, @RequestBody User user) {
 
-    User sessionUser = userDAO.signUp(user);
+    User sessionUser = userDAO.signup(user);
     session.setAttribute("user", sessionUser);
     return sessionUser;
   }
