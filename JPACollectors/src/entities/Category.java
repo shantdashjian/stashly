@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="category")
@@ -22,7 +22,7 @@ public class Category {
 	private String name;
 	
 	@OneToMany(mappedBy="category")
-	@JsonManagedReference(value="category-movement")
+	@JsonIgnore
     private List<Item> items;
 
 	public int getId() {
