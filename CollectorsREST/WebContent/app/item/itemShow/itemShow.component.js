@@ -25,6 +25,10 @@ angular.module('item')
 				itemService.retire(vm.item);
 			}
 		}
+		
+		vm.editItem = function(){
+			$location.path("/update/" + $routeParams.id);
+		}
 	},
 	controllerAs: 'vm'
 })

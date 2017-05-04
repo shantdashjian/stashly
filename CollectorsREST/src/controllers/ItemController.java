@@ -47,8 +47,8 @@ public class ItemController {
 	}
 	
 	@RequestMapping(path = "user/{uid}/item/{iid}", method = RequestMethod.PUT)
-	public boolean retire(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String itemJson, @PathVariable int iid) {
-		return itemDao.retire(iid, itemJson);
+	public Item update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String itemJson, @PathVariable int iid) {
+		return itemDao.update(uid, iid, itemJson);
 	}
 
 }

@@ -37,9 +37,10 @@ http://shaundashjian.com:8080/Collectors/
 
 ## Future Feature Sets:
   * Show how collection value imorved over time   
-  
+
 ## Stumbling and Learning Points:
   * Learning how to consume data from a 3rd-party API
+  * Reserved words, specifically with MySQL.
   <hr>
 
 [Up](README.md)

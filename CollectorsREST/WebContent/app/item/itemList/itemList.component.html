@@ -30,6 +30,7 @@
 
 					</tr>
 				</thead>
+
 				<tbody>
 					<tr ng-hide="item.retired" class='pointer'
 						ng-repeat='item in vm.items | categorySort:selectedValue.name | orderBy: vm.orderBy: vm.reverse'
