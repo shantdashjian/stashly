@@ -1,0 +1,42 @@
+<div class='container'>
+	<div class='row'>
+		<div class = 'col-md-offset-2 col-md-8 light-background'>
+		 whatever we put
+		       	<table class = 'table table-bordered'>
+				<thead>
+				<tr  class= 'pointer noselect'> 
+					<th>
+					 Icon
+					</th>
+				
+				
+					<th>
+					 Name 
+					</th>
+				
+				  
+					<th>
+					 Current Value
+					</th>
+						<th>
+					Purchase Price
+					</th>
+					<th>
+					Purchase Date
+					</th>
+			  </tr>
+				</thead>
+				<tbody>
+		 	<tr>
+					<td> <img class= 'icon' src ="{{item.imageUrl}}"></td>
+					<td>{{item.name}}  </td>
+						<td>{{item.currentValue | currency}}</td>
+						<td>{{item.purchasePrice | currency}}</td>
+						<td>{{item.purchaseDate}}</td>
+						<td> <button> Edit Item</button></td>
+						<td> <button> Delete Item</button></td>
+					</tr>
+					</tbody>
+		 </div>
+		 </div>
+		 </div>
