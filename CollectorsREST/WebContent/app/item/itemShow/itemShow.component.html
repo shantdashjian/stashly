@@ -21,7 +21,7 @@
 						<td>{{vm.item.purchasePrice | currency}}</td>
 						<td>{{vm.item.purchaseDate}}</td>
 						<td>
-							<button>Edit Item</button>
+							<button ng-click="vm.editItem()">Edit Item</button>
 						</td>
 						<td>
 							<button ng-click="vm.retireItem()">Retire Item</button>

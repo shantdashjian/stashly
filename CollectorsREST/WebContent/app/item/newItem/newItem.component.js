@@ -5,22 +5,11 @@ angular.module('item')
 			var vm = this;
 			
 			vm.categories = [];
-			
-			vm.conditions = [
-				'poor',
-				'fair',
-				'good',
-				'very good',
-				'excellent',
-				'mint/unopened'
-			];
+			vm.conditions = categoryService.conditions;
 			
 			var getCategories = function() {
-				var categories = [];
 				categoryService.index().then(function(res){
-					res.data.forEach(function(v,i,a){
-						vm.categories.push(v);
-					});
+						vm.categories = res.data;
 				});
 			};
 			
