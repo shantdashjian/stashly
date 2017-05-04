@@ -9,10 +9,7 @@ angular.module('item')
 		vm.reload = function(){
 			itemService.index()
 			.then(function(response){
-				console.log("got new data");
 				vm.items = response.data;
-				console.log(vm.items)
-//				console.log(vm.items[2].retired);
 
 			})
 		}
@@ -68,7 +65,6 @@ angular.module('item')
 		vm.updateCurrentValues = function(){
 			vm.reload();
 
-			console.log(vm.items);
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
