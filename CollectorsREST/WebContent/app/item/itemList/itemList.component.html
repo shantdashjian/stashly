@@ -18,7 +18,7 @@
 				
 				  
 					<th ng-click = "vm.changeOrderBy('currentValue')">
-					 Current Value
+					 Current High Bid on eBay
 					</th>
 						<th ng-click = "vm.changeOrderBy('PurchasePrice')">
 					Purchase Price
@@ -30,7 +30,7 @@
 			  </tr>
 				</thead>
 					<tbody>
-					<tr class= 'pointer' ng-repeat= 'item in vm.items | orderBy: vm.orderBy: vm.reverse' ng-click = 'vm.showItem(item)'>
+					<tr ng-hide="item.retired" class= 'pointer' ng-repeat= 'item in vm.items | orderBy: vm.orderBy: vm.reverse' ng-click = 'vm.showItem(item)'>
 					<td> <img class= 'icon' src ="{{item.imageUrl}}"></td>
 					<td>{{item.name}}  </td>
 						<td>{{item.currentValue | currency}}</td>
@@ -47,7 +47,7 @@
 						<td>
 						{{vm.totalPurchasePrice() | currency}}
 						</td>
-						<td><button ng-click="vm.updateCurrentValues()">Update Current Values</button></td>
+						<td><button ng-click="vm.updateCurrentValues()">Update Bidding History</button></td>
 						</tr>
 						</tfoot>
 			</table>

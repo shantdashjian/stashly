@@ -114,7 +114,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `collectorsdb`;
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'jandis', 'pw');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'jandis', '$2a$10$GSikqmpG19jozHo/0BzKSOtt0nxxULln9Os/og/tEs9Rh66FhIKOK');
 
 COMMIT;
 
