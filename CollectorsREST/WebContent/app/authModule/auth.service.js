@@ -52,7 +52,7 @@ angular.module('authModule').factory('authService',
 					method : 'POST',
 					url : Base_Url + 'rest/logout',
 			}).then(function(res) {
-				removeToken(data.res);
+				removeToken(res.data);
 			})
 
 			}
