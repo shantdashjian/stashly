@@ -1,0 +1,15 @@
+<navigation></navigation>
+<div>
+	<form>
+		<input type="text" value={{vm.item.name}} ng-model="item.name"/>
+		<input type="text" value={{vm.item.description}} ng-model="item.description"/>
+		<select ng-model="item.condition" value={{vm.item.condition}}>
+			<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
+		</select>
+		<select ng-model="item.category" value={{vm.item.category}} ng-options="cat.name for cat in vm.categories"></select>
+		<input type="text" value={{vm.item.purchasePrice}} ng-model="item.purchasePrice"/>
+		<input type="text" value={{vm.item.purchaseDate}} ng-model="item.purchaseDate"/>
+		<input type="text" value={{vm.item.imageUrl}} ng-model="item.imageUrl"/>
+		<input type="submit" value="Submit" ng-click="vm.update(item)"/>
+	</form>
+</div>

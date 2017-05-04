@@ -23,5 +23,8 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
 	.when('/add',{
 		template: '<new-item> loading New Item</new-item>'
 	})
+	.when('/update/:id',{
+		template: '<update-item> loading update Item</update-item>'
+	})
 
 })
