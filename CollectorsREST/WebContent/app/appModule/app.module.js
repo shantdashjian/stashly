@@ -20,7 +20,7 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
         template: '<signup> loading Item List</signup>'
 		})
 
-	.when('/newItem',{
+	.when('/add',{
 		template: '<new-item> loading New Item</new-item>'
 	})
 
