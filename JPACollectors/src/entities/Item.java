@@ -23,6 +23,7 @@ public class Item {
 	
 	private String description;
 	
+	@Column(name="item_condition")
 	private String condition;
 	
 	private String notes;
@@ -174,7 +175,7 @@ public class Item {
 		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", condition=" + condition
 				+ ", notes=" + notes + ", purchasePrice=" + purchasePrice + ", currentValue=" + currentValue
 				+ ", purchaseDate=" + purchaseDate + ", soldDate=" + soldDate + ", soldPrice=" + soldPrice
-				+ ", retired=" + retired + ", imageUrl=" + imageUrl + "category=" + category + "]";
+				+ ", retired=" + retired + ", imageUrl=" + imageUrl + ", category=" + category + "]";
 	}
 
 }
