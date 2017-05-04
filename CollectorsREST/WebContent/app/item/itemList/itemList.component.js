@@ -4,6 +4,7 @@ angular.module('item')
 	controller: function(itemService, $location){
 		var vm = this;
 		vm.items = [];
+		vm.showArchive = false;
 		
 		vm.reload = function(){
 			itemService.index()
@@ -61,6 +62,14 @@ angular.module('item')
 				})
 				
 			})
+		}
+		
+		vm.toggleArchive = function(){
+			if(vm.showArchive){
+				vm.showArchive = false;
+			} else {
+				vm.showArchive = true;
+			}
 		}
 		
 		vm.showItem = function(item){
