@@ -27,6 +27,14 @@ angular.module('item')
 			
 		};
 		
+		service.getCategories = function(category){
+			return $http({
+				method:'GET',
+				url: 'rest/category'
+			})
+		};
+			
+		
 		service.show = function (iid){
 			return $http({
 				method:'GET',
