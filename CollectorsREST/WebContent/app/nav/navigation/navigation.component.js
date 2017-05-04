@@ -14,9 +14,5 @@ angular.module('nav').component('navigation', {
 		}
 	},
 
-	controllerAs : 'vm',
-	bindings : {
-		viewArchive: '&'
-	}
-
+	controllerAs : 'vm'
 })
