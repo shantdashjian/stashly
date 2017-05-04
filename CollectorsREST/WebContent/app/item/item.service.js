@@ -42,6 +42,18 @@ angular.module('item')
 
 			})
 			
+		};
+		
+		service.retire = function(item){
+			vm.item.retired = true;
+			return $http({
+				method : 'PUT',
+				url : BASE_URL + uid + '/item/' + iid,
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : item
+			})
 		}
 	
 	return service;

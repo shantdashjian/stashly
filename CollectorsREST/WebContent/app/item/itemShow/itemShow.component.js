@@ -5,7 +5,6 @@ angular.module('item')
 		var vm = this;
 		
 		if (!vm.item && parseInt($routeParams.id)) {
-			console.log('getting item');
 			itemService.show($routeParams.id)
 			.then(function(response){
 				vm.item = response.data;
@@ -18,6 +17,13 @@ angular.module('item')
 		vm.goBackToItemList = function(){
 		    $location.path('/itemList');
 
+		};
+		
+		vm.retireItem = function(){
+			var result = confirm('Are you sure you want to retire item?');
+			if (result) {
+				itemService.retire(vm.item);
+			}
 		}
 	},
 	controllerAs: 'vm'
