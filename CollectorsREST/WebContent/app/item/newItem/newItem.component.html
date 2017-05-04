@@ -1,3 +1,4 @@
+<navigation></navigation>
 <div>
 	<form>
 		<input type="text" placeholder="Name" ng-model="item.name"/>
@@ -5,9 +6,7 @@
 		<select ng-model="item.condition">
 			<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
 		</select>
-		<select ng-model="item.category">
-			<option ng-repeat="c in vm.categories" value={{c}}>{{c.name}}</option>
-		</select>
+		<select ng-model="item.category" ng-options="cat.name for cat in vm.categories"></select>
 		<input type="text" placeholder="Purchase Price" ng-model="item.purchasePrice"/>
 		<input type="text" placeholder="Purchase Date" ng-model="item.purchaseDate"/>
 		<input type="text" placeholder="Image URL" ng-model="item.imageUrl"/>
