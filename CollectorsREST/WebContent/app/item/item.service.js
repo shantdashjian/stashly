@@ -31,6 +31,8 @@ angular.module('item')
 		};
 		
 		
+		
+		
 		service.updateCurrentValue = function(keywords){
 			return $http({
 				method:'GET',
