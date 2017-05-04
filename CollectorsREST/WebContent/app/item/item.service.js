@@ -19,7 +19,16 @@ angular.module('item')
 				
 			})
 			
-		}
+		};
+		
+		service.show = function (iid){
+			return $http({
+				method:'GET',
+				url: BASE_URL + uid + '/item/' + iid
+				
+			})
+			
+		};
 		
 		
 		
