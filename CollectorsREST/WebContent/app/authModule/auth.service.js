@@ -51,7 +51,9 @@ angular.module('authModule').factory('authService',
 				return $http({
 					method : 'POST',
 					url : Base_Url + 'rest/logout',
-				})
+			}).then(function(res) {
+				removeToken(data.res);
+			})
 
 			}
 

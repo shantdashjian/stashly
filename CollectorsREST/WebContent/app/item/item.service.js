@@ -4,12 +4,14 @@ angular.module('item')
 		var service = {}
 		
 		var BASE_URL= "/rest/user/";
+
 		
 		var EBAY_URL = "http://svcs.ebay.com/services/search/FindingService/v1?";
 		
 		var APP_NAME = 'ShaunDas-Collecto-PRD-308fef0ab-269be395';
 			
 		var uid = 1;
+
 		var items = [];
 		service.index = function (){
 			
