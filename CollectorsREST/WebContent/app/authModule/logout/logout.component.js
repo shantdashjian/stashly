@@ -7,6 +7,15 @@ angular.module("authModule").component("logout", {
 			vm.showButton = $cookies.get('id');
 		};
 		
+		vm.hideNavbar = function(){
+			if(authService.getTokens().id){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
 		vm.logout = function() {
 			authService.logout().then(function(res) {
 				vm.showLogoutButton();
