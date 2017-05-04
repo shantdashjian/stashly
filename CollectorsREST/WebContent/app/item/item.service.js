@@ -89,7 +89,6 @@ angular.module('item')
 		};
 		
 		service.update = function(item) {
-			item.retired = false;
 			checkLogin();
 			
 			return $http({
