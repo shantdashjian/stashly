@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `price` ;
 
 CREATE TABLE IF NOT EXISTS `price` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `price` DECIMAL(11) NOT NULL,
+  `item_price` DECIMAL(11,2) NOT NULL,
   `date` VARCHAR(255) NOT NULL,
   `item_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -100,7 +100,9 @@ SET SQL_MODE = '';
 GRANT USAGE ON *.* TO collectors@localhost;
  DROP USER collectors@localhost;
 SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-CREATE USER 'collectors'@'localhost';
+CREATE USER 'collectors'@'localhost' IDENTIFIED BY 'comic';
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'collectors'@'localhost';
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -112,7 +114,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `collectorsdb`;
-INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'jandis', 'pw');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'jandis', '$2a$10$GSikqmpG19jozHo/0BzKSOtt0nxxULln9Os/og/tEs9Rh66FhIKOK');
 
 COMMIT;
 
@@ -140,7 +142,6 @@ INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `pur
 INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (2, 'The X-Men #11 (May 1965, Marvel) ', 'Published 1965 by Marvel', 'very good', 'Bought this at ComicCon San Diego', 0.12, 28.00, '1965/05/11', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/tvIAAOSwzqFY~l2E/s-l1600.jpg', 1, 1);
 INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (3, 'Teenage Mutant Ninja Turtles: Donatello S.H.Figuarts Action Figure', 'Teenage Mutant Ninja Turtles (TMNT): Donatello S.H.Figuarts Action Figure', 'excellent', 'Given to me on my 8th birthday', 8.99, 59.33, '1980/09/27', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/yhMAAOSwmfhX263D/s-l1600.jpg', 1, 2);
 
-
 COMMIT;
 
 
@@ -148,11 +149,9 @@ COMMIT;
 -- Data for table `price`
 -- -----------------------------------------------------
 START TRANSACTION;
-
 USE `collectorsdb`;
 INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (1, 220.00, '2017/05/01', 1);
 INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (2, 28.00, '2017/05/01', 2);
 INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (3, 59.33, '2017/05/01', 3);
-
 
 COMMIT;
