@@ -33,7 +33,7 @@
 
 				<tbody>
 					<tr ng-hide="item.retired" class='pointer'
-						ng-repeat='item in vm.items | categorySort:vm.selected.name | orderBy: vm.orderBy: vm.reverse'
+						ng-repeat='item in vm.items | searchByName:vm.keywords | categorySort:vm.selected.name | orderBy: vm.orderBy: vm.reverse'
 						ng-click='vm.showItem(item)'>
 						<td><img class='icon' src="{{item.imageUrl}}"></td>
 						<td>{{item.name}}</td>

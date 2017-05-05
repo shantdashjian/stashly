@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `price` ;
 
 CREATE TABLE IF NOT EXISTS `price` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `price` DECIMAL(11) NOT NULL,
+  `item_price` DECIMAL(11) NOT NULL,
   `date` VARCHAR(255) NOT NULL,
   `item_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -150,8 +150,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `collectorsdb`;
-INSERT INTO `price` (`id`, `price`, `date`, `item_id`) VALUES (1, 220.00, '2017-05-01', 1);
-INSERT INTO `price` (`id`, `price`, `date`, `item_id`) VALUES (2, 28.00, '2017-05-01', 2);
-INSERT INTO `price` (`id`, `price`, `date`, `item_id`) VALUES (3, 59.33, '2017-05-01', 3);
+INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (1, 220.00, '2017-05-01', 1);
+INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (2, 28.00, '2017-05-01', 2);
+INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (3, 59.33, '2017-05-01', 3);
 
 COMMIT;
