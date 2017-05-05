@@ -35,7 +35,7 @@ public class PriceController {
 	@RequestMapping(path = "user/{uid}/item/{iid}/price", method = RequestMethod.POST)
 	public Price create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
 			 @PathVariable int iid, @RequestBody String priceJson) {
-		System.out.println(priceJson);
+		System.out.println(priceJson + "*****************************************************************");
 		return priceDao.create(uid, iid, priceJson);
 	}
 
