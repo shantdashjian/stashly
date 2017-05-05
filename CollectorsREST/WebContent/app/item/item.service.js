@@ -1,6 +1,6 @@
 angular.module('item')
 .factory('itemService', 
-		function( $http, $filter, $location, authService, priceService){
+		function( $http, $filter, $location, authService){
 		var service = {}
 		
 		var BASE_URL= "http://localhost:8080/CollectorsREST/rest/user/";
@@ -96,22 +96,20 @@ angular.module('item')
 			});
 		};
 		
-		service.update = function(item) {
-			checkLogin();
-			
-			return $http({
-				method : 'PUT',
-				url : BASE_URL + authService.getToken().id + "/item/" + item.id,
-				header : {
-					'Content-Type' : 'application/json'
-				},
-				data : item
-			}).then(function(res) {
-				return res;
-			});
-		};
+//		service.update = function(item) {                          // Duplicate method
+//			checkLogin();                                          // not sure which one is
+//																   // the best implementation						
+//			return $http({										   // MG 5/5
+//				method : 'PUT',
+//				url : BASE_URL + authService.getToken().id + "/item/" + item.id,
+//				header : {
+//					'Content-Type' : 'application/json'
+//				},
+//				data : item
+//			}).then(function(res) {
+//				return res;
+//			});
+//		};
 	
 	return service;
-	
-	
 })
