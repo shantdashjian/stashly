@@ -15,5 +15,4 @@ angular.module('nav').component('navigation', {
 	},
 
 	controllerAs : 'vm'
-
 })

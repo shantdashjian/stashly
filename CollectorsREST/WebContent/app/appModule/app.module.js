@@ -10,21 +10,21 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
 	})
 	.when('/itemList',{
 		template: '<item-list> loading Item List</item-list>'
-
 	})
 	.when('/itemShow/:id',{
 		template: '<item-show> loading Item show</item-show>'
 	})
-
 	.when('/signup',{
         template: '<signup> loading Item List</signup>'
-		})
-
+	})
 	.when('/add',{
 		template: '<new-item> loading New Item</new-item>'
 	})
 	.when('/update/:id',{
 		template: '<update-item> loading update Item</update-item>'
+	})
+	.when('/archive',{
+		template: '<archive-list> loading archive</archive-list>'
 	})
 
 })
