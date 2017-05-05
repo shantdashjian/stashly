@@ -3,6 +3,9 @@ angular.module('item')
 	templateUrl: 'app/item/itemList/itemList.component.html',
 	controller: function(itemService, priceService, $location){
 		var vm = this;
+
+//		vm.searchByName = $filter('searchByName');
+		vm.buttonLoad = false;
 		
 		vm.items = [];
 		vm.categories = [{name: "all"}];
@@ -96,6 +99,9 @@ angular.module('item')
 
 		vm.updateCurrentValues = function(){
 
+			vm.buttonLoad = true;
+
+
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
@@ -107,8 +113,10 @@ angular.module('item')
 					
 					itemService.update(item);
 					priceService.create(item);
+
+					vm.buttonLoad = false;
+
 					item.updated = true;
-					
 				})
 
 			})
@@ -136,21 +144,3 @@ angular.module('item')
 
 })
 
-// vm.items = [{
-// imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-// name: "Uncanny X-Men (1963 1st Series) #2 FR 1.0",
-// currentValue: 220,
-// purchasePrice : 10,
-// purchaseDate: '1989-07-07'
-// },
-// {
-// imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-// name: "The X-Men #11 (May 1965, Marvel)",
-// currentValue: 500,
-// purchasePrice : 9000,
-// purchaseDate: '2001-07-07'
-//
-// }
-// ]
-
-// })

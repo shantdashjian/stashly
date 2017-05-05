@@ -21,9 +21,9 @@ public class PriceController {
 	@Autowired
 	PriceDAO priceDao;
 	
-	@RequestMapping(path = "user/{uid}/item/{iid}/price", method = RequestMethod.GET)
-	public List<Price> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int iid) {
-		return priceDao.index(uid, iid);
+	@RequestMapping(path = "user/{uid}/price", method = RequestMethod.GET)
+	public List<Price> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+		return priceDao.index(uid);
 	}
 	
 	@RequestMapping(path = "user/{uid}/item/{iid}/price/{pid}", method = RequestMethod.GET)
@@ -35,7 +35,7 @@ public class PriceController {
 	@RequestMapping(path = "user/{uid}/item/{iid}/price", method = RequestMethod.POST)
 	public Price create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
 			 @PathVariable int iid, @RequestBody String priceJson) {
-		System.out.println(priceJson + "*****************************************************************");
+
 		return priceDao.create(uid, iid, priceJson);
 	}
 

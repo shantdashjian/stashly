@@ -4,10 +4,11 @@
 <div class='container'>
 	<div class='row'>
 		<div class='col-md-offset-2 col-md-8 light-background'>
- 			
-			Filter by:<select ng-model="vm.selected" ng-options="category.name for category in vm.categories">
- 			 
-  			</select>
+
+			Filter by:<select ng-model="vm.selected"
+				ng-options="category.name for category in vm.categories">
+
+			</select>
 
 		</div>
 	</div>
@@ -49,24 +50,16 @@
 						<td colspan='2'>Total</td>
 						<td>{{vm.currentTotalValue() | currency}}</td>
 						<td>{{vm.totalPurchasePrice() | currency}}</td>
-						
-						<!-- Working on this right now (don't touch) -->
-						
-						<!-- <button type="button" ng-click="vm.updateCurrentValues()"
-        class="btn btn-primary start"
-        id="btnStartUploads"
-        data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> @Localization.Uploading">
-    <i class="icon-upload icon-large"></i>
-    <span>@Localization.StartUpload</span>
-</button> -->
-<button class="btn btn-lg btn-warning" ng-click="vm.updateCurrentValues()">
-    <span class="glyphicon glyphicon-refresh spinning"></span> Loading...    
-</button>
-						<!-- <td><button ng-click="vm.updateCurrentValues()">Update
-								Bidding History</button></td> -->
+
+						<td><button class="btn btn-lg btn-warning"
+								ng-click="vm.updateCurrentValues()">
+								Update History <span ng-show="vm.buttonLoad"
+									class="glyphicon glyphicon-refresh spinning"></span>
+							</button></td>
 					</tr>
 				</tfoot>
 			</table>
+			<chart>in chart</chart>
 
 		</div>
 

@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema collectorsdb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `collectorsdb` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema collectorsdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `collectorsdb` DEFAULT CHARACTER SET utf8 ;
+USE `collectorsdb` ;
 
 -- -----------------------------------------------------
 -- Table `user`
@@ -111,7 +111,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `collectorsdb`;
 INSERT INTO `user` (`id`, `username`, `password`) VALUES (1, 'jandis', 'pw');
 
 COMMIT;
@@ -121,7 +121,7 @@ COMMIT;
 -- Data for table `category`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `collectorsdb`;
 INSERT INTO `category` (`id`, `name`) VALUES (1, 'comic');
 INSERT INTO `category` (`id`, `name`) VALUES (2, 'action figure');
 INSERT INTO `category` (`id`, `name`) VALUES (3, 'sports card');
@@ -135,10 +135,11 @@ COMMIT;
 -- Data for table `item`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
-INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (1, 'Uncanny X-Men (1963 1st Series) #2 FR 1.0', 'Published 1963 by Marvel. Grade: FR 1.0', 'poor', 'I got this from a friend of mine on Christmas.', 0.12, 220.00, '1963-11-02', '', NULL, 0, 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg', 1, 1);
-INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (2, 'The X-Men #11 (May 1965, Marvel) ', 'Published 1965 by Marvel', 'very good', 'Bought this at ComicCon San Diego', 0.12, 28.00, '1965-05-11', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/tvIAAOSwzqFY~l2E/s-l1600.jpg', 1, 1);
-INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (3, 'Teenage Mutant Ninja Turtles: Donatello S.H.Figuarts Action Figure', 'Teenage Mutant Ninja Turtles (TMNT): Donatello S.H.Figuarts Action Figure', 'excellent', 'Given to me on my 8th birthday', 8.99, 59.33, '1980-09-27', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/yhMAAOSwmfhX263D/s-l1600.jpg', 1, 2);
+USE `collectorsdb`;
+INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (1, 'Uncanny X-Men (1963 1st Series) #2 FR 1.0', 'Published 1963 by Marvel. Grade: FR 1.0', 'poor', 'I got this from a friend of mine on Christmas.', 0.12, 220.00, '1963/11/02', '', NULL, 0, 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg', 1, 1);
+INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (2, 'The X-Men #11 (May 1965, Marvel) ', 'Published 1965 by Marvel', 'very good', 'Bought this at ComicCon San Diego', 0.12, 28.00, '1965/05/11', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/tvIAAOSwzqFY~l2E/s-l1600.jpg', 1, 1);
+INSERT INTO `item` (`id`, `name`, `description`, `item_condition`, `notes`, `purchase_price`, `current_value`, `purchase_date`, `sold_date`, `sold_price`, `retired`, `image_url`, `user_id`, `category_id`) VALUES (3, 'Teenage Mutant Ninja Turtles: Donatello S.H.Figuarts Action Figure', 'Teenage Mutant Ninja Turtles (TMNT): Donatello S.H.Figuarts Action Figure', 'excellent', 'Given to me on my 8th birthday', 8.99, 59.33, '1980/09/27', NULL, NULL, 0, 'http://i.ebayimg.com/images/g/yhMAAOSwmfhX263D/s-l1600.jpg', 1, 2);
+
 
 COMMIT;
 
@@ -147,10 +148,11 @@ COMMIT;
 -- Data for table `price`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
-INSERT INTO `price` (`id`, `price`, `date`, `item_id`) VALUES (1, 220.00, '2017-05-01', 1);
-INSERT INTO `price` (`id`, `price`, `date`, `item_id`) VALUES (2, 28.00, '2017-05-01', 2);
-INSERT INTO `price` (`id`, `price`, `date`, `item_id`) VALUES (3, 59.33, '2017-05-01', 3);
+
+USE `collectorsdb`;
+INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (1, 220.00, '2017/05/01', 1);
+INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (2, 28.00, '2017/05/01', 2);
+INSERT INTO `price` (`id`, `item_price`, `date`, `item_id`) VALUES (3, 59.33, '2017/05/01', 3);
+
 
 COMMIT;
-
