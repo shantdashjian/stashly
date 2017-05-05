@@ -3,6 +3,7 @@ angular.module('item')
 	templateUrl: 'app/item/itemList/itemList.component.html',
 	controller: function(itemService, $location){
 		var vm = this;
+//		vm.searchByName = $filter('searchByName');
 		
 		vm.items = [];
 		vm.categories = [{name: "all"}];
@@ -86,7 +87,11 @@ angular.module('item')
 
 	},
 
-	controllerAs: 'vm'
+	controllerAs: 'vm',
+	
+	bindings:{
+		keywords: '<'
+	}
 
 })
 

@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,63 +9,64 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name="item")
+@Table(name = "item")
 public class Item {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	private String description;
-	
-	@Column(name="item_condition")
+
+	@Column(name = "item_condition")
 	private String condition;
-	
+
 	private String notes;
-	
-	@Column(name="purchase_price")
+
+	@Column(name = "purchase_price")
 	private Double purchasePrice;
-	
-	@Column(name="current_value")
+
+	@Column(name = "current_value")
 	private Double currentValue;
 
-	@Column(name="purchase_date")
+	@Column(name = "purchase_date")
 	private String purchaseDate;
-	
-	@Column(name="sold_date")
+
+	@Column(name = "sold_date")
 	private String soldDate;
-	
-	@Column(name="sold_price")
+
+	@Column(name = "sold_price")
 	private Double soldPrice;
-	
+
 	private boolean retired;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	@JsonBackReference(value="user-movement")
+	@JsonBackReference(value = "user-movement")
 	private User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
-//	@JsonBackReference(value="category-movement")
 	private Category category;
+
+	@OneToMany(mappedBy = "item")
+	@JsonManagedReference(value = "item-movement")
+	private List<Price> prices;
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -170,12 +173,20 @@ public class Item {
 		this.category = category;
 	}
 
+	public List<Price> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(List<Price> prices) {
+		this.prices = prices;
+	}
+
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", condition=" + condition
 				+ ", notes=" + notes + ", purchasePrice=" + purchasePrice + ", currentValue=" + currentValue
 				+ ", purchaseDate=" + purchaseDate + ", soldDate=" + soldDate + ", soldPrice=" + soldPrice
-				+ ", retired=" + retired + ", imageUrl=" + imageUrl + ", category=" + category + "]";
+				+ ", retired=" + retired + ", imageUrl=" + imageUrl + "]";
 	}
 
 }

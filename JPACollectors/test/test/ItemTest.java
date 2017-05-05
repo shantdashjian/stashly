@@ -30,8 +30,23 @@ public class ItemTest {
 	}
 	
 	@Test
-	public void test_username() {
+	public void test_condition() {
 		Item i = em.find(Item.class, 1);
 		assertEquals("poor", i.getCondition());
 	}
+	
+	@Test
+	public void test_user() {
+		Item i = em.find(Item.class, 1);
+		assertEquals("jandis", i.getUser().getUsername());
+		
+	}
+
+	@Test
+	public void test_category() {
+		Item i = em.find(Item.class, 1);
+		assertEquals("comic", i.getCategory().getName());
+		
+	}
+	
 }
