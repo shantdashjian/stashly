@@ -1,4 +1,4 @@
-angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
+angular.module("appModule", ['nav','item','ngRoute', 'authModule', 'chartModule'])
 .config(function($routeProvider){
 	$routeProvider
 
