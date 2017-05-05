@@ -5,6 +5,7 @@ angular
 				{
 					templateUrl : 'app/chartModule/chartComponent/chart.component.html',
 					controller : function($scope, priceService) {
+
 						var dates = [];
 						var itemPrices = [];
 						

@@ -14,7 +14,7 @@ angular.module('item')
 		
 		var currentDate = function() {
 			var today = new Date();
-			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+			var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
 			return date;
 		}
 		
@@ -67,26 +67,19 @@ angular.module('item')
 		};
 		
 		service.getInflation = function(item) {
-//			item = {purchaseDate : '1996/5/12', purchasePrice : 12.12};
-			console.log("HEEEEEEEEEEEEEEEEEEEEERRRRR")
-			console.log(item)
-			console.log(INF_URL)
 			return $http({
 				url : INF_URL,
 				method : 'GET',
 				params : {
 					country: 'united-states',
-//                	start: item.purchasDate,
-					start: '2012/03/12',
+                	start: item.purchaseDate,
                 	end: currentDate(),
                 	amount: item.purchasePrice,
                 	format: true
 				}
 		    
 			}).then(function(res) {
-				console.log("HOOOOOOOORAY!")
-				console.log(res)
-				console.log(res.data);
+
 				return res;
 			}).catch(function(err) {
 				console.log(err);
