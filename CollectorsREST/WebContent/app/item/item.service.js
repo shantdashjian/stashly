@@ -8,7 +8,16 @@ angular.module('item')
 		var EBAY_URL = "http://svcs.ebay.com/services/search/FindingService/v1?";
 		
 		var APP_NAME = 'ShaunDas-Collecto-PRD-308fef0ab-269be395';
-			
+		
+		var INF_URL = 'https://www.statbureau.org/calculate-inflation-price-jsonp?jsoncallback=?';
+
+		
+		var currentDate = function() {
+			var today = new Date();
+			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+			return date;
+		}
+		
 
 		var items = [];
 		
@@ -56,6 +65,34 @@ angular.module('item')
 			})
 			
 		};
+		
+		service.getInflation = function(item) {
+//			item = {purchaseDate : '1996/5/12', purchasePrice : 12.12};
+			console.log("HEEEEEEEEEEEEEEEEEEEEERRRRR")
+			console.log(item)
+			console.log(INF_URL)
+			return $http({
+				url : INF_URL,
+				method : 'GET',
+				params : {
+					country: 'united-states',
+//                	start: item.purchasDate,
+					start: '2012/03/12',
+                	end: currentDate(),
+                	amount: item.purchasePrice,
+                	format: true
+				}
+		    
+			}).then(function(res) {
+				console.log("HOOOOOOOORAY!")
+				console.log(res)
+				console.log(res.data);
+				return res;
+			}).catch(function(err) {
+				console.log(err);
+			})
+
+		}
 		
 		service.retire = function(item){			
 			item.retired = true;		

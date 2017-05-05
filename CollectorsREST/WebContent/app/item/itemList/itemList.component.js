@@ -18,7 +18,16 @@ angular.module('item')
 			itemService.index()
 			.then(function(response){
 				vm.items = response.data;
+				vm.items.forEach((item) => {
+					itemService.getInflation(item)
+						.then(function(res){
+							console.log(res.data);
+							vm.items[vm.items.indexOf(item)].inflationPrice = res.data
+						})
+				})
 				vm.clearUpdateStatus();
+			
+			
 			})
 		}
 		
@@ -60,6 +69,19 @@ angular.module('item')
 			})
 			return total;
 		}
+		
+//		vm.getInflationPrice = function(item) {
+//			itemService.getInflation(item)
+//				.then(function(res) {
+//					return res.data;
+//				}).catch(function(err){
+//					console.log(err.headers);
+//					return item.purchasePrice;
+//				})
+//		}
+		
+// vm.getInflationPrice()
+		
 		vm.totalPurchasePrice = function (){
 			var total = 0;
 			vm.items.forEach(function(item){
@@ -114,21 +136,21 @@ angular.module('item')
 
 })
 
-//				vm.items = [{
-//						imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-//						name: "Uncanny X-Men (1963 1st Series) #2 FR 1.0",
-//						currentValue: 220,
-//						purchasePrice : 10,
-//						purchaseDate: '1989-07-07'
-//				},
-//				{
-//                    imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-//					name: "The X-Men #11 (May 1965, Marvel)",
-//					currentValue: 500,
-//					purchasePrice : 9000,
-//					purchaseDate: '2001-07-07'
+// vm.items = [{
+// imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
+// name: "Uncanny X-Men (1963 1st Series) #2 FR 1.0",
+// currentValue: 220,
+// purchasePrice : 10,
+// purchaseDate: '1989-07-07'
+// },
+// {
+// imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
+// name: "The X-Men #11 (May 1965, Marvel)",
+// currentValue: 500,
+// purchasePrice : 9000,
+// purchaseDate: '2001-07-07'
 //
-//				}
-//				]
+// }
+// ]
 
-//			})
+// })
