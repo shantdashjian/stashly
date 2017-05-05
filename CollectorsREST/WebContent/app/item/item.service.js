@@ -57,19 +57,13 @@ angular.module('item')
 			
 		};
 		
-		service.retire = function(item){
-			item.retired = true;
-			return $http({
-				method : 'PUT',
-				url : BASE_URL + authService.getToken().id + '/item/' + item.id,
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				data : item
-			})
+		service.retire = function(item){			
+			item.retired = true;		
+			return service.update(item);
 		}
 		
 		service.update = function(item){
+			delete item.updated;
 			return $http({
 				method : 'PUT',
 				url : BASE_URL + authService.getToken().id + '/item/' + item.id,

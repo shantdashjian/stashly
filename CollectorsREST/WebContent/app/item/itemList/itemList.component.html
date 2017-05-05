@@ -38,7 +38,7 @@
 						ng-click='vm.showItem(item)'>
 						<td><img class='icon' src="{{item.imageUrl}}"></td>
 						<td>{{item.name}}</td>
-						<td>{{item.currentValue | currency}}</td>
+						<td ng-class="vm.updated(item)">{{item.currentValue | currency}}</td>
 						<td>{{item.purchasePrice | currency}}</td>
 						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
