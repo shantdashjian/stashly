@@ -1,5 +1,5 @@
 <navigation></navigation>
-<div>
+<!-- <div>
 	<form>
 		<input type="text" ng-model="vm.editItem.name"/>
 		<input type="text" ng-model="vm.editItem.description"/>
@@ -12,4 +12,63 @@
 		<input type="text" ng-model="vm.editItem.imageUrl"/>
 		<input type="submit" value="Submit" ng-click="vm.update(vm.editItem)"/>
 	</form>
+</div> -->
+
+<div class="container">
+  <h2 class="text-center">Edit Item</h2>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="name" name="name" ng-model="vm.editItem.name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="description">Description:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="description" name="description" ng-model="vm.editItem.description">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="condition">Condition:</label>
+      <div class="col-sm-7">
+      <select class="form-control btn btn-default dropdown-toggle" ng-model="vm.editItem.condition">
+			<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
+		</select>
+		</div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="category">Category:</label>
+      	<div class="col-sm-7">
+      	<select class="form-control btn btn-default dropdown-toggle" ng-model="vm.editItem.category" ng-options="cat.name for cat in vm.categories track by cat.name"></select>
+    	</div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="purchasePrice">Purchase Price:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="purchasePrice" name="purchasePrice" ng-model="vm.editItem.purchasePrice">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="purchaseDate">Purchase Date:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="purchaseDate" name="purchaseDate" ng-model="vm.editItem.purchaseDate">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="imageURL">Image URL:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl" ng-model="vm.editItem.imageUrl">
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-7">
+        <button type="submit" class="btn btn-primary btn-block" ng-click="vm.update(vm.editItem)">Submit Changes</button>
+      </div>
+    </div>
+  </form>
 </div>

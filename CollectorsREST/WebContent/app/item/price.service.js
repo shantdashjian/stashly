@@ -39,5 +39,4 @@ angular.module('item')
 		
 		
 		return service;
-		
 })
