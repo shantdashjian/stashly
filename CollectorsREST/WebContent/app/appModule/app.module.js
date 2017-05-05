@@ -23,6 +23,9 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
 	.when('/update/:id',{
 		template: '<update-item> loading update Item</update-item>'
 	})
+	.when('/search/:keywords',{
+		template: '<search-results> loading search-results</search-results>'
+	})
 	.when('/archive',{
 		template: '<archive-list> loading archive</archive-list>'
 	})
