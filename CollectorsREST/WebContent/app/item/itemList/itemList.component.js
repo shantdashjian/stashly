@@ -21,7 +21,16 @@ angular.module('item')
 			itemService.index()
 			.then(function(response){
 				vm.items = response.data;
+				vm.items.forEach((item) => {
+					itemService.getInflation(item)
+						.then(function(res){
+							console.log(res.data);
+							vm.items[vm.items.indexOf(item)].inflationPrice = res.data
+						})
+				})
 				vm.clearUpdateStatus();
+			
+			
 			})
 		}
 		
@@ -63,6 +72,19 @@ angular.module('item')
 			})
 			return total;
 		}
+		
+//		vm.getInflationPrice = function(item) {
+//			itemService.getInflation(item)
+//				.then(function(res) {
+//					return res.data;
+//				}).catch(function(err){
+//					console.log(err.headers);
+//					return item.purchasePrice;
+//				})
+//		}
+		
+// vm.getInflationPrice()
+		
 		vm.totalPurchasePrice = function (){
 			var total = 0;
 			vm.items.forEach(function(item){
@@ -121,5 +143,4 @@ angular.module('item')
 	}
 
 })
-
 
