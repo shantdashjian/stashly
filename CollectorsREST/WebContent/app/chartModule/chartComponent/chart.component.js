@@ -4,10 +4,10 @@ angular
 				'chart',
 				{
 					templateUrl : 'app/chartModule/chartComponent/chart.component.html',
-					controller : function($scope, itemService) {
+					controller : function($scope, priceService) {
 						var prices = [];
 						var getPrices = function() {
-							itemService.index().then(function(res) {
+							priceService.index().then(function(res) {
 								prices = res.data;
 								console.log(prices);
 							})
