@@ -78,7 +78,6 @@ angular.module('item')
 		vm.updateCurrentValues = function(){
 
 			vm.buttonLoad = true;
-			vm.reload();
 
 
 			vm.items.forEach(function(item){
