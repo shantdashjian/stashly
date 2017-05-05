@@ -8,6 +8,7 @@
 			Filter by:<select ng-model="vm.selected" ng-options="category.name for category in vm.categories">
  			 
   			</select>
+
 		</div>
 	</div>
 	<div class='row'>
@@ -19,7 +20,6 @@
 
 
 						<th ng-click="vm.changeOrderBy('name')">Name</th>
-
 
 						<th ng-click="vm.changeOrderBy('currentValue')">Current High
 							Bid on eBay</th>
@@ -39,7 +39,7 @@
 						<td>{{item.name}}</td>
 						<td>{{item.currentValue | currency}}</td>
 						<td>{{item.purchasePrice | currency}}</td>
-						<td>{{item.purchaseDate}}</td>
+						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
 				</tbody>
 				<tfoot>

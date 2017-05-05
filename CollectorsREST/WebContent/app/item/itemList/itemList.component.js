@@ -3,6 +3,7 @@ angular.module('item')
 	templateUrl: 'app/item/itemList/itemList.component.html',
 	controller: function(itemService, $location){
 		var vm = this;
+		
 		vm.items = [];
 		vm.categories = [{name: "all"}];
 		vm.selected = vm.categories[0];
@@ -11,9 +12,9 @@ angular.module('item')
 			itemService.index()
 			.then(function(response){
 				vm.items = response.data;
-
 			})
 		}
+		
 		vm.reload();
 
 		vm.category = function(){
@@ -25,10 +26,10 @@ angular.module('item')
 			}
 		vm.category();
 
-
-
 		vm.orderBy = null;
+
 		vm.reverse = false;
+		
 		vm.changeOrderBy = function (columnName){
 			if (vm.orderBy === columnName) {
                 if (!vm.reverse) {
@@ -40,8 +41,8 @@ angular.module('item')
             } else {
                 vm.orderBy = columnName;
             }
-
 		}
+		
 		vm.currentTotalValue = function (){
 			var total = 0;
 			vm.items.forEach(function(item){
