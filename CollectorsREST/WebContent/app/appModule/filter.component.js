@@ -2,7 +2,8 @@ angular.module('appModule')
 .filter('categorySort', function() {
 	return function(items,cat) {
 		console.log(cat)
-		if(cat === items) return items;
+		if(cat === "all" || cat === undefined) 
+			return items;
 		
 	    var results = [];
 	    items.forEach(function(item) {
