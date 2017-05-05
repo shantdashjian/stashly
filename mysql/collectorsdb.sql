@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `price` ;
 
 CREATE TABLE IF NOT EXISTS `price` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `item_price` DECIMAL(11) NOT NULL,
+  `item_price` DECIMAL(11,2) NOT NULL,
   `date` VARCHAR(255) NOT NULL,
   `item_id` INT NOT NULL,
   PRIMARY KEY (`id`),
