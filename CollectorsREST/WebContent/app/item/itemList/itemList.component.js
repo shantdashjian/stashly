@@ -3,30 +3,34 @@ angular.module('item')
 	templateUrl: 'app/item/itemList/itemList.component.html',
 	controller: function(itemService, $location){
 		var vm = this;
+//		vm.searchByName = $filter('searchByName');
+		
 		vm.items = [];
-		vm.categories = [];
+		vm.categories = [{name: "all"}];
+		vm.selected = vm.categories[0];
 		
 		vm.reload = function(){
 			itemService.index()
 			.then(function(response){
 				vm.items = response.data;
-
 			})
 		}
+		
 		vm.reload();
 
 		vm.category = function(){
 			itemService.getCategories()
 			.then(function(category){
 				vm.categories = category.data;
+				vm.categories.unshift({name: "all"})
 				})
 			}
 		vm.category();
 
-
-
 		vm.orderBy = null;
+
 		vm.reverse = false;
+		
 		vm.changeOrderBy = function (columnName){
 			if (vm.orderBy === columnName) {
                 if (!vm.reverse) {
@@ -38,8 +42,8 @@ angular.module('item')
             } else {
                 vm.orderBy = columnName;
             }
-
 		}
+		
 		vm.currentTotalValue = function (){
 			var total = 0;
 			vm.items.forEach(function(item){
@@ -83,7 +87,11 @@ angular.module('item')
 
 	},
 
-	controllerAs: 'vm'
+	controllerAs: 'vm',
+	
+	bindings:{
+		keywords: '<'
+	}
 
 })
 

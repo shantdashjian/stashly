@@ -31,9 +31,17 @@ public class CategoryTest {
 	}
 	
 	@Test
-	public void test_username() {
+	public void test_name() {
 		Category c = em.find(Category.class, 1);
 		assertEquals("comic", c.getName());
 
 	}
+	
+	@Test
+	public void test_items() {
+		Category c = em.find(Category.class, 1);
+		assertEquals(2, c.getItems().size());
+
+	}
+
 }

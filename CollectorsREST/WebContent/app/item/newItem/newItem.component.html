@@ -8,7 +8,7 @@
 		</select>
 		<select ng-model="item.category" ng-options="cat.name for cat in vm.categories"></select>
 		<input type="text" placeholder="Purchase Price" ng-model="item.purchasePrice"/>
-		<input type="text" placeholder="Purchase Date" ng-model="item.purchaseDate"/>
+		<input type="date" placeholder="Purchase Date" ng-model="item.purchaseDate"/>
 		<input type="text" placeholder="Image URL" ng-model="item.imageUrl"/>
 		<input type="submit" value="Submit" ng-click="vm.create(item)"/>
 	</form>
