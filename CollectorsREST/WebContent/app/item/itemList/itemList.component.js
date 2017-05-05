@@ -24,8 +24,8 @@ angular.module('item')
 				vm.items.forEach((item) => {
 					itemService.getInflation(item)
 						.then(function(res){
-							console.log(res.data);
-							vm.items[vm.items.indexOf(item)].inflationPrice = res.data
+							vm.items[vm.items.indexOf(item)].inflationPrice = res.data.substring(4,res.data.length-2);
+							
 						})
 				})
 				vm.clearUpdateStatus();
