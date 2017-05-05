@@ -1,6 +1,6 @@
 angular.module('item')
 .factory('itemService', 
-		function( $http, $filter, $location, authService){
+		function( $http, $filter, $location, authService, priceService){
 		var service = {}
 		
 		var BASE_URL= "http://localhost:8080/CollectorsREST/rest/user/";

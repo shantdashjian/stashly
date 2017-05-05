@@ -30,9 +30,7 @@ public class ItemDAOImpl implements ItemDAO {
 			List<Item> items = managedUser.getItems();
 			return items;
 		} catch (Exception e) {
-			e.printStackTrace();
-			String q = "SELECT u FROM User u WHERE u.id = :id";
-			managedUser = em.createQuery(q, User.class).setParameter("id", uid).getSingleResult();
+
 			return new ArrayList<Item>();
 		}
 	}
