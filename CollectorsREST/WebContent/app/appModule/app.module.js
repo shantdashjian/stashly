@@ -14,6 +14,9 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
 	.when('/itemShow/:id',{
 		template: '<item-show> loading Item show</item-show>'
 	})
+	.when('/itemShowArchive/:id',{
+		template: '<item-show-archive> loading Item show</item-show-archive>'
+	})
 	.when('/signup',{
         template: '<signup> loading Item List</signup>'
 	})
