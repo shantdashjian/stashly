@@ -56,10 +56,15 @@ angular.module('item')
 		vm.currentTotalValue = function (){
 			var total = 0;
 			vm.items.forEach(function(item){
-				if (!item.retired){
-					total += parseFloat(item.currentValue);
-				}
-
+				// when no filter is selected, total everything that is not retired
+				if (!vm.selected && !item.retired) 
+					return total += parseFloat(item.currentValue);
+				// when a specific filter is selected, total everything with that category				
+				if (!item.retired && (item.category.name === vm.selected.name )) 
+					return total += parseFloat(item.currentValue);
+				// when the 'all' filter is selected, total everything that is not retired
+				if (vm.selected.name === 'all' && !item.retired) 
+					return total += parseFloat(item.currentValue);
 			})
 			return total;
 		}
