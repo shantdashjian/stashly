@@ -5,9 +5,8 @@
 			<select ng-model="selectedValue"
 				ng-init="selectedValue = vm.categories[0]"
 				ng-options="category.name for category in vm.categories">
-				<!-- 			  <option ng-selected="true">All</option>
- -->
-				<!--  			  <option ng-selected="data.name == {{category.name}}" ng-repeat="category in vm.categories" value="{{category.name}}">{{category.name}}</option>
+				<!-- <option ng-selected="true">All</option> -->
+				<!-- <option ng-selected="data.name == {{category.name}}" ng-repeat="category in vm.categories" value="{{category.name}}">{{category.name}}</option>
  -->
 			</select>
 		</div>
@@ -18,7 +17,6 @@
 				<thead>
 					<tr class='pointer noselect'>
 						<th>Icon</th>
-						<th ng-click="vm.changeOrderBy('name')">Name</th>
 						<th ng-click="vm.changeOrderBy('name')">Name</th>
 						<th ng-click="vm.changeOrderBy('currentValue')">Current High
 							Bid on eBay</th>
@@ -37,7 +35,7 @@
 						<td>{{item.name}}</td>
 						<td>{{item.currentValue | currency}}</td>
 						<td>{{item.purchasePrice | currency}}</td>
-						<td>{{item.purchaseDate}}</td>
+						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
 				</tbody>
 				<tfoot>
