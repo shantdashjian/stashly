@@ -4,6 +4,7 @@ angular.module('item')
 	controller: function(itemService, priceService, $location){
 		var vm = this;
 //		vm.searchByName = $filter('searchByName');
+		vm.buttonLoad = false;
 		
 		vm.items = [];
 		vm.categories = [{name: "all"}];
@@ -65,9 +66,19 @@ angular.module('item')
 			})
 			return total;
 		}
+		
+//		vm.addSpinner = function() {
+//			vm.spinner = ";
+//		}
+//		
+//		vm.removeSpinner = function() {
+//			vm.spinner = "glyphicon glyphicon-refresh spinning";
+//		}
 
 		vm.updateCurrentValues = function(){
+			vm.buttonLoad = true;
 			vm.reload();
+			
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
@@ -81,6 +92,7 @@ angular.module('item')
 					
 					itemService.update(item);
 					priceService.create(item);
+					vm.buttonLoad = false;
 					
 				})
 
