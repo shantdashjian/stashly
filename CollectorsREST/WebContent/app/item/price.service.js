@@ -5,10 +5,10 @@ angular.module('item')
 		
 		var BASE_URL = "http://localhost:8080/CollectorsREST/rest/user/";
 		
-		service.index = function(iid){
+		service.index = function(){
 			return $http({
 				method:'GET',
-				url: BASE_URL + authService.getToken().id + '/item/' + iid + "/price/"
+				url: BASE_URL + authService.getToken().id + "/price/"
 			})
 		}
 		
