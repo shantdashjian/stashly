@@ -4,10 +4,11 @@
 <div class='container'>
 	<div class='row'>
 		<div class='col-md-offset-2 col-md-8 light-background'>
- 			
-			Filter by:<select ng-model="vm.selected" ng-options="category.name for category in vm.categories">
- 			 
-  			</select>
+
+			Filter by:<select ng-model="vm.selected"
+				ng-options="category.name for category in vm.categories">
+
+			</select>
 
 		</div>
 	</div>
@@ -37,7 +38,7 @@
 						ng-click='vm.showItem(item)'>
 						<td><img class='icon' src="{{item.imageUrl}}"></td>
 						<td>{{item.name}}</td>
-						<td>{{item.currentValue | currency}}</td>
+						<td ng-class="vm.updated(item)">{{item.currentValue | currency}}</td>
 						<td>{{item.purchasePrice | currency}}</td>
 						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
@@ -47,8 +48,12 @@
 						<td colspan='2'>Total</td>
 						<td>{{vm.currentTotalValue() | currency}}</td>
 						<td>{{vm.totalPurchasePrice() | currency}}</td>
-						<td><button ng-click="vm.updateCurrentValues()">Update
-								Bidding History</button></td>
+
+						<td><button class="btn btn-lg btn-warning"
+								ng-click="vm.updateCurrentValues()">
+								Update History <span ng-show="vm.buttonLoad"
+									class="glyphicon glyphicon-refresh spinning"></span>
+							</button></td>
 					</tr>
 				</tfoot>
 			</table>

@@ -3,16 +3,25 @@ angular.module('item')
 	templateUrl: 'app/item/itemList/itemList.component.html',
 	controller: function(itemService, priceService, $location){
 		var vm = this;
+
 //		vm.searchByName = $filter('searchByName');
+		vm.buttonLoad = false;
 		
 		vm.items = [];
 		vm.categories = [{name: "all"}];
 		vm.selected = vm.categories[0];
 		
+		vm.clearUpdateStatus = function(){
+			vm.items.forEach(function(item){
+				item.updated = false;
+			})
+		}
+		
 		vm.reload = function(){
 			itemService.index()
 			.then(function(response){
 				vm.items = response.data;
+				vm.clearUpdateStatus();
 			})
 		}
 		
@@ -67,13 +76,15 @@ angular.module('item')
 		}
 
 		vm.updateCurrentValues = function(){
+
+			vm.buttonLoad = true;
 			vm.reload();
+
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
-					console.log(item);
 					
 					item.price = {
 							itemPrice: item.currentValue
@@ -81,7 +92,10 @@ angular.module('item')
 					
 					itemService.update(item);
 					priceService.create(item);
-					
+
+					vm.buttonLoad = false;
+
+					item.updated = true;
 				})
 
 			})
@@ -89,6 +103,14 @@ angular.module('item')
 
 		vm.showItem = function(item){
 			$location.path('/itemShow/'+item.id);
+		}
+		
+		vm.updated = function(item){
+			if (item.updated){
+				return 'updated';
+			} else {
+				return 'not-updated';
+			}
 		}
 
 	},
@@ -101,21 +123,4 @@ angular.module('item')
 
 })
 
-//				vm.items = [{
-//						imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-//						name: "Uncanny X-Men (1963 1st Series) #2 FR 1.0",
-//						currentValue: 220,
-//						purchasePrice : 10,
-//						purchaseDate: '1989-07-07'
-//				},
-//				{
-//                    imageUrl: 'http://i.ebayimg.com/images/g/XbEAAOSww9xZA~V-/s-l1600.jpg',
-//					name: "The X-Men #11 (May 1965, Marvel)",
-//					currentValue: 500,
-//					purchasePrice : 9000,
-//					purchaseDate: '2001-07-07'
-//
-//				}
-//				]
 
-//			})
