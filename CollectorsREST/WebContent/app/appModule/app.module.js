@@ -14,6 +14,9 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
 	.when('/itemShow/:id',{
 		template: '<item-show> loading Item show</item-show>'
 	})
+	.when('/itemShowArchive/:id',{
+		template: '<item-show-archive> loading Item show</item-show-archive>'
+	})
 	.when('/signup',{
         template: '<signup> loading Item List</signup>'
 	})
@@ -22,6 +25,9 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule'])
 	})
 	.when('/update/:id',{
 		template: '<update-item> loading update Item</update-item>'
+	})
+	.when('/search/:keywords',{
+		template: '<search-results> loading search-results</search-results>'
 	})
 	.when('/archive',{
 		template: '<archive-list> loading archive</archive-list>'
