@@ -20,14 +20,20 @@ public class PriceDAOImpl implements PriceDAO {
 	private EntityManager em;
 
 	@Override
-	public List<Price> index(int uid, int iid) {
-		Item managedItem = null;
+	public List<Price> index(int uid) {
+		List<Item> managedItems = null;
+		List<Price> prices = new ArrayList<>();
 
 		try {
-			String q = "SELECT i FROM Item i JOIN FETCH i.prices WHERE i.id = :iid AND i.user.id = :uid";
-			managedItem = em.createQuery(q, Item.class).setParameter("iid", iid).setParameter("uid", uid)
-					.getSingleResult();
-			return managedItem.getPrices();
+			String q = "SELECT i FROM Item i JOIN FETCH i.prices WHERE i.user.id = :uid";
+			managedItems = em.createQuery(q, Item.class).setParameter("uid", uid)
+					.getResultList();
+			
+			for(Item i : managedItems){
+				prices.addAll(i.getPrices());
+			}
+			
+			return prices;
 
 		} catch (Exception e) {
 
