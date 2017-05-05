@@ -5,7 +5,8 @@ angular.module('item')
 		var vm = this;
 		
 		vm.items = [];
-		vm.categories = [];
+		vm.categories = [{name: "all"}];
+		vm.selected = vm.categories[0];
 		
 		vm.reload = function(){
 			itemService.index()
@@ -20,6 +21,7 @@ angular.module('item')
 			itemService.getCategories()
 			.then(function(category){
 				vm.categories = category.data;
+				vm.categories.unshift({name: "all"})
 				})
 			}
 		vm.category();
