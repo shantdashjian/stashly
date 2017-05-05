@@ -19,24 +19,25 @@ angular.module('item')
 			})
 		}
 		
-		service.create = function(price){
-			price.date = new Date();
+		service.create = function(item){
+			item.price.date = new Date();
 
 			return $http({
 				method : 'POST',
-				url : BASE_URL + authService.getToken().id + "/item",
+				url : BASE_URL + authService.getToken().id + "/item/" + item.id + "/price/",
 				header : {
 					'Content-Type' : 'application/json'
 				},
-				data : item
+				data : item.price
 			})
 		}
 		
-		service.destroy = function(){
-			
+		service.destroy = function(iid, pid){
+	        return $http({
+	            method: 'DELETE',
+				url: BASE_URL + authService.getToken().id + '/item/' + iid + "/price/" + pid
+	        })
 		}
-		
-		
-		
+	
 		return service;
 })

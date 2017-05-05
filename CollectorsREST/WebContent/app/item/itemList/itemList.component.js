@@ -1,9 +1,8 @@
 angular.module('item')
 .component('itemList', {
 	templateUrl: 'app/item/itemList/itemList.component.html',
-	controller: function(itemService, $location){
+	controller: function(itemService, priceService, $location){
 		var vm = this;
-//		vm.searchByName = $filter('searchByName');
 		
 		vm.items = [];
 		vm.categories = [{name: "all"}];
@@ -79,7 +78,13 @@ angular.module('item')
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+					
+					item.price = {
+							itemPrice: item.currentValue
+					};
+					
 					itemService.update(item);
+					priceService.create(item);
 					item.updated = true;
 					
 				})
