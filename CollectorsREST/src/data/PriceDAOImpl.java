@@ -1,7 +1,9 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,7 +31,9 @@ public class PriceDAOImpl implements PriceDAO {
 			managedItems = em.createQuery(q, Item.class).setParameter("uid", uid)
 					.getResultList();
 			
-			for(Item i : managedItems){
+			Set<Item> itemSet = new HashSet<Item>(managedItems);
+
+			for(Item i : itemSet){
 				prices.addAll(i.getPrices());
 			}
 			

@@ -5,19 +5,28 @@ angular
 				{
 					templateUrl : 'app/chartModule/chartComponent/chart.component.html',
 					controller : function($scope, priceService) {
-						var prices = [];
+
+						var dates = [];
+						var itemPrices = [];
+						
 						var getPrices = function() {
 							priceService.index().then(function(res) {
-								prices = res.data;
-								console.log(prices);
+								var prices = res.data;
+
+								prices.forEach(function(v,i,a){
+									dates.push(new Date(v.date));
+									itemPrices.push(v.itemPrice);
+								})
+								console.log(itemPrices);
+								dates.sort();
+								itemPrices.sort(function(a,b){return b-a});
+								
 							})
 						}
 						getPrices();
-						$scope.labels = [ "January", "February", "March",
-								"April", "May", "June", "July" ];
+						$scope.labels = dates;
 						$scope.series = [ 'Series A', 'Series B' ];
-						$scope.data = [ [ 65, 59, 80, 81, 56, 55, 40 ],
-								[ 28, 48, 40, 19, 86, 27, 90 ] ];
+						$scope.data = itemPrices;
 						$scope.onClick = function(points, evt) {
 							console.log(points, evt);
 						};
