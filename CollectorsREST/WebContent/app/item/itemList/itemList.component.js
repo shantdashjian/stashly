@@ -4,12 +4,11 @@ angular.module('item')
 	controller: function(itemService, priceService, $location, $filter){
 		var vm = this;
 
-//		vm.searchByName = $filter('searchByName');
 		vm.buttonLoad = false;
 		
 		vm.items = [];
-		vm.categories = [{name: "all"}];
-		vm.selected = vm.categories[0];
+
+		vm.selected = {name: "all "};
 		
 		vm.clearUpdateStatus = function(){
 			vm.items.forEach(function(item){
@@ -44,6 +43,7 @@ angular.module('item')
 			.then(function(category){
 				vm.categories = category.data;
 				vm.categories.unshift({name: "all"})
+				vm.selected = vm.categories[0];
 				})
 			}
 		vm.category();
