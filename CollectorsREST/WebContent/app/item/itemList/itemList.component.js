@@ -92,24 +92,17 @@ angular.module('item')
 		}
 
 		vm.updateCurrentValues = function(){
-
 			vm.buttonLoad = true;
-
-
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
-					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
-					
+					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;					
 					item.price = {
 							itemPrice: item.currentValue
-					};
-					
+					};					
 					itemService.update(item);
 					priceService.create(item);
-
 					vm.buttonLoad = false;
-
 					item.updated = true;
 				})
 
@@ -121,8 +114,10 @@ angular.module('item')
 		}
 		
 		vm.updated = function(item){
-			if (item.updated){
-				return 'updated';
+			if (item.updated && item.currentValue >= item.purchasePrice){
+				return 'updated-up';
+			} else if (item.updated && item.currentValue < item.purchasePrice){
+				return 'updated-down';
 			} else {
 				return 'not-updated';
 			}
