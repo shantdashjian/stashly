@@ -1,7 +1,7 @@
 angular.module('item')
 .component('itemList', {
 	templateUrl: 'app/item/itemList/itemList.component.html',
-	controller: function(itemService, priceService, $location){
+	controller: function(itemService, priceService, $location, $filter){
 		var vm = this;
 
 //		vm.searchByName = $filter('searchByName');
@@ -35,7 +35,10 @@ angular.module('item')
 		}
 		
 		vm.reload();
-
+		// injected filters
+		var categorySort = $filter('categorySort');
+		var searchByName = $filter('searchByName');
+		
 		vm.category = function(){
 			itemService.getCategories()
 			.then(function(category){
@@ -63,38 +66,24 @@ angular.module('item')
 		}
 		
 		vm.currentTotalValue = function (){
-			var total = 0;
-			vm.items.forEach(function(item){
-				// when no filter is selected, total everything that is not retired
-				if (!vm.selected && !item.retired) 
-					return total += parseFloat(item.currentValue);
-				// when a specific filter is selected, total everything with that category				
-				if (!item.retired && (item.category.name === vm.selected.name )) 
-					return total += parseFloat(item.currentValue);
-				// when the 'all' filter is selected, total everything that is not retired
-				if (vm.selected.name === 'all' && !item.retired) 
-					return total += parseFloat(item.currentValue);
-			})
+			var total = 0;			
+			var items = searchByName(vm.items, vm.keywords);
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
+			if(!item.retired)
+				total += parseFloat(item.currentValue);
+			})			
 			return total;
 		}
 		
-//		vm.getInflationPrice = function(item) {
-//			itemService.getInflation(item)
-//				.then(function(res) {
-//					return res.data;
-//				}).catch(function(err){
-//					console.log(err.headers);
-//					return item.purchasePrice;
-//				})
-//		}
-		
-// vm.getInflationPrice()
+
 		
 		vm.totalPurchasePrice = function (){
 			var total = 0;
-			vm.items.forEach(function(item){
+			var items = searchByName(vm.items, vm.keywords);
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
 				if (!item.retired){
-
 					total += item.purchasePrice;
 				}
 
