@@ -15,9 +15,19 @@ angular.module('item')
 		};
 		
 		vm.goBackToArchiveList = function(){
-		    $location.path('/archiveList');
+		    $location.path('/archive');
 
 		};
+		
+		
+		vm.retireItem = function(){
+			
+				itemService.returnItem(vm.item).then(function(res){
+					vm.goBackToArchiveList();
+				});
+			
+		}
+		
 		
 	},
 	controllerAs: 'vm'

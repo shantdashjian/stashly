@@ -91,6 +91,12 @@ angular.module('item')
 			item.retired = true;		
 			return service.update(item);
 		}
+		service.returnItem = function(item){			
+			item.retired = false;		
+			return service.update(item);
+		}
+		
+		
 		
 		service.update = function(item){
 			

@@ -23,8 +23,6 @@ angular.module('item')
 			var result = confirm('Are you sure you want to retire item?');
 			if (result) {
 				itemService.retire(vm.item).then(function(res){
-					console.log("in update")
-					console.log(res.data)
 					vm.goBackToItemList();
 				});
 			}
