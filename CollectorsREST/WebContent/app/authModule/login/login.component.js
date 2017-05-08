@@ -6,10 +6,14 @@ angular.module("authModule").component("login", {
 		var body = $document.find('body').eq(0);
 
 
+		vm.error = false;
 		vm.login = function(user) {
-			authService.login(user).then(function(res) {
-
+			authService.login(user)
+			.then(function(res) {
 				$location.path('/itemList')
+			})
+			.catch(function(error){
+				vm.error = true;
 			})
 		}
 		

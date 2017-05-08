@@ -25,6 +25,7 @@ public class PriceDAOImpl implements PriceDAO {
 	public List<Price> index(int uid) {
 		List<Item> managedItems = null;
 		List<Price> prices = new ArrayList<>();
+		
 
 		try {
 			String q = "SELECT i FROM Item i JOIN FETCH i.prices WHERE i.user.id = :uid";

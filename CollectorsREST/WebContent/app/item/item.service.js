@@ -93,7 +93,13 @@ angular.module('item')
 		}
 		
 		service.update = function(item){
-			delete item.updated;
+			
+			console.log('before')
+			console.log(item);
+						
+			console.log('after')
+			console.log(item);
+			
 			return $http({
 				method : 'PUT',
 				url : BASE_URL + authService.getToken().id + '/item/' + item.id,

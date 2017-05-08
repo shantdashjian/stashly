@@ -1,11 +1,11 @@
 <navigation>Load nav</navigation>
 
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-offset-1 col-md-3">
+<div class='container'>
+	<div class='row'>
+		<div class='col-md-offset-1 col-md-3'>
 			Filter by: <select ng-model="vm.selected"
-				ng-options="category.name for category in vm.categories">
+				ng-options="(category.name  | capitalize ) for category in vm.categories">
 			</select>
 		</div>
 		<div class="col-md-offset-4 col-md-3">
@@ -55,12 +55,7 @@
 				</tfoot>
 			</table>
 			<chart>in chart</chart>
-
 		</div>
-
 	</div>
-
-
-
 
 </div>

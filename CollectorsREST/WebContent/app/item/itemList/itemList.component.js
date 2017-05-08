@@ -1,19 +1,19 @@
 angular.module('item')
 .component('itemList', {
 	templateUrl: 'app/item/itemList/itemList.component.html',
-	controller: function(itemService, priceService, $location){
+	controller: function(itemService, priceService, $location, $filter){
 		var vm = this;
 
-//		vm.searchByName = $filter('searchByName');
 		vm.buttonLoad = false;
-		
+		var updatedItem = new Map();
+		var inflationPrice = new Map();
 		vm.items = [];
-		vm.categories = [{name: "all"}];
-		vm.selected = vm.categories[0];
+
+		vm.selected = {name: "all "};
 		
 		vm.clearUpdateStatus = function(){
 			vm.items.forEach(function(item){
-				item.updated = false;
+				updatedItem.set(item.id, false);
 			})
 		}
 		
@@ -24,8 +24,8 @@ angular.module('item')
 				vm.items.forEach((item) => {
 					itemService.getInflation(item)
 						.then(function(res){
-							vm.items[vm.items.indexOf(item)].inflationPrice = res.data.substring(4,res.data.length-2);
-							
+							inflationPrice.set(item.id, res.data.substring(4,res.data.length-2));
+					
 						})
 				})
 				vm.clearUpdateStatus();
@@ -35,12 +35,16 @@ angular.module('item')
 		}
 		
 		vm.reload();
-
+		// injected filters
+		var categorySort = $filter('categorySort');
+		var searchByName = $filter('searchByName');
+		
 		vm.category = function(){
 			itemService.getCategories()
 			.then(function(category){
 				vm.categories = category.data;
 				vm.categories.unshift({name: "all"})
+				vm.selected = vm.categories[0];
 				})
 			}
 		vm.category();
@@ -63,38 +67,24 @@ angular.module('item')
 		}
 		
 		vm.currentTotalValue = function (){
-			var total = 0;
-			vm.items.forEach(function(item){
-				// when no filter is selected, total everything that is not retired
-				if (!vm.selected && !item.retired) 
-					return total += parseFloat(item.currentValue);
-				// when a specific filter is selected, total everything with that category				
-				if (!item.retired && (item.category.name === vm.selected.name )) 
-					return total += parseFloat(item.currentValue);
-				// when the 'all' filter is selected, total everything that is not retired
-				if (vm.selected.name === 'all' && !item.retired) 
-					return total += parseFloat(item.currentValue);
-			})
+			var total = 0;			
+			var items = searchByName(vm.items, vm.keywords);
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
+			if(!item.retired)
+				total += parseFloat(item.currentValue);
+			})			
 			return total;
 		}
 		
-//		vm.getInflationPrice = function(item) {
-//			itemService.getInflation(item)
-//				.then(function(res) {
-//					return res.data;
-//				}).catch(function(err){
-//					console.log(err.headers);
-//					return item.purchasePrice;
-//				})
-//		}
-		
-// vm.getInflationPrice()
+
 		
 		vm.totalPurchasePrice = function (){
 			var total = 0;
-			vm.items.forEach(function(item){
+			var items = searchByName(vm.items, vm.keywords);
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
 				if (!item.retired){
-
 					total += item.purchasePrice;
 				}
 
@@ -103,28 +93,31 @@ angular.module('item')
 		}
 
 		vm.updateCurrentValues = function(){
-
 			vm.buttonLoad = true;
-
+			
+			var stamp = new Date();
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
+
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
 					
-					item.price = {
-							itemPrice: item.currentValue
+					var price = {
+							itemPrice: item.currentValue,
+							date: stamp
 					};
-					
+										
 					itemService.update(item);
-					priceService.create(item);
+					priceService.create(price, item.id);
 
 					vm.buttonLoad = false;
 
-					item.updated = true;
+					updatedItem.set(item.id, true);
 				})
 
 			})
+
 		}
 
 		vm.showItem = function(item){
@@ -132,12 +125,19 @@ angular.module('item')
 		}
 		
 		vm.updated = function(item){
-			if (item.updated){
-				return 'updated';
+			if (updatedItem.get(item.id) && item.currentValue >= item.purchasePrice){
+				return 'updated-up';
+			} else if (updatedItem.get(item.id) && item.currentValue < item.purchasePrice){
+				return 'updated-down';
 			} else {
 				return 'not-updated';
 			}
 		}
+		
+		vm.getInflationPrice = function(item){
+			return inflationPrice.get(item.id);
+		}
+			
 
 	},
 
