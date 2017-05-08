@@ -20,6 +20,15 @@ angular.module('item')
 			})
 		}
 		
+		
+		// using for the graph on the summary page
+		service.summaryByItem = function(iid){
+			return $http({
+				method:'GET',
+				url: BASE_URL + authService.getToken().id + '/item/' + iid + "/price/"
+			})
+		}
+		
 		service.show = function(iid, pid){
 			return $http({
 				method:'GET',
