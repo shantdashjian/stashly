@@ -94,7 +94,8 @@ angular.module('item')
 		vm.updateCurrentValues = function(){
 
 			vm.buttonLoad = true;
-
+			
+			var stamp = new Date();
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
@@ -104,6 +105,8 @@ angular.module('item')
 					item.price = {
 							itemPrice: item.currentValue
 					};
+					
+					item.date = stamp;
 					
 					itemService.update(item);
 					priceService.create(item);
