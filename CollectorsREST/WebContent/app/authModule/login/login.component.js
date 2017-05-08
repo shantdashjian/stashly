@@ -10,6 +10,7 @@ angular.module("authModule").component("login", {
 		vm.login = function(user) {
 			authService.login(user)
 			.then(function(res) {
+				body.css("background-image", "url('')");
 				$location.path('/itemList')
 			})
 			.catch(function(error){

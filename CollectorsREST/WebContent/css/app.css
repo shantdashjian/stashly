@@ -22,7 +22,7 @@ body {
 }
 
 table {
-    margin-top: 1em;
+    margin-top: 10px;
 }
 
 .updated-up {
@@ -40,6 +40,12 @@ table {
 .margin-top {
 	margin-top: 5%;
 }
+
+.light-background {
+ 	background-color: #fff;
+ 	opacity: 0.95;
+
+ }
 
 tfoot tr {
 	font-weight: bold;
@@ -110,6 +116,10 @@ thead {
 
 th {
     text-align: center;
+}
+
+h1 {
+	margin-top: -25px;
 }
 
 .table tbody>tr>td.vert-align{
