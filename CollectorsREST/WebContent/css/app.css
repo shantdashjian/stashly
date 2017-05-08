@@ -1,60 +1,28 @@
 body {
-   /*background-color: lavender;*/
-   background-image: url('../images/background.jpg');
-/*    font-family: ‘Comfortaa’, cursive;
- */   font-size: 170%;
+   font-size: 170%;
    padding-top: 50px;
    text-align: justify;
-   background-repeat: no-repeat;
-   background-size: cover;
-   
 }
 
-.light-background {
-	background-color: #fff;
-	opacity: 0.95;
-
-}
 .icon {
-	width: 80px;
+	width: auto;
 	height: 80px;
 	display: block;
 	margin: 0 auto;
 }
 
 .pointer:hover {
-   background-color: #fff !important;
    cursor: pointer;
    cursor: hand;
 }
+
 .navbar-pointer:hover {
-   background-color: #999 !important;
    cursor: pointer;
    cursor: hand;
 }
 
 table {
-    margin-top: 1em;
-}
-
-.red {
-    background-color: RED;
-}
-
-.yellow {
-    background-color: YELLOW;
-}
-.green {
-    background-color: GREEN;
-}
-.completed {
-    color: GRAY;
-    text-decoration: line-through;
-}
-
-.incomplete {
-    color: BLACK;
-    text-decoration: none;
+    margin-top: 10px;
 }
 
 .updated-up {
@@ -72,6 +40,12 @@ table {
 .margin-top {
 	margin-top: 5%;
 }
+
+.light-background {
+ 	background-color: #fff;
+ 	opacity: 0.95;
+
+ }
 
 tfoot tr {
 	font-weight: bold;
@@ -114,6 +88,11 @@ tfoot td:nth-child(1) {
 	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 
 }
+
+#logincred {
+	margin-top: 100px;
+}
+
 .glyphicon.spinning {
     animation: spin 1s infinite linear;
     -webkit-animation: spin2 1s infinite linear;
@@ -127,4 +106,29 @@ tfoot td:nth-child(1) {
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
+}
+
+thead {
+  background-color: rgb(0, 129, 185);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+th {
+    text-align: center;
+}
+
+h1 {
+	margin-top: -25px;
+}
+
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+}
+
+#landinginfo {
+	background-color: white;
+	padding: 10px;
+	border-radius: 5px;
 }
