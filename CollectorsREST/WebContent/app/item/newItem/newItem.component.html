@@ -1,75 +1,85 @@
 <navigation></navigation>
-<!-- <div>
-	<form>
-		<input type="text" placeholder="Name" ng-model="item.name"/>
-		<input type="text" placeholder="Description" ng-model="item.description"/>
-		<select ng-model="item.condition">
-			<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
-		</select>
-		<select ng-model="item.category" ng-options="cat.name for cat in vm.categories"></select>
-		<input type="text" placeholder="Purchase Price" ng-model="item.purchasePrice"/>
-		<input type="date" placeholder="Purchase Date" ng-model="item.purchaseDate"/>
-		<input type="text" placeholder="Image URL" ng-model="item.imageUrl"/>
-		<input type="submit" value="Submit" ng-click="vm.create(item)"/>
-	</form>
-</div> -->
 
 
-<div class="container">
-  <h2 class="text-center">Add Item</h2>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="name">Name:</label>
-      <div class="col-sm-7">
-        <input placeholder="Name" type="text" class="form-control" id="name" name="name" ng-model="item.name">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="description">Description:</label>
-      <div class="col-sm-7">
-        <input placeholder="Description" type="text" class="form-control" id="description" name="description" ng-model="item.description">
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="condition">Condition:</label>
-      <div class="col-sm-7">
-      <select class="form-control btn btn-default dropdown-toggle" ng-model="item.condition">
-			<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
-		</select>
+<div class="container center-div">
+	<div class="row">
+		<div class="col-md-offset-1 col-sm-10">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">Add An Item</div>
+				<div class="panel-body">
+					<form class="form-horizontal" id="addform">
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="name">Name:</label>
+							<div class="col-sm-7">
+								<input placeholder="Name" type="text" class="form-control"
+									id="name" name="name" ng-model="item.name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="description">Description:</label>
+							<div class="col-sm-7">
+								<input placeholder="Description" type="text"
+									class="form-control" id="description" name="description"
+									ng-model="item.description">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="condition">Condition:</label>
+							<div class="col-sm-7">
+								<select class="form-control btn btn-default dropdown-toggle"
+									ng-model="item.condition">
+									<option ng-repeat="c in vm.conditions" value={{c}}>{{c}}</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="category">Category:</label>
+							<div class="col-sm-7">
+								<select class="form-control btn btn-default dropdown-toggle"
+									ng-model="item.category"
+									ng-options="cat.name for cat in vm.categories track by cat.name"></select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="purchasePrice">Purchase
+								Price:</label>
+							<div class="col-sm-7">
+								<input placeholder="Purchase Price" type="text"
+									class="form-control" id="purchasePrice" name="purchasePrice"
+									ng-model="item.purchasePrice">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="purchaseDate">Purchase
+								Date:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="purchaseDate"
+									name="purchaseDate" placeholder="Purchase Date"
+									ng-model="item.purchaseDate">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3 col-md-3" for="imageURL">Image
+								URL:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="imageUrl"
+									name="imageUrl" placeholder="Image URL"
+									ng-model="item.imageUrl">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-12 col-md-12">
+								<button type="submit" class="btn btn-primary btn-block"
+									ng-click="vm.create(item)">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
-    </div>
-    
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="category">Category:</label>
-      	<div class="col-sm-7">
-      	<select class="form-control btn btn-default dropdown-toggle" ng-model="item.category" ng-options="cat.name for cat in vm.categories track by cat.name"></select>
-    	</div>
-    </div>
-    
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="purchasePrice">Purchase Price:</label>
-      <div class="col-sm-7">
-        <input placeholder="Purchase Price" type="text" class="form-control" id="purchasePrice" name="purchasePrice" ng-model="item.purchasePrice">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="purchaseDate">Purchase Date:</label>
-      <div class="col-sm-7">
-        <input type="text" class="form-control" id="purchaseDate" name="purchaseDate" placeholder="Purchase Date" ng-model="item.purchaseDate">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="imageURL">Image URL:</label>
-      <div class="col-sm-7">
-        <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Image URL" ng-model="item.imageUrl">
-      </div>
-    </div>
-
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-7">
-        <button type="submit" class="btn btn-primary btn-block" ng-click="vm.create(item)">Submit</button>
-      </div>
-    </div>
-  </form>
+	</div>
 </div>

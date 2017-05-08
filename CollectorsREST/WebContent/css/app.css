@@ -1,7 +1,7 @@
 body {
-   font-size: 170%;
-   padding-top: 50px;
-   text-align: justify;
+	font-size: 170%;
+	padding-top: 50px;
+	text-align: justify;
 }
 
 .icon {
@@ -12,17 +12,17 @@ body {
 }
 
 .pointer:hover {
-   cursor: pointer;
-   cursor: hand;
+	cursor: pointer;
+	cursor: hand;
 }
 
 .navbar-pointer:hover {
-   cursor: pointer;
-   cursor: hand;
+	cursor: pointer;
+	cursor: hand;
 }
 
 table {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .updated-up {
@@ -30,11 +30,11 @@ table {
 }
 
 .updated-down {
-	background-color: LightCoral  !important;
+	background-color: LightCoral !important;
 }
 
 .noselect {
-    user-select: none;
+	user-select: none;
 }
 
 .margin-top {
@@ -42,10 +42,9 @@ table {
 }
 
 .light-background {
- 	background-color: #fff;
- 	opacity: 0.95;
-
- }
+	background-color: #fff;
+	opacity: 0.95;
+}
 
 tfoot tr {
 	font-weight: bold;
@@ -55,38 +54,36 @@ tfoot td:nth-child(1) {
 	text-align: right;
 }
 
-
 .centered {
 	margin: auto !important;
 	width: 8em;
 	text-align: center;
 	margin-bottom: 10px !important;
-    border: 2px solid black;
-}
-.main-login{
- 	background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 10px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
+	border: 2px solid black;
 }
 
-.main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 400px;
-    padding: 10px 40px;
-	background:#636363;
-	    color: #FFF;
-    text-shadow: none;
-	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-	-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-	box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+.main-login {
+	background-color: #fff;
+	/* shadows and rounded borders */
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 10px;
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
 
+.main-center {
+	margin-top: 30px;
+	margin: 0 auto;
+	max-width: 400px;
+	padding: 10px 40px;
+	background: #636363;
+	color: #FFF;
+	text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+	-moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
+	box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.31);
 }
 
 #logincred {
@@ -94,41 +91,55 @@ tfoot td:nth-child(1) {
 }
 
 .glyphicon.spinning {
-    animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
+	animation: spin 1s infinite linear;
+	-webkit-animation: spin2 1s infinite linear;
 }
 
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
+@
+keyframes spin {from { transform:scale(1)rotate(0deg);
+	
 }
 
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+to {
+	transform: scale(1) rotate(360deg);
 }
 
+}
+@
+-webkit-keyframes spin2 {from { -webkit-transform:rotate(0deg);
+	
+}
+
+to {
+	-webkit-transform: rotate(360deg);
+}
+
+}
 thead {
-  background-color: rgb(0, 129, 185);
-  color: white;
-  font-family: 'Roboto', sans-serif;
+	background-color: rgb(0, 129, 185);
+	color: white;
+	font-family: 'Roboto', sans-serif;
 }
 
 th {
-    text-align: center;
+	text-align: center;
 }
 
 h1 {
 	margin-top: -25px;
 }
 
-.table tbody>tr>td.vert-align{
-    vertical-align: middle;
-    font-family: 'Roboto', sans-serif;
+.table tbody>tr>td.vert-align {
+	vertical-align: middle;
+	font-family: 'Roboto', sans-serif;
 }
 
 #landinginfo {
 	background-color: white;
 	padding: 10px;
 	border-radius: 5px;
+}
+
+.graph {
+	background-color: white;
 }
