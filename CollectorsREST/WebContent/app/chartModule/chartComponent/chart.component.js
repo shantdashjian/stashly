@@ -34,8 +34,7 @@ angular
 								console.log(totalPerUpdate);
 								console.log(prices);
 								
-								
-								
+							
 								
 
 								prices.forEach(function(v,i,a){
