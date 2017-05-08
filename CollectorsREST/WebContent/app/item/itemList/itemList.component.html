@@ -6,7 +6,7 @@
 		<div class='col-md-offset-2 col-md-8 light-background'>
 
 			Filter by:<select ng-model="vm.selected"
-				ng-options="category.name for category in vm.categories">
+				ng-options="(category.name  | capitalize ) for category in vm.categories">
 
 			</select>
 
