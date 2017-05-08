@@ -81,6 +81,7 @@ public class ItemDAOImpl implements ItemDAO {
 			i.setSoldPrice(updateItem.getSoldPrice());
 			i.setRetired(updateItem.isRetired());
 			i.setImageUrl(updateItem.getImageUrl());
+			i.setCategory(updateItem.getCategory());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
