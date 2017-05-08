@@ -29,9 +29,7 @@
 							<th>Current Price w/ Inflation</th>
 						<th ng-click="vm.changeOrderBy('PurchaseDate')">Purchase Date
 						</th>
-							<th>Description</th>
-							<th>Category</th>
-							<th>Notes</th>
+						
 					</tr>
 				</thead>
 
@@ -45,9 +43,7 @@
 						<td>{{item.purchasePrice | currency}}</td>
 						<td>{{vm.getInflationPrice(item) | currency}}</td>
 						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
-						<td>{{item.description}}</td>
-						<td>{{item.category.name}}</td>
-						<td>{{item.note}}</td>
+
 					</tr>
 				</tbody>
 				<tfoot>
