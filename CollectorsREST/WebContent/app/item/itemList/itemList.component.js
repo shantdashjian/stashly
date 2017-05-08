@@ -5,14 +5,15 @@ angular.module('item')
 		var vm = this;
 
 		vm.buttonLoad = false;
-		
+		var updatedItem = new Map();
+		var inflationPrice = new Map();
 		vm.items = [];
 
 		vm.selected = {name: "all "};
 		
 		vm.clearUpdateStatus = function(){
 			vm.items.forEach(function(item){
-				item.updated = false;
+				updatedItem.set(item.id, false);
 			})
 		}
 		
@@ -23,8 +24,8 @@ angular.module('item')
 				vm.items.forEach((item) => {
 					itemService.getInflation(item)
 						.then(function(res){
-							vm.items[vm.items.indexOf(item)].inflationPrice = res.data.substring(4,res.data.length-2);
-							
+							inflationPrice.set(item.id, res.data.substring(4,res.data.length-2));
+					
 						})
 				})
 				vm.clearUpdateStatus();
@@ -112,7 +113,7 @@ angular.module('item')
 
 					vm.buttonLoad = false;
 
-					item.updated = true;
+					updatedItem.set(item.id, true);
 				})
 
 			})
@@ -124,14 +125,19 @@ angular.module('item')
 		}
 		
 		vm.updated = function(item){
-			if (item.updated && item.currentValue >= item.purchasePrice){
+			if (updatedItem.get(item.id) && item.currentValue >= item.purchasePrice){
 				return 'updated-up';
-			} else if (item.updated && item.currentValue < item.purchasePrice){
+			} else if (updatedItem.get(item.id) && item.currentValue < item.purchasePrice){
 				return 'updated-down';
 			} else {
 				return 'not-updated';
 			}
 		}
+		
+		vm.getInflationPrice = function(item){
+			return inflationPrice.get(item.id);
+		}
+			
 
 	},
 

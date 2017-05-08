@@ -41,7 +41,7 @@
 						<td>{{item.name}}</td>
 						<td ng-class="vm.updated(item)">{{item.currentValue | currency}}</td>
 						<td>{{item.purchasePrice | currency}}</td>
-						<td>{{item.inflationPrice | currency}}</td>
+						<td>{{vm.getInflationPrice(item) | currency}}</td>
 						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
 				</tbody>

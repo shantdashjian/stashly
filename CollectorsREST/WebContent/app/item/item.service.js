@@ -96,10 +96,7 @@ angular.module('item')
 			
 			console.log('before')
 			console.log(item);
-			
-			delete item.updated;
-			delete item.inflationPrice;
-			
+						
 			console.log('after')
 			console.log(item);
 			
