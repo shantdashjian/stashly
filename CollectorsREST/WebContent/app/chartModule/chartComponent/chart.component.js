@@ -4,56 +4,45 @@ angular
 				'chart',
 				{
 					templateUrl : 'app/chartModule/chartComponent/chart.component.html',
-					controller : function($scope, priceService) {
+					controller : function($scope, priceService, $routeParams) {
 
 						var dates = [];
-						var itemPrices = [];
-						
-						var getPrices = function() {
-							priceService.index().then(function(res) {
-								var prices = res.data;
-								
-								var totalPerUpdate = [];
-								var j = 0;
-								
-								while (prices.length > 0 && j < 100) {
-									
-									var currDate = prices.shift();
-									
-									prices.forEach(function(v,i,a){
-										if(v.date === currDate.date){
-											currDate.price += prices.splice(i,1).price
-										}
-									})
-									totalPerUpdate.push(currDate);
-									j++;
-									
-								}
-								
-								
-								console.log(totalPerUpdate);
-								console.log(prices);
-								
-							
-								
+						var totalValue = [];
 
-								prices.forEach(function(v,i,a){
-									dates.push(new Date(v.date));
-									itemPrices.push(v.itemPrice);
-								})
-								console.log(itemPrices);
-								dates.sort();
-								itemPrices.sort(function(a,b){return b-a});
-								
-							})
+						var getPrices = function() {
+							priceService.indexByItem($routeParams.id).then(
+									function(res) {
+										var prices = res.data;
+
+										prices.sort(function compareNumbers(a,b) {
+											return (new Date(a.date) - new Date(b.date));
+										})
+
+										var options = {
+											month : "short",
+											day : "numeric",
+											hour : "2-digit",
+											minute : "2-digit"
+										};
+
+										prices.forEach(function(v, i, a) {
+
+											totalValue.push(v.itemPrice);
+											dates.push(new Date(v.date)
+													.toLocaleTimeString(
+															"en-US", options));
+										})
+
+									})
 						}
+
 						getPrices();
+
+						console.log(dates);
+						console.log(totalValue);
+
 						$scope.labels = dates;
-						$scope.series = [ 'Series A', 'Series B' ];
-						$scope.data = itemPrices;
-						$scope.onClick = function(points, evt) {
-							console.log(points, evt);
-						};
+						$scope.data = [totalValue];
 						$scope.datasetOverride = [ {
 							yAxisID : 'y-axis-1'
 						}, {
@@ -65,14 +54,11 @@ angular
 									id : 'y-axis-1',
 									type : 'linear',
 									display : true,
-									position : 'left'
-								}, {
-									id : 'y-axis-2',
-									type : 'linear',
-									display : true,
-									position : 'right'
-								} ]
+									position : 'left',
+								} ],
+									scaleLabel : "<%= Number(value).toFixed(2).replace('.', ',') + ' $'%>"
 							}
-						}
+						};
+
 					}
 				});

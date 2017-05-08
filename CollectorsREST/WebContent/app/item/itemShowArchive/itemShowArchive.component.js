@@ -28,6 +28,11 @@ angular.module('item')
 			
 		}
 		
+		vm.deleteItem = function(){
+			itemService.destroy(vm.item).then(function(res){
+				vm.goBackToArchiveList();
+			});
+		}
 		
 	},
 	controllerAs: 'vm'

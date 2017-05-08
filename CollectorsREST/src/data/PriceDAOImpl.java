@@ -122,4 +122,12 @@ public class PriceDAOImpl implements PriceDAO {
 		}
 	}
 
+	@Override
+	public List<Price> indexByItem(int uid, int iid) {
+		String q = "SELECT i FROM Item i JOIN FETCH i.prices WHERE i.user.id = :uid AND i.id = :iid";
+		Item managedItem = em.createQuery(q, Item.class).setParameter("uid", uid).setParameter("iid", iid).getSingleResult();
+			
+		return managedItem.getPrices();
+	}
+
 }

@@ -26,6 +26,11 @@ public class PriceController {
 		return priceDao.index(uid);
 	}
 	
+	@RequestMapping(path = "user/{uid}/item/{iid}/price/", method = RequestMethod.GET)
+	public List<Price> indexByItem(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int iid) {
+		return priceDao.indexByItem(uid, iid);
+	}
+	
 	@RequestMapping(path = "user/{uid}/item/{iid}/price/{pid}", method = RequestMethod.GET)
 	public Price show(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int iid,  @PathVariable int pid) {
 		return priceDao.show(uid, iid, pid);

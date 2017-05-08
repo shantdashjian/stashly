@@ -90,19 +90,17 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public boolean retire(int iid, String itemJson) {
+	public boolean destroy(int uid, int iid) {
 		Item item = em.find(Item.class, iid);
-		
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			Item retiredItem = mapper.readValue(itemJson, Item.class);
-			item.setRetired(retiredItem.isRetired());
+
+		em.remove(item); // performs the delete on the managed entity
+
+		if (em.contains(item) == false) {
 			return true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
 		}
+		return false;
 	}
+
+
 
 }
