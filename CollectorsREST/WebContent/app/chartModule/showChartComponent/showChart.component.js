@@ -1,9 +1,9 @@
 angular
 		.module("appModule")
 		.component(
-				'chart',
+				'showChart',
 				{
-					templateUrl : 'app/chartModule/chartComponent/chart.component.html',
+					templateUrl : 'app/chartModule/showChartComponent/showChart.component.html',
 					controller : function($scope, priceService, $routeParams) {
 
 						var dates = [];
@@ -38,9 +38,6 @@ angular
 
 						getPrices();
 
-						console.log(dates);
-						console.log(totalValue);
-
 						$scope.labels = dates;
 						$scope.data = [totalValue];
 						$scope.datasetOverride = [ {
@@ -54,9 +51,8 @@ angular
 									id : 'y-axis-1',
 									type : 'linear',
 									display : true,
-									position : 'left',
-								} ],
-									scaleLabel : "<%= Number(value).toFixed(2).replace('.', ',') + ' $'%>"
+									position : 'left'
+								} ]
 							}
 						};
 
