@@ -11,6 +11,7 @@
 			<p>Current Value: {{vm.item.currentValue | currency}}</p>
 			<p>Purchase Price: {{vm.item.purchasePrice | currency}}</p>
 			<p>Purchase Date: {{vm.item.purchaseDate | date: "MM-dd-yyyy"}}</p>
+			<p>Category: {{vm.item.category.name | capitalize}}</p>
 		</div>
 	</div>
 	<div class="row">
