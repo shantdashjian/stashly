@@ -51,6 +51,12 @@ angular.module('item')
 			})
 		};
 		
+		service.destroy = function (item){
+			return $http({
+				method:'DELETE',
+				url: BASE_URL + authService.getToken().id + '/item/' + item.id
+			})
+		};
 		
 		service.updateCurrentValue = function(keywords){
 			return $http({
@@ -91,6 +97,7 @@ angular.module('item')
 			item.retired = true;		
 			return service.update(item);
 		}
+		
 		service.returnItem = function(item){			
 			item.retired = false;		
 			return service.update(item);
