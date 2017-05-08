@@ -19,15 +19,15 @@ angular.module('item')
 			})
 		}
 		
-		service.create = function(item){
-
+		service.create = function(price, id){
+			
 			return $http({
 				method : 'POST',
-				url : BASE_URL + authService.getToken().id + "/item/" + item.id + "/price/",
+				url : BASE_URL + authService.getToken().id + "/item/" + id + "/price/",
 				header : {
 					'Content-Type' : 'application/json'
 				},
-				data : item.price
+				data : price
 			})
 		}
 		

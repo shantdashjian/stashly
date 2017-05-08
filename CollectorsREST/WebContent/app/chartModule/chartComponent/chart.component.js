@@ -18,9 +18,7 @@ angular
 								
 								while (prices.length > 0 && j < 100) {
 									
-									var currDate = new Date(prices.shift());
-									currDate.seconds(0);
-									currDate.milliseconds = 0;
+									var currDate = prices.shift();
 									
 									prices.forEach(function(v,i,a){
 										if(v.date === currDate.date){
@@ -30,7 +28,6 @@ angular
 									totalPerUpdate.push(currDate);
 									j++;
 									
-									console.log(typeof currDate.date);
 								}
 								
 								

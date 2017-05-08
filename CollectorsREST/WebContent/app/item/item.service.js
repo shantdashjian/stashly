@@ -93,7 +93,16 @@ angular.module('item')
 		}
 		
 		service.update = function(item){
+			
+			console.log('before')
+			console.log(item);
+			
 			delete item.updated;
+			delete item.inflationPrice;
+			
+			console.log('after')
+			console.log(item);
+			
 			return $http({
 				method : 'PUT',
 				url : BASE_URL + authService.getToken().id + '/item/' + item.id,

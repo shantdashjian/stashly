@@ -102,14 +102,13 @@ angular.module('item')
 				.then(function(response){
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
 					
-					item.price = {
-							itemPrice: item.currentValue
+					var price = {
+							itemPrice: item.currentValue,
+							date: stamp
 					};
-					
-					item.date = stamp;
-					
+										
 					itemService.update(item);
-					priceService.create(item);
+					priceService.create(price, item.id);
 
 					vm.buttonLoad = false;
 
