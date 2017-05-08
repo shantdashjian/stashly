@@ -38,17 +38,18 @@
 						<td><img class='icon' ng-src="{{item.imageUrl}}"></td>
 						<td class="text-center vert-align">{{item.name}}</td>
 						<td class="text-center vert-align">{{item.purchasePrice | currency}}</td>
-						<td class="text-center vert-align">{{item.inflationPrice | currency}}</td>
+						<td class="text-center vert-align">{{vm.getInflationPrice(item) | currency}}</td>
 						<td ng-class="vm.updated(item)" class="text-center vert-align">{{item.currentValue | currency}}</td>
 						<td class="text-center vert-align">{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
 				</tbody>
 				<tfoot>
 					<tr>
-						<td></td>
+						
 						<td></td>
 						<td class="text-center vert-align">Total</td>
 						<td class="text-center vert-align">{{vm.totalPurchasePrice() | currency}}</td>
+						<td class="text-center vert-align">{{vm.totalPriceWithInflation() | currency}}</td>
 						<td class="text-center vert-align">{{vm.currentTotalValue() | currency}}</td>
 						<td></td>
 					</tr>
