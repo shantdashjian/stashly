@@ -50,5 +50,10 @@ public class ItemController {
 	public Item update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String itemJson, @PathVariable int iid) {
 		return itemDao.update(uid, iid, itemJson);
 	}
+	
+	@RequestMapping(path = "user/{uid}/item/{iid}", method = RequestMethod.DELETE)
+	public boolean destroy(@PathVariable int uid,@PathVariable int iid){
+		return itemDao.destroy(uid, iid);
+	}
 
 }
