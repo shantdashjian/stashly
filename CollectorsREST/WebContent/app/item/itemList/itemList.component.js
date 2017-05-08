@@ -97,6 +97,23 @@ angular.module('item')
 			return total;
 		}
 
+		vm.getInflationPrice = function(item){
+			return inflationPrice.get(item.id);
+		}
+		
+		vm.totalPriceWithInflation = function (){
+			var total = 0;
+			var items = searchByName(vm.items, vm.keywords);
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
+				if (!item.retired){
+					total += parseFloat(vm.getInflationPrice(item));
+				}
+
+			})
+			return total;
+		}
+		
 		vm.updateCurrentValues = function(){
 			vm.buttonLoad = true;
 			
