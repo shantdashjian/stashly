@@ -4,9 +4,7 @@ angular.module('appModule')
 		if(cat === "all" || cat === undefined) {
 			return items;
 			}
-		console.log(cat)
-		console.log(items)
-		
+
 	    var results = [];
 	    items.forEach(function(item) {
 	      if (item.category.name === cat ) {
