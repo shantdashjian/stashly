@@ -6,7 +6,7 @@
 		<div class='col-md-offset-2 col-md-8 light-background'>
 
 			Filter by:<select ng-model="vm.selected"
-				ng-options="category.name for category in vm.categories">
+				ng-options="(category.name  | capitalize ) for category in vm.categories">
 
 			</select>
 
@@ -41,7 +41,7 @@
 						<td>{{item.name}}</td>
 						<td ng-class="vm.updated(item)">{{item.currentValue | currency}}</td>
 						<td>{{item.purchasePrice | currency}}</td>
-						<td>{{item.inflationPrice | currency}}</td>
+						<td>{{vm.getInflationPrice(item) | currency}}</td>
 						<td>{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
 				</tbody>

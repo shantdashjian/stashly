@@ -4,16 +4,16 @@ angular.module('item')
 	controller: function(itemService, priceService, $location, $filter){
 		var vm = this;
 
-//		vm.searchByName = $filter('searchByName');
 		vm.buttonLoad = false;
-		
+		var updatedItem = new Map();
+		var inflationPrice = new Map();
 		vm.items = [];
-		vm.categories = [{name: "all"}];
-		vm.selected = vm.categories[0];
+
+		vm.selected = {name: "all "};
 		
 		vm.clearUpdateStatus = function(){
 			vm.items.forEach(function(item){
-				item.updated = false;
+				updatedItem.set(item.id, false);
 			})
 		}
 		
@@ -24,8 +24,8 @@ angular.module('item')
 				vm.items.forEach((item) => {
 					itemService.getInflation(item)
 						.then(function(res){
-							vm.items[vm.items.indexOf(item)].inflationPrice = res.data.substring(4,res.data.length-2);
-							
+							inflationPrice.set(item.id, res.data.substring(4,res.data.length-2));
+					
 						})
 				})
 				vm.clearUpdateStatus();
@@ -44,6 +44,7 @@ angular.module('item')
 			.then(function(category){
 				vm.categories = category.data;
 				vm.categories.unshift({name: "all"})
+				vm.selected = vm.categories[0];
 				})
 			}
 		vm.category();
@@ -92,28 +93,31 @@ angular.module('item')
 		}
 
 		vm.updateCurrentValues = function(){
-
 			vm.buttonLoad = true;
-
+			
+			var stamp = new Date();
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
+
 					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
 					
-					item.price = {
-							itemPrice: item.currentValue
+					var price = {
+							itemPrice: item.currentValue,
+							date: stamp
 					};
-					
+										
 					itemService.update(item);
-					priceService.create(item);
+					priceService.create(price, item.id);
 
 					vm.buttonLoad = false;
 
-					item.updated = true;
+					updatedItem.set(item.id, true);
 				})
 
 			})
+
 		}
 
 		vm.showItem = function(item){
@@ -121,12 +125,19 @@ angular.module('item')
 		}
 		
 		vm.updated = function(item){
-			if (item.updated){
-				return 'updated';
+			if (updatedItem.get(item.id) && item.currentValue >= item.purchasePrice){
+				return 'updated-up';
+			} else if (updatedItem.get(item.id) && item.currentValue < item.purchasePrice){
+				return 'updated-down';
 			} else {
 				return 'not-updated';
 			}
 		}
+		
+		vm.getInflationPrice = function(item){
+			return inflationPrice.get(item.id);
+		}
+			
 
 	},
 

@@ -7,6 +7,7 @@ angular.module('item')
 		vm.items = [];
 		vm.categories = [];
 		
+		
 		vm.reload = function(){
 			itemService.index()
 			.then(function(response){

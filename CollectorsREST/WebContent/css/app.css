@@ -57,8 +57,12 @@ table {
     text-decoration: none;
 }
 
-.updated {
+.updated-up {
 	background-color: Aquamarine !important;
+}
+
+.updated-down {
+	background-color: LightCoral  !important;
 }
 
 .noselect {
