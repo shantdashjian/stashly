@@ -42,8 +42,9 @@
 						<td colspan='2'>Total</td>
 						<td>{{vm.currentTotalValue() | currency}}</td>
 						<td>{{vm.totalPurchasePrice() | currency}}</td>
-						<td><button ng-click="vm.updateCurrentValues()">Update
-								Bidding History</button></td>
+						<td><button ng-click="vm.updateCurrentValues()" class="btn btn-lg btn-warning">Update
+								Bidding History</button><span ng-show="vm.buttonLoad"
+									class="glyphicon glyphicon-refresh spinning"></span></td>
 					</tr>
 				</tfoot>
 			</table>
