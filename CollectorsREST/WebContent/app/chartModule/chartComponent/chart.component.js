@@ -12,6 +12,8 @@ angular
 						var getPrices = function() {
 							priceService.index().then(function(res) {
 								var prices = res.data;
+								
+								
 
 								prices.forEach(function(v,i,a){
 									dates.push(new Date(v.date));
