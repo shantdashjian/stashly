@@ -20,7 +20,6 @@ angular.module('item')
 		}
 		
 		service.create = function(item){
-			item.price.date = new Date();
 
 			return $http({
 				method : 'POST',

@@ -93,6 +93,9 @@ angular.module('item')
 
 		vm.updateCurrentValues = function(){
 			vm.buttonLoad = true;
+			
+			var stamp = new Date();
+
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
@@ -100,13 +103,15 @@ angular.module('item')
 					item.price = {
 							itemPrice: item.currentValue
 					};					
-					itemService.update(item);
-					priceService.create(item);
-					vm.buttonLoad = false;
-					item.updated = true;
-				})
-
-			})
+				});
+					
+				item.date = stamp;
+					
+				itemService.update(item);
+				priceService.create(item);
+				vm.buttonLoad = false;
+				item.updated = true;
+			})		
 		}
 
 		vm.showItem = function(item){
