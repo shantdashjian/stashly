@@ -8,7 +8,6 @@
 				href="#/add">Add Item </a></li>
 			<li ng-click="vm.markActive($event)" class="navbar-pointer"><a
 				href="#/archive">Show Archive</a></li>
-			<li ng-click="vm.logout()" class="navbar-pointer"><a>Logout</a></li>
 			<li>
 			<form class="navbar-form navbar-left" role="search" ng-submit="vm.submit(keywords); keywords=null;">
 				<div class="form-group">
@@ -20,6 +19,11 @@
 			</form>
 			</li>
 		</ul>
+		<div class="pull-right">
+        <ul class="nav navbar-nav">
+            <li><button ng-click="vm.logout()" type="submit" class="btn navbar-btn btn-danger" name="logout" id="logout"  value="Log Out">Log Out</button></li>
+        </ul>
+</div>
 	</div>
-	
+
 </nav>
