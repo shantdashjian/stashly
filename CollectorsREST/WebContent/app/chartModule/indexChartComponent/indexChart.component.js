@@ -45,7 +45,7 @@ angular
 						}
 						
 						$scope.$on('allItemsGotUpdated', function(e,msg){
-							
+
 							dates = [];
 							totalValue = [];
 							prices = [];

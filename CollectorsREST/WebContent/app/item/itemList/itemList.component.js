@@ -32,6 +32,7 @@ angular.module('item')
 				}
 
 			})
+
 			return filteredItems;
 		}
 		
@@ -54,7 +55,7 @@ angular.module('item')
 						})
 				})
 				vm.clearUpdateStatus();
-			
+
 				vm.updateAllItems();
 			})
 		}
@@ -164,7 +165,8 @@ angular.module('item')
 					index--;
 
 					if(index <= 0){
-						vm.updateAllItems();
+						vm.reload();
+//						vm.updateAllItems();
 					}
 					
 				})
