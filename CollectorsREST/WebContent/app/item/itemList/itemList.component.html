@@ -5,7 +5,7 @@
 	<div class='row'>
 		<div class='col-md-offset-1 col-md-3'>
 			<div id="filter">
-				Filter by: <select ng-model="vm.selected"
+				Filter by: <select ng-model="vm.selected" ng-change="vm.updateAllItems()"
 					ng-options="(category.name  | capitalize ) for category in vm.categories">
 				</select>
 			</div>
@@ -46,8 +46,7 @@
 							| currency}}</td>
 						<td ng-class="vm.updated(item)" class="text-center vert-align">{{item.currentValue
 							| currency}}</td>
-						<td class="text-center vert-align">{{item.purchaseDate |
-							date: "MM-dd-yyyy"}}</td>
+						<td class="text-center vert-align">{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 					</tr>
 				</tbody>
 				<tfoot>
