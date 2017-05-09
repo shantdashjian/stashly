@@ -1,7 +1,7 @@
 angular.module('item')
 .component('itemList', {
 	templateUrl: 'app/item/itemList/itemList.component.html',
-	controller: function(itemService, priceService, $location, $filter, $document){
+	controller: function(itemService, priceService, $location, $filter, $document, $rootScope){
 		var vm = this;
 		
 		var body = $document.find('body').eq(0);
@@ -120,6 +120,7 @@ angular.module('item')
 			vm.buttonLoad = true;
 			
 			var stamp = new Date();
+			var index = vm.items.length;
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
@@ -138,6 +139,14 @@ angular.module('item')
 					vm.buttonLoad = false;
 
 					updatedItem.set(item.id, true);
+					
+					index--;
+
+					if(index <= 0){
+
+						$rootScope.$broadcast('allItemsGotUpdated', {})
+					}
+					
 				})
 
 			})
