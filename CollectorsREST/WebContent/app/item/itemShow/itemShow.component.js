@@ -36,6 +36,36 @@ angular.module('item')
 		vm.editItem = function(){
 			$location.path("/update/" + $routeParams.id);
 		}
+		vm.nextItem = function(item){
+			
+			vm.item.id = vm.item.id + 1;
+			$location.path("/itemShow/" + vm.item.id);
+			itemService.show(vm.item.id).then(function(res){
+				vm.item = res.data;
+			console.log(vm.item);
+			
+			if(vm.item.description === undefined){
+				$location.path("/itemShow/1");
+			}
+		})
+	}
+			
+		vm.previousItem = function(){
+			vm.item.id = vm.item.id - 1;
+			$location.path("/itemShow/" + vm.item.id);
+			console.log(vm.item.id);
+     			itemService.show(vm.item.id).then(function(res){
+				vm.item = res.data;
+				if(vm.item.description === undefined){
+					console.log(vm.item.description);
+					$location.path("/itemShow/1");
+				}
+			});
+     			
+     			
+     			
+			
+		}
 	},
 	controllerAs: 'vm'
 })
