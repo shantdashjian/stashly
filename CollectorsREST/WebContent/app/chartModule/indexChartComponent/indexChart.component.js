@@ -17,25 +17,36 @@ angular
 										prices.sort(function compareNumbers(a,b) {
 											return (new Date(a.date) - new Date(b.date));
 										})
+										
+										var tempDates = [];
 
+										prices.forEach(function(v, i, a) {
+																						
+											if(!tempDates.includes(v.date)){
+												tempDates.push(v.date);
+												totalValue.push(parseFloat(v.itemPrice));
+											} else {
+												var ndx = tempDates.indexOf(v.date);
+												totalValue[ndx] += parseFloat(v.itemPrice);
+											}
+
+										})
+																				
 										var options = {
 											month : "short",
 											day : "numeric",
 											hour : "2-digit",
 											minute : "2-digit"
 										};
-
-										prices.forEach(function(v, i, a) {
-
-											totalValue.push(v.itemPrice);
-											dates.push(new Date(v.date)
-													.toLocaleTimeString(
-															"en-US", options));
+										
+										tempDates.forEach(function(v,i,a){
+											dates.push(new Date(v).toLocaleTimeString("en-US", options));
 										})
+
 
 									})
 						}
-
+						
 						getPrices();
 
 						$scope.labels = dates;

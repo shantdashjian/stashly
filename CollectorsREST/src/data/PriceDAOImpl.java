@@ -28,7 +28,7 @@ public class PriceDAOImpl implements PriceDAO {
 		
 
 		try {
-			String q = "SELECT i FROM Item i JOIN FETCH i.prices WHERE i.user.id = :uid";
+			String q = "SELECT i FROM Item i JOIN FETCH i.prices WHERE i.user.id = :uid AND i.retired = 0";
 			managedItems = em.createQuery(q, Item.class).setParameter("uid", uid)
 					.getResultList();
 			
