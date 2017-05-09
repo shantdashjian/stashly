@@ -1,8 +1,13 @@
 angular.module('item')
 .component('itemShowArchive', {
 	templateUrl : 'app/item/itemShowArchive/itemShowArchive.component.html',
-	controller: function(itemService, $routeParams, $location){
+	controller: function(itemService, $routeParams, $location, $document){
 		var vm = this;
+		
+		var body = $document.find('body').eq(0);
+		
+		body.css("background-image", "url('" + 'images/comicbooks.jpg' + "')");
+		body.css("background-size", "cover");
 		
 		if (!vm.item && parseInt($routeParams.id)) {
 			itemService.show($routeParams.id)

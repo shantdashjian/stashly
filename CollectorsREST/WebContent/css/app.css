@@ -30,6 +30,13 @@ table {
 	margin-top: 10px;
 }
 
+#filter {
+	background-color: #fff;
+	opacity: 0.95;
+	padding: 10px;
+	border-radius: 10px;
+}
+
 .updated-up {
 	background-color: Aquamarine !important;
 }
@@ -48,7 +55,7 @@ table {
 
 .light-background {
 	background-color: #fff;
-	opacity: 0.95;
+	opacity: 0.97;
 }
 
 tfoot tr {

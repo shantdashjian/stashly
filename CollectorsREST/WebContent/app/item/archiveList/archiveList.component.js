@@ -1,9 +1,14 @@
 angular.module('item')
 .component('archiveList', {
 	templateUrl: 'app/item/archiveList/archiveList.component.html',
-	controller: function(itemService, priceService, $location, $filter){
+	controller: function(itemService, priceService, $location, $filter, $document){
 
 		var vm = this;
+		
+		var body = $document.find('body').eq(0);
+		
+		body.css("background-image", "url('" + 'images/comicbooks.jpg' + "')");
+		body.css("background-size", "cover");
 
 		vm.buttonLoad = false;
 		var updatedItem = new Map();
