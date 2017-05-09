@@ -42,7 +42,6 @@ public class ItemController {
 	
 	@RequestMapping(path = "user/{uid}/item", method = RequestMethod.POST)
 	public Item create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String itemJson) {
-		System.out.println(itemJson);
 		return itemDao.create(uid, itemJson);
 	}
 	
@@ -52,7 +51,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(path = "user/{uid}/item/{iid}", method = RequestMethod.DELETE)
-	public boolean destroy(@PathVariable int uid,@PathVariable int iid){
+	public boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int iid){
 		return itemDao.destroy(uid, iid);
 	}
 

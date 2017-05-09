@@ -25,16 +25,15 @@ public class UserController {
   }
 
   @RequestMapping(path = "/signup", method = RequestMethod.POST)
-  public User signup(HttpSession session, @RequestBody User user) {
-
+  public User signup(HttpServletRequest req, HttpServletResponse res, HttpSession session, @RequestBody User user) {
     User sessionUser = userDAO.signup(user);
     session.setAttribute("user", sessionUser);
     return sessionUser;
   }
   
   @RequestMapping(path = "/login", method = RequestMethod.POST)
-  public User login(HttpSession session, @RequestBody User user) {
-        User sessionUser = userDAO.login(user);
+  public User login(HttpServletRequest req, HttpServletResponse res, HttpSession session, @RequestBody User user) {
+	  	User sessionUser = userDAO.login(user);
         session.setAttribute("user", sessionUser);
 
         return sessionUser;
@@ -42,13 +41,13 @@ public class UserController {
   
   @RequestMapping(path = "/logout", method = RequestMethod.POST)
   public Boolean logout(HttpServletRequest req, HttpServletResponse res) {
-    req.getSession().removeAttribute("user");
-    return true;
+	    req.getSession().removeAttribute("user");
+	    return true;
   }
   
   @RequestMapping(path = "/unauthorized")
-  public String unauth(HttpServletResponse response) {
-    response.setStatus(401);
+  public String unauth(HttpServletRequest req, HttpServletResponse res) {
+	  res.setStatus(401);
     return "unauthorized";
   }
 }
