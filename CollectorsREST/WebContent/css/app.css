@@ -154,4 +154,11 @@ h1 {
 
 .graph {
 	background-color: white;
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 25px;
+	
 }

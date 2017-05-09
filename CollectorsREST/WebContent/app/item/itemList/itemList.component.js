@@ -22,6 +22,26 @@ angular.module('item')
 			})
 		}
 		
+		vm.filteredItems = function(){
+			var items = searchByName(vm.items, vm.keywords);
+			var filteredItems = [];
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
+				if (!item.retired){
+					filteredItems.push(item);
+				}
+
+			})
+			return filteredItems;
+		}
+		
+		vm.updateAllItems = function(){
+
+			$rootScope.$broadcast('allItemsGotUpdated', {
+				filteredItems : vm.filteredItems()
+			})
+		}
+		
 		vm.reload = function(){
 			itemService.index()
 			.then(function(response){
@@ -35,7 +55,7 @@ angular.module('item')
 				})
 				vm.clearUpdateStatus();
 			
-			
+				vm.updateAllItems();
 			})
 		}
 		
@@ -115,6 +135,7 @@ angular.module('item')
 			})
 			return total;
 		}
+
 		
 		vm.updateCurrentValues = function(){
 			vm.buttonLoad = true;
@@ -143,8 +164,7 @@ angular.module('item')
 					index--;
 
 					if(index <= 0){
-
-						$rootScope.$broadcast('allItemsGotUpdated', {})
+						vm.updateAllItems();
 					}
 					
 				})

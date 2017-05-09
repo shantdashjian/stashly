@@ -8,11 +8,9 @@ angular
 
 						var dates = [];
 						var totalValue = [];
+						var prices = [];
 
 						var getPrices = function() {
-							priceService.index().then(
-									function(res) {
-										var prices = res.data;
 
 										prices.sort(function compareNumbers(a,b) {
 											return (new Date(a.date) - new Date(b.date));
@@ -44,12 +42,20 @@ angular
 										})
 
 
-									})
 						}
 						
-						$scope.$on('allItemsGotUpdated', function(){
+						$scope.$on('allItemsGotUpdated', function(e,msg){
+							
 							dates = [];
 							totalValue = [];
+							prices = [];
+
+							msg.filteredItems.forEach(function(v){
+								v.prices.forEach(function(p){
+									prices.push(p)
+								})
+							});
+							
 							reload();
 						});
 						
