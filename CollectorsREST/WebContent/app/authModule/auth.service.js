@@ -1,7 +1,7 @@
 angular.module('authModule').factory('authService',
 		function($http, $cookies, $location) {
 			var service = {};
-			var Base_Url = 'http://localhost:8080/CollectorsREST/'
+			var Base_Url = ''
 			var saveToken = function(user) {
 				$cookies.put('id', user.id);
 				$cookies.put('username', user.username);

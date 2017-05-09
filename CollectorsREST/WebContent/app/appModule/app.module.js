@@ -32,5 +32,8 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule', 'chartModule'
 	.when('/archive',{
 		template: '<archive-list> loading archive</archive-list>'
 	})
+	.otherwise({
+	    	template : '<not-found></not-found>'
+	})
 
 })

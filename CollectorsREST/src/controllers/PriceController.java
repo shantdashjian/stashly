@@ -40,14 +40,12 @@ public class PriceController {
 	@RequestMapping(path = "user/{uid}/item/{iid}/price", method = RequestMethod.POST)
 	public Price create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
 			 @PathVariable int iid, @RequestBody String priceJson) {
-
 		return priceDao.create(uid, iid, priceJson);
 	}
 
 	@RequestMapping(value = "/user/{uid}/item/{iid}/price/{pid}", method = RequestMethod.DELETE)
 	public Boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
 			@PathVariable int iid, @PathVariable int pid) {
-
 		return priceDao.destroy(uid, iid, pid);
 	}
 }
