@@ -3,6 +3,9 @@ angular.module('item')
 	templateUrl : 'app/item/itemShowArchive/itemShowArchive.component.html',
 	controller: function(itemService, $routeParams, $location, $document){
 		var vm = this;
+		vm.items = [];
+		vm.currIndex = 0;
+		
 		
 		var body = $document.find('body').eq(0);
 		
@@ -18,6 +21,18 @@ angular.module('item')
 			    $location.path('/notfound');
 			})
 		};
+		
+		vm.reload = function(){
+			itemService.index()
+			.then(function(response){
+			response.data.forEach(function(v){
+				if(v.retired){
+					vm.items.push(v);
+				}
+			})
+		})
+	}
+		vm.reload();
 		
 		vm.goBackToArchiveList = function(){
 		    $location.path('/archive');
@@ -35,40 +50,32 @@ angular.module('item')
 				});
 			
 		}
-vm.nextItem = function(item){
-			
-			vm.item.id = vm.item.id + 1;
-			if(vm.retired === true){
-			$location.path("/itemShowArchive/" + vm.item.id);
-			itemService.show(vm.item.id).then(function(res){
-				vm.item = res.data;
-			console.log(vm.item);
-		})
-	}
-			else{
-				$location.path("/itemShowArchive/1");
-			
+			vm.nextItem = function(){
+					vm.currIndex++;
+					console.log(vm.currindex)
+					if(vm.currIndex === vm.items.length){
+					vm.currIndex = 0;
+					
+					}
+					vm.item = vm.items[vm.currIndex];
 			}
+	
+
+			vm.previousItem = function(){
+				vm.currIndex--;
+				if(vm.currIndex < 0){
+				vm.currIndex = vm.items.length - 1;
+				
 	}
-			
-		vm.previousItem = function(){
-			vm.item.id = vm.item.id - 1;
-			$location.path("/itemShowArchive/" + vm.item.id);
-			console.log(vm.item.id);
-     			itemService.show(vm.item.id).then(function(res){
-				vm.item = res.data;
-				if(vm.item.description === undefined){
-					console.log(vm.item.description);
-					$location.path("/itemShowArchive/1");
+				vm.item = vm.items[vm.currIndex];
 				}
-			});
+
 		
 		vm.deleteItem = function(){
 			itemService.destroy(vm.item).then(function(res){
 				vm.goBackToArchiveList();
 			});
 		}
-	}
 		
 	},
 	controllerAs: 'vm'

@@ -1,5 +1,5 @@
 angular.module('item')
-.component('archiveList', {
+.component('archiveList',{
 	templateUrl: 'app/item/archiveList/archiveList.component.html',
 	controller: function(itemService, priceService, $location, $filter, $document){
 
