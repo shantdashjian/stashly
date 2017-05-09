@@ -4,6 +4,11 @@ angular.module('item')
 	controller: function(itemService, priceService, $location, $filter){
 
 		var vm = this;
+		
+		var body = $document.find('body').eq(0);
+		
+		body.css("background-image", "url('" + 'images/comicbooks.jpg' + "')");
+		body.css("background-size", "cover");
 
 		vm.buttonLoad = false;
 		var updatedItem = new Map();

@@ -4,6 +4,11 @@ angular.module('item')
 	controller: function(itemService, $routeParams, $location){
 		var vm = this;
 		
+		var body = $document.find('body').eq(0);
+		
+		body.css("background-image", "url('" + 'images/comicbooks.jpg' + "')");
+		body.css("background-size", "cover");
+		
 		if (!vm.item && parseInt($routeParams.id)) {
 			itemService.show($routeParams.id)
 			.then(function(response){
