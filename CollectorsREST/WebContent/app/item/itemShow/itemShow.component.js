@@ -1,7 +1,7 @@
 angular.module('item')
 .component('itemShow', {
 	templateUrl : 'app/item/itemShow/itemShow.component.html',
-	controller: function(itemService, $routeParams, $location){
+	controller: function(itemService, $routeParams, $location, $document){
 		var vm = this;
 		
 		var body = $document.find('body').eq(0);

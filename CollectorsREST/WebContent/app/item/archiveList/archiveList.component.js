@@ -1,7 +1,7 @@
 angular.module('item')
 .component('archiveList', {
 	templateUrl: 'app/item/archiveList/archiveList.component.html',
-	controller: function(itemService, priceService, $location, $filter){
+	controller: function(itemService, priceService, $location, $filter, $document){
 
 		var vm = this;
 		
