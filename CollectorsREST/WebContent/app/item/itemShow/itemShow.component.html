@@ -3,26 +3,38 @@
 
 <div class='container-fluid'>
 	<div class="row">
-		<div class='col-md-offset-2 col-md-4'>
-			<img class='icon' src="{{vm.item.imageUrl}}">
-		</div>
-		<div class='col-md-4 light-background'>
-			<p>Name: {{vm.item.name}}</p>
-			<p>Current Value: {{vm.item.currentValue | currency}}</p>
-			<p>Purchase Price: {{vm.item.purchasePrice | currency}}</p>
-			<p>Purchase Date: {{vm.item.purchaseDate | date: "MM-dd-yyyy"}}</p>
-			<p>Category: {{vm.item.category.name | capitalize}}</p>
-			<p>Condition: {{vm.item.condition}}</p>
-		    <p>Description: {{vm.item.description}}</p>
-		     <p>Item notes: {{vm.item.notes}}</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class='col-md-offset-2 col-md-8 text-center'>
-			<button type="button" class="btn btn-default" ng-click="vm.editItem()">Edit Item</button>
-			<button type="button" class="btn btn-danger" ng-click="vm.retireItem()">Retire Item</button>	
+		<div class="col-md-offset-1 col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">{{vm.item.name}}</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class='col-md-6'>
+							<img class='singleicon' src="{{vm.item.imageUrl}}">
+						</div>
+						<div class='col-md-6'>
+							<p>Current Value: {{vm.item.currentValue | currency}}</p>
+							<p>Purchase Price: {{vm.item.purchasePrice | currency}}</p>
+							<p>Purchase Date: {{vm.item.purchaseDate | date:
+								"MM-dd-yyyy"}}</p>
+							<p>Category: {{vm.item.category.name | capitalize}}</p>
+							<p>Condition: {{vm.item.condition}}</p>
+							<p>Description: {{vm.item.description}}</p>
+							<p>Item notes: {{vm.item.notes}}</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class='col-md-offset-2 col-md-8 text-center'>
+							<button type="button" class="btn btn-default"
+								ng-click="vm.editItem()">Edit Item</button>
+							<button type="button" class="btn btn-danger"
+								ng-click="vm.retireItem()">Retire Item</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="graph">
 		<show-chart></show-chart>
-	</div></div>
+	</div>
+</div>

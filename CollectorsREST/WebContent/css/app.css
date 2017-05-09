@@ -11,6 +11,11 @@ body {
 	margin: 0 auto;
 }
 
+.singleicon {
+	width: auto;
+	height: 300px;
+}
+
 .pointer:hover {
 	cursor: pointer;
 	cursor: hand;
