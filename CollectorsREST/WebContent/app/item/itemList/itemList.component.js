@@ -76,8 +76,10 @@ angular.module('item')
 			var items = searchByName(vm.items, vm.keywords);
 			items = categorySort(items, vm.selected.name);
 			items.forEach(function(item){
-			if(!item.retired)
+			if(!item.retired && item.currentValue){
+
 				total += parseFloat(item.currentValue);
+			}
 			})			
 			return total;
 		}
