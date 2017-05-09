@@ -24,6 +24,9 @@ angular.module('item')
 
 		};
 		
+		vm.editItem = function(){
+			$location.path("/update/" + $routeParams.id);
+		}
 		
 		vm.retireItem = function(){
 			
@@ -32,12 +35,40 @@ angular.module('item')
 				});
 			
 		}
+vm.nextItem = function(item){
+			
+			vm.item.id = vm.item.id + 1;
+			if(vm.retired === true){
+			$location.path("/itemShowArchive/" + vm.item.id);
+			itemService.show(vm.item.id).then(function(res){
+				vm.item = res.data;
+			console.log(vm.item);
+		})
+	}
+			else{
+				$location.path("/itemShowArchive/1");
+			
+			}
+	}
+			
+		vm.previousItem = function(){
+			vm.item.id = vm.item.id - 1;
+			$location.path("/itemShowArchive/" + vm.item.id);
+			console.log(vm.item.id);
+     			itemService.show(vm.item.id).then(function(res){
+				vm.item = res.data;
+				if(vm.item.description === undefined){
+					console.log(vm.item.description);
+					$location.path("/itemShowArchive/1");
+				}
+			});
 		
 		vm.deleteItem = function(){
 			itemService.destroy(vm.item).then(function(res){
 				vm.goBackToArchiveList();
 			});
 		}
+	}
 		
 	},
 	controllerAs: 'vm'
