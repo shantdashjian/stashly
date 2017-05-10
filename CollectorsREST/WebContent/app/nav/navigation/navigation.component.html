@@ -3,11 +3,11 @@
 	<div class='container'>
 		<ul class='nav navbar-nav'>
 			<li ng-click="vm.markActive($event); vm.viewArchive()"
-				class="navbar-pointer"><a href="#/itemList">Collection</a></li>
+				class="navbar-pointer"><a href="#/itemList" id="navBarLogo">Stashly</a></li>
 			<li ng-click="vm.markActive($event)" class="navbar-pointer"><a
-				href="#/add">Add Item </a></li>
+				href="#/add">Add</a></li>
 			<li ng-click="vm.markActive($event)" class="navbar-pointer"><a
-				href="#/archive">Show Archive</a></li>
+				href="#/archive">Archive</a></li>
 			<li>
 				<form class="navbar-form navbar-left" role="search"
 					ng-submit="vm.submit(keywords); keywords=null;">
