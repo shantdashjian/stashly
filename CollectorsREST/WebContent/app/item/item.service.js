@@ -125,7 +125,11 @@ angular.module('item')
 		service.create = function(item) {
 			item.retired = false;
 			checkLogin();
-
+			
+			
+			// check if the item.imageUrl is valid
+			// if not put 'images/noimage.jpg'
+			
 			return $http({
 				method : 'POST',
 				url : BASE_URL + authService.getToken().id + "/item",

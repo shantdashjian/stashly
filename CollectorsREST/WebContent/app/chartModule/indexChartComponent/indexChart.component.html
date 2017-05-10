@@ -1,12 +1,11 @@
 	<div ng-hide="vm.prices.length">
-	<h1 class="graphMessage" >No collectables meet this criteria. <a href="#/add">Add one here.</a></h1>
+	<h1 class="graphMessage">No price history available.</h1>
 	</div>
-    <div ng-show="vm.prices.length">
-    <div class="graphMessage"><h3>Stash Value</h3></div>
-		<span><div>$$$</div>
+        <div ng-show="vm.prices.length">
+        <div class="graphMessage"><h3><strong>Stash Value</strong></h3></div>
         <div><canvas id="line" class="chart chart-line" chart-data="data"
         chart-labels="labels" chart-series="series" chart-options="options"
         chart-dataset-override="datasetOverride" chart-click="onClick">
-        </canvas></div></span>
-    <div class="graphMessage"><h5>Update History</h5></div>
-    </div>
+        </canvas>
+    <div class="graphMessage"><h5>eBay Bid History</h5></div>
+ </div>

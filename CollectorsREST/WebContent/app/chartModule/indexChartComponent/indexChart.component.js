@@ -46,7 +46,6 @@ angular
 											dates.push(new Date(v).toLocaleTimeString("en-US", options));
 										})
 
-
 						}
 						
 						var createGraph = function() {
@@ -67,7 +66,6 @@ angular
 											labelString : "Value in US Dollars ($)"
 										} ]
 									},
-									responsive: true
 							};
 						}
 						var reload = function(){

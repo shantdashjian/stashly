@@ -60,8 +60,7 @@ angular.module('item')
 			})
 		}
 		vm.clearUpdateStatus();
-		vm.reload();
-		// injected filters
+
 		var categorySort = $filter('categorySort');
 		var searchByName = $filter('searchByName');
 		
@@ -155,22 +154,22 @@ angular.module('item')
 							date: stamp
 					};
 										
-					itemService.update(item);
-					priceService.create(price, item.id)
-					.then(function(response){
-						
-						updatedItem.set(item.id, true);
-						
-						index--;
-						
-						if(index <= 0){
-							vm.reload();
-							vm.buttonLoad = false;
-						}
+					itemService.update(item).then(function(res){
+						priceService.create(price, item.id)
+						.then(function(response){
+							
+							updatedItem.set(item.id, true);
+							
+							index--;
+							
+							if(index <= 0){
+								console.log()
+								vm.reload();
+								vm.buttonLoad = false;
+							}
+						});
 					});
 
-
-					
 				})
 
 			})
@@ -194,7 +193,8 @@ angular.module('item')
 		vm.getInflationPrice = function(item){
 			return inflationPrice.get(item.id);
 		}
-			
+		
+		vm.reload();			
 
 	},
 

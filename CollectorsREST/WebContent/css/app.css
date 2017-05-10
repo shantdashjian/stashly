@@ -322,6 +322,10 @@ form#loginBox {
 	border: solid 1px #001bd5;
 }
 
+.graphInLine {
+  display: inline-block;
+}
+
 #invalid {
 	color: red;
 }

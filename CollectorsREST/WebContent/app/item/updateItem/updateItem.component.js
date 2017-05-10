@@ -1,7 +1,7 @@
 angular.module('item')
 	.component('updateItem', {
 		templateUrl: 'app/item/updateItem/updateItem.component.html',
-		controller: function(itemService, categoryService, $location, $routeParams, $document) {
+		controller: function(itemService, categoryService, $location, $routeParams, $document, $http) {
 			var vm = this;
 			
 			var body = $document.find('body').eq(0);
@@ -40,9 +40,29 @@ angular.module('item')
 			
 			vm.update = function(item) {
 
-				itemService.update(item).then(function(res) {
-					$location.path('/itemList');
-				})
+					if (!item.imageUrl){
+//						item.imageUrl = 'images/noimage.jpg';
+						item.imageUrl = ' '
+
+						
+					}
+					$http({
+						method: 'GET',
+						url: item.imageUrl
+					})
+					.then(function(res){
+						itemService.update(item).then(function(res) {
+							$location.path('/stash');
+						})
+						
+					})
+					.catch(function(error){
+//						item.imageUrl = 'images/noimage.jpg';
+						itemService.update(item).then(function(res) {
+							$location.path('/stash');
+						})
+					})
+				
 			};
 		},
 		controllerAs: 'vm',
