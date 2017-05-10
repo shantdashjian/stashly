@@ -194,6 +194,16 @@ header {
   color: white;
   /* font-size: 1.125rem; */
   padding-top: 35px;
+  margin-top: -50px;
+}
+
+#stash {
+	font-family: 'Courgette', cursive;
+	font-size: 450%;
+}
+
+#titletag {
+	font-family: 'Roboto', sans-serif;
 }
 	
 #emptyGraphMessage {
