@@ -5,14 +5,16 @@ angular
 				{
 					templateUrl : 'app/chartModule/showChartComponent/showChart.component.html',
 					controller : function($scope, priceService, $routeParams) {
+						var vm = this;
 
 						var dates = [];
 						var totalValue = [];
+						vm.prices = [];
 
 						var getPrices = function() {
 							priceService.indexByItem($routeParams.id).then(
 									function(res) {
-										var prices = res.data;
+										vm.prices = res.data;
 
 										prices.sort(function compareNumbers(a,b) {
 											return (new Date(a.date) - new Date(b.date));
@@ -56,5 +58,6 @@ angular
 							}
 						};
 
-					}
+					},
+					controllerAs : 'vm'
 				});

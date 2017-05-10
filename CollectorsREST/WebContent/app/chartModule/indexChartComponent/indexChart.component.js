@@ -46,7 +46,6 @@ angular
 											dates.push(new Date(v).toLocaleTimeString("en-US", options));
 										})
 
-
 						}
 						
 						var createGraph = function() {
