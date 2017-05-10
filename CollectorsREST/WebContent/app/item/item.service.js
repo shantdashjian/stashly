@@ -49,6 +49,10 @@ angular.module('item')
 				method:'GET',
 				url: BASE_URL + authService.getToken().id + '/item/' + iid
 			})
+			.then(function(response){
+				response.data.purchaseDate = new Date(response.data.purchaseDate);
+				return response;
+			})
 		};
 		
 		service.destroy = function (item){

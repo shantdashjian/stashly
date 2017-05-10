@@ -23,6 +23,7 @@ angular.module('item')
 		}
 		
 		vm.filteredItems = function(){
+
 			var items = searchByName(vm.items, vm.keywords);
 			var filteredItems = [];
 			items = categorySort(items, vm.selected.name);
@@ -54,12 +55,11 @@ angular.module('item')
 					
 						})
 				})
-				vm.clearUpdateStatus();
 
 				vm.updateAllItems();
 			})
 		}
-		
+		vm.clearUpdateStatus();
 		vm.reload();
 		// injected filters
 		var categorySort = $filter('categorySort');
@@ -156,18 +156,20 @@ angular.module('item')
 					};
 										
 					itemService.update(item);
-					priceService.create(price, item.id);
+					priceService.create(price, item.id)
+					.then(function(response){
+						
+						updatedItem.set(item.id, true);
+						
+						index--;
+						
+						if(index <= 0){
+							vm.reload();
+							vm.buttonLoad = false;
+						}
+					});
 
-					vm.buttonLoad = false;
 
-					updatedItem.set(item.id, true);
-					
-					index--;
-
-					if(index <= 0){
-						vm.reload();
-//						vm.updateAllItems();
-					}
 					
 				})
 
