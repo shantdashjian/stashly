@@ -1,9 +1,10 @@
 angular.module('item')
 	.component('newItem', {
 		templateUrl: 'app/item/newItem/newItem.component.html',
-		controller: function(itemService, categoryService, $location, $document, $http) {
+		controller: function(itemService, categoryService, $location, $document, $http, $filter, $scope) {
 			var vm = this;
-			
+			vm.purchaseDate = new Date();
+
 			var body = $document.find('body').eq(0);
 			
 			body.css("background-image", "url('" + 'images/comicbooks50.jpg' + "')");
@@ -22,7 +23,7 @@ angular.module('item')
 			getCategories();
 			
 			vm.create = function(item) {
-
+				item.purchaseDate = vm.purchaseDate;
 				if (!item.imageUrl){
 //					item.imageUrl = 'images/noimage.jpg';
 					item.imageUrl = ' '
