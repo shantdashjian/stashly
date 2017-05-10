@@ -45,21 +45,6 @@ angular
 
 						}
 						
-						$scope.$on('allItemsGotUpdated', function(e,msg){
-
-							dates = [];
-							totalValue = [];
-							vm.prices = [];
-
-							msg.filteredItems.forEach(function(v){
-								v.prices.forEach(function(p){
-									vm.prices.push(p)
-								})
-							});
-							
-							reload();
-						});
-						
 						var createGraph = function() {
 							$scope.labels = dates;
 							$scope.data = [totalValue];
@@ -81,13 +66,30 @@ angular
 									responsive: true
 							};
 						}
-						
 						var reload = function(){
 							getPrices();
 							createGraph();
 						};
 						
 						reload();
+						
+						$scope.$on('allItemsGotUpdated', function(e,msg){
+
+							dates = [];
+							totalValue = [];
+							vm.prices = [];
+
+							msg.filteredItems.forEach(function(v){
+								v.prices.forEach(function(p){
+									vm.prices.push(p)
+								})
+							});
+							
+							reload();
+						});
+						
+						
+						
 
 					},
 					controllerAs : 'vm'

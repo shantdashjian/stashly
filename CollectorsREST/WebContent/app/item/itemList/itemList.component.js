@@ -55,7 +55,6 @@ angular.module('item')
 						})
 				})
 				vm.clearUpdateStatus();
-
 				vm.updateAllItems();
 			})
 		}
