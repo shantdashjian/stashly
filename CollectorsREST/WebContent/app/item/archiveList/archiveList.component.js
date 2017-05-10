@@ -9,6 +9,7 @@ angular.module('item')
 		
 		body.css("background-image", "url('" + 'images/comicbooks50.jpg' + "')");
 		body.css("background-size", "cover");
+		body.css("background-repeat", "repeat-y");
 
 		vm.buttonLoad = false;
 		var updatedItem = new Map();

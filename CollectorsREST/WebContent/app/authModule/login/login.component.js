@@ -16,6 +16,9 @@ angular.module("authModule").component("login", {
 			authService.login(user)
 			.then(function(res) {
 				body.css("background-image", "url('')");
+				body.css("background-repeat", "repeat-y");
+				body.css("background-attachment", "");
+				body.css("background-position", "");
 				$location.path('/itemList')
 			})
 			.catch(function(error){
