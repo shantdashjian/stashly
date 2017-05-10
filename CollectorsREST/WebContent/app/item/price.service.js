@@ -3,7 +3,7 @@ angular.module('item')
 		function( $http, $filter, $location, authService){
 		var service = {};
 		
-		var BASE_URL = "http://localhost:8080/CollectorsREST/rest/user/";
+		var BASE_URL = "rest/user/";
 		
 		service.index = function(){
 			return $http({
