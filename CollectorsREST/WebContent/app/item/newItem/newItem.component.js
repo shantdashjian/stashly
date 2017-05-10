@@ -1,8 +1,13 @@
 angular.module('item')
 	.component('newItem', {
 		templateUrl: 'app/item/newItem/newItem.component.html',
-		controller: function(itemService, categoryService, $location) {
+		controller: function(itemService, categoryService, $location, $document) {
 			var vm = this;
+			
+			var body = $document.find('body').eq(0);
+			
+			body.css("background-image", "url('" + 'images/comicbooks.jpg' + "')");
+			body.css("background-size", "cover");
 			
 			vm.categories = [];
 			vm.conditions = categoryService.conditions;

@@ -1,23 +1,58 @@
 <navigation>Load nav</navigation>
 
+
 <div class='container-fluid'>
 	<div class="row">
-		<div class='col-md-offset-2 col-md-4'>
-			<img class='icon' src="{{vm.item.imageUrl}}">
-		</div>
-		<div class='col-md-4 light-background'>
-			<p>Name: {{vm.item.name}}</p>
-			<p>Current Value: {{vm.item.currentValue | currency}}</p>
-			<p>Purchase Price: {{vm.item.purchasePrice | currency}}</p>
-			<p>Purchase Date: {{vm.item.purchaseDate | date: "MM-dd-yyyy"}}</p>
-			<p>Category: {{vm.item.category.name | capitalize}}</p>
-			
+		<div class="col-md-offset-1 col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">{{vm.item.name}}</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class='col-md-5'>
+							<img class='singleicon' src="{{vm.item.imageUrl}}">
+						</div>
+						<div class='col-md-7'>
+							<p>
+								<strong>Current Value:</strong> {{vm.item.currentValue |
+								currency}}
+							</p>
+							<p>
+								<strong>Purchase Price:</strong> {{vm.item.purchasePrice |
+								currency}}
+							</p>
+							<p>
+								<strong>Purchase Date:</strong> {{vm.item.purchaseDate | date:
+								"MM-dd-yyyy"}}
+							</p>
+							<p>
+								<strong>Category:</strong> {{vm.item.category.name |
+								capitalize}}
+							</p>
+							<p>
+								<strong>Condition:</strong> {{vm.item.condition}}
+							</p>
+							<p>
+								<strong>Description:</strong> {{vm.item.description}}
+							</p>
+							<p>
+								<strong>Item notes:</strong> {{vm.item.notes}}
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class='col-md-offset-2 col-md-8 text-center'>
+							<button type="button" class="btn btn-default"
+								ng-click="vm.editItem()">Edit Item</button>
+							<button class="btn btn-default" ng-click="vm.previousItem()">previous</button>
+							<button class="btn btn-default" ng-click="vm.nextItem()">next</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class='col-md-offset-2 col-md-8 text-center'>
-			<button type="button" class="btn btn-default" ng-click="vm.retireItem()">Return Item to Collection</button>
-			<button type="button" class="btn btn-danger" ng-click="vm.deleteItem()">Delete Item</button>	
-		</div>
+
+	<div class="graph">
+		<show-chart></show-chart>
 	</div>
 </div>

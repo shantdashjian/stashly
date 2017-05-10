@@ -1,7 +1,7 @@
 angular.module('item')
 .component('itemList', {
 	templateUrl: 'app/item/itemList/itemList.component.html',
-	controller: function(itemService, priceService, $location, $filter, $document){
+	controller: function(itemService, priceService, $location, $filter, $document, $rootScope){
 		var vm = this;
 		
 		var body = $document.find('body').eq(0);
@@ -22,6 +22,27 @@ angular.module('item')
 			})
 		}
 		
+		vm.filteredItems = function(){
+			var items = searchByName(vm.items, vm.keywords);
+			var filteredItems = [];
+			items = categorySort(items, vm.selected.name);
+			items.forEach(function(item){
+				if (!item.retired){
+					filteredItems.push(item);
+				}
+
+			})
+
+			return filteredItems;
+		}
+		
+		vm.updateAllItems = function(){
+
+			$rootScope.$broadcast('allItemsGotUpdated', {
+				filteredItems : vm.filteredItems()
+			})
+		}
+		
 		vm.reload = function(){
 			itemService.index()
 			.then(function(response){
@@ -34,8 +55,8 @@ angular.module('item')
 						})
 				})
 				vm.clearUpdateStatus();
-			
-			
+
+				vm.updateAllItems();
 			})
 		}
 		
@@ -76,8 +97,10 @@ angular.module('item')
 			var items = searchByName(vm.items, vm.keywords);
 			items = categorySort(items, vm.selected.name);
 			items.forEach(function(item){
-			if(!item.retired)
+			if(!item.retired && item.currentValue){
+
 				total += parseFloat(item.currentValue);
+			}
 			})			
 			return total;
 		}
@@ -113,11 +136,13 @@ angular.module('item')
 			})
 			return total;
 		}
+
 		
 		vm.updateCurrentValues = function(){
 			vm.buttonLoad = true;
 			
 			var stamp = new Date();
+			var index = vm.items.length;
 
 			vm.items.forEach(function(item){
 				itemService.updateCurrentValue(item.name)
@@ -136,6 +161,14 @@ angular.module('item')
 					vm.buttonLoad = false;
 
 					updatedItem.set(item.id, true);
+					
+					index--;
+
+					if(index <= 0){
+						vm.reload();
+//						vm.updateAllItems();
+					}
+					
 				})
 
 			})

@@ -8,7 +8,7 @@ angular.module('appModule')
 	    var results = [];
 	    items.forEach(function(item) {
 	      if (item.category.name === cat ) {
-	    	  console.log("in filter");
+
 	        results.push(item);
 	      }
 	    });

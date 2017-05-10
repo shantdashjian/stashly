@@ -107,26 +107,17 @@ tfoot td:nth-child(1) {
 	-webkit-animation: spin2 1s infinite linear;
 }
 
-@
-keyframes spin {from { transform:scale(1)rotate(0deg);
-	
-}
+@keyframes spin {
+     from { transform: scale(1) rotate(0deg); }
+     to { transform: scale(1) rotate(360deg); }
+ }
+ 
 
-to {
-	transform: scale(1) rotate(360deg);
-}
-
-}
-@
--webkit-keyframes spin2 {from { -webkit-transform:rotate(0deg);
-	
-}
-
-to {
-	-webkit-transform: rotate(360deg);
-}
-
-}
+@-webkit-keyframes spin2 {
+     from { -webkit-transform: rotate(0deg); }
+     to { -webkit-transform: rotate(360deg); }
+ }
+ 
 thead {
 	background-color: rgb(0, 129, 185);
 	color: white;
@@ -154,4 +145,11 @@ h1 {
 
 .graph {
 	background-color: white;
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 25px;
+	
 }

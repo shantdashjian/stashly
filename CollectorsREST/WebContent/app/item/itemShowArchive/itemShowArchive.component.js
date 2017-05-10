@@ -3,6 +3,9 @@ angular.module('item')
 	templateUrl : 'app/item/itemShowArchive/itemShowArchive.component.html',
 	controller: function(itemService, $routeParams, $location, $document){
 		var vm = this;
+		vm.items = [];
+		vm.currIndex = 0;
+		
 		
 		var body = $document.find('body').eq(0);
 		
@@ -19,11 +22,26 @@ angular.module('item')
 			})
 		};
 		
+		vm.reload = function(){
+			itemService.index()
+			.then(function(response){
+			response.data.forEach(function(v){
+				if(v.retired){
+					vm.items.push(v);
+				}
+			})
+		})
+	}
+		vm.reload();
+		
 		vm.goBackToArchiveList = function(){
 		    $location.path('/archive');
 
 		};
 		
+		vm.editItem = function(){
+			$location.path("/update/" + $routeParams.id);
+		}
 		
 		vm.retireItem = function(){
 			
@@ -32,6 +50,26 @@ angular.module('item')
 				});
 			
 		}
+			vm.nextItem = function(){
+					vm.currIndex++;
+					console.log(vm.currindex)
+					if(vm.currIndex === vm.items.length){
+					vm.currIndex = 0;
+					
+					}
+					vm.item = vm.items[vm.currIndex];
+			}
+	
+
+			vm.previousItem = function(){
+				vm.currIndex--;
+				if(vm.currIndex < 0){
+				vm.currIndex = vm.items.length - 1;
+				
+	}
+				vm.item = vm.items[vm.currIndex];
+				}
+
 		
 		vm.deleteItem = function(){
 			itemService.destroy(vm.item).then(function(res){
