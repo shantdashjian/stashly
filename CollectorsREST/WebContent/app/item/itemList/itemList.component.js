@@ -23,8 +23,7 @@ angular.module('item')
 		}
 		
 		vm.filteredItems = function(){
-//			console.log('vm.items: ');
-//			console.log(vm.items);
+
 			var items = searchByName(vm.items, vm.keywords);
 			var filteredItems = [];
 			items = categorySort(items, vm.selected.name);
@@ -34,8 +33,7 @@ angular.module('item')
 				}
 
 			})
-//			console.log('filteredItems: ');
-//			console.log(filteredItems);
+
 			return filteredItems;
 		}
 		
@@ -57,7 +55,7 @@ angular.module('item')
 					
 						})
 				})
-				
+
 				vm.updateAllItems();
 			})
 		}
