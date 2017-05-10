@@ -41,7 +41,9 @@ angular.module('item')
 			vm.update = function(item) {
 
 					if (!item.imageUrl){
-						item.imageUrl = 'images/noimage.jpg';
+//						item.imageUrl = 'images/noimage.jpg';
+						item.imageUrl = ' '
+
 						
 					}
 					$http({
@@ -55,7 +57,7 @@ angular.module('item')
 						
 					})
 					.catch(function(error){
-						item.imageUrl = 'images/noimage.jpg';
+//						item.imageUrl = 'images/noimage.jpg';
 						itemService.update(item).then(function(res) {
 							$location.path('/stash');
 						})
