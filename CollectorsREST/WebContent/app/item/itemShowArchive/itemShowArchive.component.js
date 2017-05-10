@@ -75,7 +75,6 @@ angular.module('item')
 		
 		vm.deleteItem = function(){
 			itemService.destroy(vm.item).then(function(res){
-				console.log(vm.item);
 				vm.goBackToArchiveList();
 				
 			});

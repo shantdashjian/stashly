@@ -5,20 +5,21 @@ angular
 				{
 					templateUrl : 'app/chartModule/indexChartComponent/indexChart.component.html',
 					controller : function($scope, priceService, $routeParams, $scope) {
+						var vm = this;
 
 						var dates = [];
 						var totalValue = [];
-						var prices = [];
+						vm.prices = [];
 
 						var getPrices = function() {
 
-										prices.sort(function compareNumbers(a,b) {
+										vm.prices.sort(function compareNumbers(a,b) {
 											return (new Date(a.date) - new Date(b.date));
 										})
 										
 										var tempDates = [];
 
-										prices.forEach(function(v, i, a) {
+										vm.prices.forEach(function(v, i, a) {
 																						
 											if(!tempDates.includes(v.date)){
 												tempDates.push(v.date);
@@ -48,11 +49,11 @@ angular
 
 							dates = [];
 							totalValue = [];
-							prices = [];
+							vm.prices = [];
 
 							msg.filteredItems.forEach(function(v){
 								v.prices.forEach(function(p){
-									prices.push(p)
+									vm.prices.push(p)
 								})
 							});
 							
@@ -88,5 +89,6 @@ angular
 						
 						reload();
 
-					}
+					},
+					controllerAs : 'vm'
 				});
