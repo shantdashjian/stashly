@@ -150,6 +150,14 @@ h1 {
 	margin: 0 auto;
 	padding: 10px;
 	border-radius: 10px;
+	margin-top: 25px;
 	margin-bottom: 25px;
 	
+}
+
+#emptyGraphMessage {
+	text-align: center;
+	padding: 10px;
+	vertical-align: middle;
+	margin: 10px;
 }

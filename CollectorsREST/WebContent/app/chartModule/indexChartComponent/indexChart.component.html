@@ -1,4 +1,7 @@
-    <div>
+	<div ng-hide="vm.prices.length">
+	<h1 id="emptyGraphMessage" >No collectables meet this criteria. <a href="#/add">Add one here.</a></h1>
+	</div>
+    <div ng-show="vm.prices.length">
         <canvas id="line" class="chart chart-line" chart-data="data"
         chart-labels="labels" chart-series="series" chart-options="options"
         chart-dataset-override="datasetOverride" chart-click="onClick">
