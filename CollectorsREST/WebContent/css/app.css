@@ -214,5 +214,10 @@ header {
 }
 
 #navBarLogo {
+	font-size: 2em;
+}
+
+.navBarFont {
+	font-size: 1.3em;
 	font-family: 'Courgette', sans-serif;
 }
