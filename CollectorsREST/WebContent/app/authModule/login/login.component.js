@@ -16,7 +16,7 @@ angular.module("authModule").component("login", {
 			authService.login(user)
 			.then(function(res) {
 				body.css("background-image", "url('')");
-				$location.path('/itemList')
+				$location.path('/stash')
 			})
 			.catch(function(error){
 				vm.error = true;
