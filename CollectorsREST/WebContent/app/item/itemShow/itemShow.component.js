@@ -22,7 +22,7 @@ angular.module('item')
 		};
 		
 		vm.goBackToItemList = function(){
-		    $location.path('/itemList');
+		    $location.path('/stash');
 
 		};
 		

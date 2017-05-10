@@ -67,7 +67,6 @@ angular
 											labelString : "Value in US Dollars ($)"
 										} ]
 									},
-									responsive: true
 							};
 						}
 						var reload = function(){

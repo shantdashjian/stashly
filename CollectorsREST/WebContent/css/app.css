@@ -235,10 +235,6 @@ html, body {
 	font-family: 'Courgette', sans-serif;
 }
 
-
-
-
-
 .login-clean {
   background:#f1f7fc;
   padding:0px;
@@ -311,6 +307,10 @@ div.login-clean {
 
 form#loginBox {
 	border:solid 1px #001bd5;
+}
+
+.graphInLine {
+  display: inline-block;
 }
 
 #invalid {

@@ -23,7 +23,7 @@ angular.module('item')
 			vm.create = function(item) {
 
 				itemService.create(item).then(function(res) {
-					$location.path('/itemList');
+					$location.path('/stash');
 				})
 			};
 		},

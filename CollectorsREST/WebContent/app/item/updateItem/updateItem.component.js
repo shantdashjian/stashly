@@ -40,7 +40,7 @@ angular.module('item')
 			vm.update = function(item) {
 
 				itemService.update(item).then(function(res) {
-					$location.path('/itemList');
+					$location.path('/stash');
 				})
 			};
 		},
