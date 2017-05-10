@@ -1,19 +1,21 @@
 
 <nav class='navbar navbar-inverse navbar-fixed-top'>
 	<div class='container'>
-		<ul class='nav navbar-nav'>
+		<ul class='nav navbar-nav navBarFont'>
 			<li ng-click="vm.markActive($event); vm.viewArchive()"
-				class="navbar-pointer"><a href="#/itemList">Collection</a></li>
+				class="navbar-pointer"><a href="#/itemList" id="navBarLogo">stashly</a></li>
 			<li ng-click="vm.markActive($event)" class="navbar-pointer"><a
-				href="#/add">Add Item </a></li>
+				href="#/add">add</a></li>
 			<li ng-click="vm.markActive($event)" class="navbar-pointer"><a
-				href="#/archive">Show Archive</a></li>
+				href="#/itemList">stash</a></li>
+			<li ng-click="vm.markActive($event)" class="navbar-pointer"><a
+				href="#/archive">archive</a></li>
 			<li>
 				<form class="navbar-form navbar-left" role="search"
 					ng-submit="vm.submit(keywords); keywords=null;">
 					<div class="form-group">
 						<input ng-model="keywords" type="text" class="form-control"
-							placeholder="Search">
+							placeholder="search">
 					</div>
 					<button type="submit" class="btn btn-default">
 						<span class="glyphicon glyphicon-search"></span>
@@ -21,11 +23,10 @@
 				</form>
 			</li>
 		</ul>
-		<div class="pull-right">
+		<div class="pull-right navBarFont">
 			<ul class="nav navbar-nav">
-				<li><button ng-click="vm.logout()" type="submit"
-						class="btn navbar-btn btn-custom" name="logout" id="logout"
-						value="Log Out">Log Out</button></li>
+				<li ng-click="vm.logout()" class="navbar-pointer"><a
+				href="#/archive">sign out</a></li>
 			</ul>
 		</div>
 	</div>
