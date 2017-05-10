@@ -37,7 +37,7 @@
 					<tr ng-hide="item.retired" class='pointer'
 						ng-repeat='item in vm.items | searchByName:vm.keywords | categorySort:vm.selected.name | orderBy: vm.orderBy: vm.reverse'
 						ng-click='vm.showItem(item)'>
-						<td><img class='icon' ng-src="{{item.imageUrl}}"></td>
+						<td><img class='icon' ng-src="{{item.imageUrl}}" ></td>
 						<td class="text-center vert-align">{{item.name}}</td>
 						<td class="text-center vert-align">{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
 						<td class="text-center vert-align">{{item.purchasePrice | currency}}</td>

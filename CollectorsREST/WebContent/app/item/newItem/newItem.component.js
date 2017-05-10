@@ -1,7 +1,7 @@
 angular.module('item')
 	.component('newItem', {
 		templateUrl: 'app/item/newItem/newItem.component.html',
-		controller: function(itemService, categoryService, $location, $document) {
+		controller: function(itemService, categoryService, $location, $document, $http) {
 			var vm = this;
 			
 			var body = $document.find('body').eq(0);
@@ -21,9 +21,25 @@ angular.module('item')
 			getCategories();
 			
 			vm.create = function(item) {
-
-				itemService.create(item).then(function(res) {
-					$location.path('/itemList');
+				if (!item.imageUrl){
+					item.imageUrl = 'images/noimage.jpg';
+					
+				}
+				$http({
+					method: 'GET',
+					url: item.imageUrl
+				})
+				.then(function(res){
+					itemService.create(item).then(function(res) {
+						$location.path('/itemList');
+					})
+					
+				})
+				.catch(function(error){
+					item.imageUrl = 'images/noimage.jpg';
+					itemService.create(item).then(function(res) {
+						$location.path('/itemList');
+					})
 				})
 			};
 		},
