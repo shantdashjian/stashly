@@ -1,5 +1,4 @@
 angular.module('nav').component('navigation', {
-
 	templateUrl : 'app/nav/navigation/navigation.component.html',
 	controller : function(authService, $location) {
 		var vm = this;
