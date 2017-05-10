@@ -78,13 +78,11 @@ angular
 							dates = [];
 							totalValue = [];
 							vm.prices = [];
-
 							msg.filteredItems.forEach(function(v){
 								v.prices.forEach(function(p){
 									vm.prices.push(p)
 								})
 							});
-							
 							reload();
 						});
 						
