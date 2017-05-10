@@ -50,6 +50,8 @@ angular.module('item')
 				});
 			
 		}
+
+
 			vm.nextItem = function(){
 					vm.currIndex++;
 					console.log(vm.currindex)
