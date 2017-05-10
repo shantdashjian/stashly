@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -63,7 +64,7 @@ public class Item {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "item", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@JsonManagedReference(value = "item-movement")
 	private List<Price> prices;
 

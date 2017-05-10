@@ -52,6 +52,8 @@ angular.module('item')
 		};
 		
 		service.destroy = function (item){
+			console.log("in destroy");
+			console.log(item);
 			return $http({
 				method:'DELETE',
 				url: BASE_URL + authService.getToken().id + '/item/' + item.id

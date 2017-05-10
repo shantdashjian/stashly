@@ -54,5 +54,4 @@ public class ItemController {
 	public boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int iid){
 		return itemDao.destroy(uid, iid);
 	}
-
 }
