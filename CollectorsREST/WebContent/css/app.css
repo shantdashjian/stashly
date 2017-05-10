@@ -218,8 +218,8 @@ html, body {
 #titletag {
 	font-family: 'Roboto', sans-serif;
 }
-	
-#emptyGraphMessage {
+
+.graphMessage {
 	text-align: center;
 	padding: 10px;
 	vertical-align: middle;

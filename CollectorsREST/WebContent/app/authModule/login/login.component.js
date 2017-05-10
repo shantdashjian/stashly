@@ -19,7 +19,7 @@ angular.module("authModule").component("login", {
 				body.css("background-repeat", "repeat-y");
 				body.css("background-attachment", "");
 				body.css("background-position", "");
-				$location.path('/itemList')
+				$location.path('/stash')
 			})
 			.catch(function(error){
 				vm.error = true;

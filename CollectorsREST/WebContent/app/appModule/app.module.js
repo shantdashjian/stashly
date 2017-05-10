@@ -8,7 +8,7 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule', 'chartModule'
 
 
 	})
-	.when('/itemList',{
+	.when('/stash',{
 		template: '<item-list> loading Item List</item-list>'
 	})
 	.when('/itemShow/:id',{
