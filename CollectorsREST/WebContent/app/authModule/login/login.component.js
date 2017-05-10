@@ -5,6 +5,11 @@ angular.module("authModule").component("login", {
 		
 		var body = $document.find('body').eq(0);
 
+		body.css("background-image", "url('" + 'images/captainamerica.jpg' + "')");
+		body.css("background-size", "cover");
+		body.css("background-repeat", "no-repeat");
+		body.css("background-attachment", "fixed");
+		body.css("background-position", "0% 40%");
 
 		vm.error = false;
 		vm.login = function(user) {
@@ -22,9 +27,6 @@ angular.module("authModule").component("login", {
 			$location.path('/signup')
 		}
 		
-		
-		body.css("background-image", "url('" + 'images/captainamerica.jpg' + "')");
-		body.css("background-size", "cover");
 	},
 	controllerAs : 'vm'
 });
