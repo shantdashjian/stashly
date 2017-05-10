@@ -22,7 +22,7 @@
 							</p>
 							<p>
 								<strong>Purchase Date:</strong> {{vm.item.purchaseDate | date:
-								"MM-dd-yyyy"}}
+								"MMMM d, y"}}
 							</p>
 							<p>
 								<strong>Category:</strong> {{vm.item.category.name |
@@ -39,9 +39,9 @@
 							</p>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="showitembuttons">
 						<div class='col-md-offset-2 col-md-8 text-center'>
-							<button type="button" class="btn btn-default"
+							<button type="button" class="btn btn-primary"
 								ng-click="vm.editItem()">Edit Item</button>
 							<button type="button" class="btn btn-danger"
 								ng-click="vm.retireItem()">Retire Item</button>
