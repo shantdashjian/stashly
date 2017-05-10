@@ -11,6 +11,7 @@ angular.module('item')
 		
 		body.css("background-image", "url('" + 'images/comicbooks50.jpg' + "')");
 		body.css("background-size", "cover");
+		body.css("background-repeat", "repeat-y");
 		
 		if (!vm.item && parseInt($routeParams.id)) {
 			itemService.show($routeParams.id)

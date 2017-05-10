@@ -26,10 +26,14 @@ angular
 												totalValue.push(parseFloat(v.itemPrice));
 											} else {
 												var ndx = tempDates.indexOf(v.date);
-												totalValue[ndx] += parseFloat(v.itemPrice);
+												var num = parseFloat(totalValue[ndx]); 
+												num += parseFloat(v.itemPrice);
+												num = num.toFixed(2);
+												totalValue[ndx] = num;
 											}
 
 										})
+
 																				
 										var options = {
 											month : "short",

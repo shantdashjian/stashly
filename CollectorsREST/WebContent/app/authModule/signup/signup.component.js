@@ -12,7 +12,7 @@ angular.module("authModule").component("signup",{
 			console.log(user)
 			authService.signup(user).then(function(res) {
 				body.css("background-image", "url('')");
-				$location.path('/itemList')
+				$location.path('/stash')
 			})
 		}
 	},
