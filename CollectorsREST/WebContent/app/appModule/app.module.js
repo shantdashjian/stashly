@@ -1,4 +1,4 @@
-angular.module("appModule", ['nav','item','ngRoute', 'authModule', 'chartModule'])
+angular.module("appModule", ['nav','item', 'static','ngRoute', 'authModule', 'chartModule'])
 .config(function($routeProvider){
 	$routeProvider
 
@@ -33,7 +33,7 @@ angular.module("appModule", ['nav','item','ngRoute', 'authModule', 'chartModule'
 		template: '<archive-list> loading archive</archive-list>'
 	})
 	.otherwise({
-	    	template : '<not-found></not-found>'
+	    template : '<not-found>loading not found</not-found>'
 	})
 
 })
