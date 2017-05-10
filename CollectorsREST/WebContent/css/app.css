@@ -206,6 +206,10 @@ header {
   margin-top: -50px;
 }
 
+html, body {
+	overflow-x:hidden;
+}
+
 #stash {
 	font-family: 'Courgette', cursive;
 	font-size: 450%;
