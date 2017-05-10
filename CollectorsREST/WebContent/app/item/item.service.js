@@ -52,8 +52,7 @@ angular.module('item')
 		};
 		
 		service.destroy = function (item){
-			console.log("in destroy");
-			console.log(item);
+		
 			return $http({
 				method:'DELETE',
 				url: BASE_URL + authService.getToken().id + '/item/' + item.id
@@ -135,20 +134,7 @@ angular.module('item')
 			});
 		};
 		
-//		service.update = function(item) {                          // Duplicate method
-//			checkLogin();                                          // not sure which one is
-//																   // the best implementation						
-//			return $http({										   // MG 5/5
-//				method : 'PUT',
-//				url : BASE_URL + authService.getToken().id + "/item/" + item.id,
-//				header : {
-//					'Content-Type' : 'application/json'
-//				},
-//				data : item
-//			}).then(function(res) {
-//				return res;
-//			});
-//		};
+
 	
 	return service;
 })
