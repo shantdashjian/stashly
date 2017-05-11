@@ -55,7 +55,6 @@ angular.module('item')
 
 			vm.nextItem = function(){
 					vm.currIndex++;
-					console.log(vm.currindex)
 					if(vm.currIndex === vm.items.length){
 					vm.currIndex = 0;
 					

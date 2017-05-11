@@ -163,7 +163,6 @@ angular.module('item')
 							index--;
 							
 							if(index <= 0){
-								console.log()
 								vm.reload();
 								vm.buttonLoad = false;
 							}
