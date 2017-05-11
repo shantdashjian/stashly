@@ -12,8 +12,9 @@ body {
 }
 
 .singleicon {
-	width: auto;
-	height: 300px;
+	width: 250px;
+	height: auto;
+	padding-left: 40px;
 }
 
 .pointer:hover {
@@ -64,12 +65,12 @@ table {
 	border-radius: 10px;
 }
 
-table th:first-child{
-  border-radius:10px 0px 0px 0px;
+table th:first-child {
+	border-radius: 10px 0px 0px 0px;
 }
 
-table th:last-child{
-  border-radius:0px 10px 0px 0px;
+table th:last-child {
+	border-radius: 0px 10px 0px 0px;
 }
 
 tfoot tr {
@@ -121,17 +122,26 @@ tfoot td:nth-child(1) {
 	-webkit-animation: spin2 1s infinite linear;
 }
 
-@keyframes spin {
-     from { transform: scale(1) rotate(0deg); }
-     to { transform: scale(1) rotate(360deg); }
- }
- 
+@
+keyframes spin {from { transform:scale(1)rotate(0deg);
+	
+}
 
-@-webkit-keyframes spin2 {
-     from { -webkit-transform: rotate(0deg); }
-     to { -webkit-transform: rotate(360deg); }
- }
- 
+to {
+	transform: scale(1) rotate(360deg);
+}
+
+}
+@
+-webkit-keyframes spin2 {from { -webkit-transform:rotate(0deg);
+	
+}
+
+to {
+	-webkit-transform: rotate(360deg);
+}
+
+}
 thead {
 	background-color: rgb(0, 129, 185);
 	color: white;
@@ -169,45 +179,48 @@ h1 {
 }
 
 #showitembuttons {
-	margin-top:15px;
+	margin-top: 15px;
 }
 
 .btn-custom {
-  background-color: hsl(0, 100%, 30%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff3d3d", endColorstr="#990000");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff3d3d), to(#990000));
-  background-image: -moz-linear-gradient(top, #ff3d3d, #990000);
-  background-image: -ms-linear-gradient(top, #ff3d3d, #990000);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff3d3d), color-stop(100%, #990000));
-  background-image: -webkit-linear-gradient(top, #ff3d3d, #990000);
-  background-image: -o-linear-gradient(top, #ff3d3d, #990000);
-  background-image: linear-gradient(#ff3d3d, #990000);
-  border-color: #990000 #990000 hsl(0, 100%, 22%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.52);
-  -webkit-font-smoothing: antialiased;
+	background-color: hsl(0, 100%, 30%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff3d3d",
+		endColorstr="#990000");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#ff3d3d),
+		to(#990000));
+	background-image: -moz-linear-gradient(top, #ff3d3d, #990000);
+	background-image: -ms-linear-gradient(top, #ff3d3d, #990000);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff3d3d),
+		color-stop(100%, #990000));
+	background-image: -webkit-linear-gradient(top, #ff3d3d, #990000);
+	background-image: -o-linear-gradient(top, #ff3d3d, #990000);
+	background-image: linear-gradient(#ff3d3d, #990000);
+	border-color: #990000 #990000 hsl(0, 100%, 22%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.52);
+	-webkit-font-smoothing: antialiased;
 }
 
-.btn-custom:hover{
-    background: #fff5f9;
+.btn-custom:hover {
+	background: #fff5f9;
 }
 
 header {
-  position: relative; /* child absolute */
-  margin: 0 -9999rem;
-  /* add back section padding value */
-  padding: .25rem 9999rem;
-  background: #666;
-  background: rgba(0, 0, 0,.5);
-  color: white;
-  /* font-size: 1.125rem; */
-  padding-top: 35px;
-  margin-top: -50px;
+	position: relative; /* child absolute */
+	margin: 0 -9999rem;
+	/* add back section padding value */
+	padding: .25rem 9999rem;
+	background: #666;
+	background: rgba(0, 0, 0, .5);
+	color: white;
+	/* font-size: 1.125rem; */
+	padding-top: 35px;
+	margin-top: -50px;
 }
 
 html, body {
-	overflow-x:hidden;
+	overflow-x: hidden;
 }
 
 #stash {
@@ -236,77 +249,77 @@ html, body {
 }
 
 .login-clean {
-  background:#f1f7fc;
-  padding:0px;
-  margin:0px;
+	background: #f1f7fc;
+	padding: 0px;
+	margin: 0px;
 }
 
 .login-clean form {
-  max-width:320px;
-  width:90%;
-  margin:0 auto;
-  margin-top:40px;
-  background-color:#ffffff;
-  padding:40px;
-  border-radius:4px;
-  color:#505e6c;
-  box-shadow:1px 1px 5px rgba(0,0,0,0.1);
+	max-width: 320px;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 40px;
+	background-color: #ffffff;
+	padding: 40px;
+	border-radius: 4px;
+	color: #505e6c;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .login-clean .illustration {
-  text-align:center;
-  padding:0 0 20px;
-  font-size:100px;
-  color:rgb(244,71,107);
+	text-align: center;
+	padding: 0 0 20px;
+	font-size: 100px;
+	color: rgb(244, 71, 107);
 }
 
 .login-clean form .form-control {
-  background:#f7f9fc;
-  border:none;
-  border-bottom:1px solid #dfe7f1;
-  border-radius:0;
-  box-shadow:none;
-  outline:none;
-  color:inherit;
-  text-indent:8px;
-  height:42px;
+	background: #f7f9fc;
+	border: none;
+	border-bottom: 1px solid #dfe7f1;
+	border-radius: 0;
+	box-shadow: none;
+	outline: none;
+	color: inherit;
+	text-indent: 8px;
+	height: 42px;
 }
 
 .login-clean form .btn-primary:hover {
-  background:rgba(38,91,193,0.8);
+	background: rgba(38, 91, 193, 0.8);
 }
 
 .login-clean form .btn-primary {
-  background:#1732c1;
-  border:none;
-  border-radius:4px;
-  padding:11px;
-  box-shadow:none;
-  margin-top:26px;
-  text-shadow:none;
-  outline:none !important;
+	background: #1732c1;
+	border: none;
+	border-radius: 4px;
+	padding: 11px;
+	box-shadow: none;
+	margin-top: 26px;
+	text-shadow: none;
+	outline: none !important;
 }
 
 .login-clean form .forgot {
-  display:block;
-  text-align:center;
-  font-size:12px;
-  color:#6f7a85;
-  opacity:0.9;
-  text-decoration:none;
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	color: #6f7a85;
+	opacity: 0.9;
+	text-decoration: none;
 }
 
 .login-clean form .forgot:hover, .login-clean form .forgot:active {
-  opacity:1;
-  text-decoration:none;
+	opacity: 1;
+	text-decoration: none;
 }
 
 div.login-clean {
-  background-color:rgba(0,0,0,0);
+	background-color: rgba(0, 0, 0, 0);
 }
 
 form#loginBox {
-	border:solid 1px #001bd5;
+	border: solid 1px #001bd5;
 }
 
 .graphInLine {
@@ -316,48 +329,18 @@ form#loginBox {
 #invalid {
 	color: red;
 }
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-}
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-
-    /* Position the tooltip text */
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-
-    /* Fade in tooltip */
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-/* Tooltip arrow */
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+.errorPage {
+	color: white;
+	font-size: 400%;
+	margin-top: 50px;
+	font-family: 'Orbitron', sans-serif;
+	position: relative; /* child absolute */
+	margin: 0 -9999rem;
+	/* add back section padding value */
+	padding: .25rem 9999rem;
+	background: #666;
+	background: rgba(0, 0, 0, .5);
+	color: white;
+	padding-top: 10px;
 }

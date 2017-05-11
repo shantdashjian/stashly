@@ -16,7 +16,7 @@ angular
 									function(res) {
 										vm.prices = res.data;
 
-										prices.sort(function compareNumbers(a,b) {
+										vm.prices.sort(function compareNumbers(a,b) {
 											return (new Date(a.date) - new Date(b.date));
 										})
 
@@ -27,7 +27,7 @@ angular
 											minute : "2-digit"
 										};
 
-										prices.forEach(function(v, i, a) {
+										vm.prices.forEach(function(v, i, a) {
 
 											totalValue.push(v.itemPrice);
 											dates.push(new Date(v.date)
