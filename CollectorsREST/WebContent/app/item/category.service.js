@@ -2,7 +2,7 @@ angular.module('item').factory('categoryService',
 		function($http) {
 		service = {};
 		
-		var BASE_URL= "http://localhost:8080/CollectorsREST/rest/category/";
+		var BASE_URL= "rest/category/";
 
 		service.index = function (){
 			return $http({
