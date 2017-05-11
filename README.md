@@ -2,7 +2,9 @@
 An AngularJS Spring REST API web application where item collectors can keep track of their collectables and check their current market value on eBay using eBay API.
 
 ![alt text](login.png "Login")
+
 ![alt text](stash.png "Stash")
+
 ![alt text](price-history.png "Price History")
 
 ## In This Document:
