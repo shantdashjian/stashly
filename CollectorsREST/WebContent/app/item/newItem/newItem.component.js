@@ -25,7 +25,6 @@ angular.module('item')
 			vm.create = function(item) {
 				item.purchaseDate = vm.purchaseDate;
 				if (!item.imageUrl){
-//					item.imageUrl = 'images/noimage.jpg';
 					item.imageUrl = ' '
 					
 				}
@@ -40,7 +39,6 @@ angular.module('item')
 					
 				})
 				.catch(function(error){
-//					item.imageUrl = 'images/noimage.jpg';
 					itemService.create(item).then(function(res) {
 						$location.path('/stash');
 					})

@@ -44,7 +44,6 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
             String q = "Select u from User u Where u.username = :username";
             managedUser = em.createQuery(q, User.class).setParameter("username", user.getUsername()).getSingleResult();
-            System.out.println(managedUser);
             if (encoder.matches(user.getPassword(), managedUser.getPassword())) {
                 return managedUser;
             } else {
