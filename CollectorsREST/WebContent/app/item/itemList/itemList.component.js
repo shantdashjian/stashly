@@ -147,7 +147,12 @@ angular.module('item')
 				itemService.updateCurrentValue(item.name)
 				.then(function(response){
 
-					item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+					try {
+						item.currentValue  = response.data.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+						
+					} catch (err){
+						item.currentValue  = 0;
+					}
 					
 					var price = {
 							itemPrice: item.currentValue,

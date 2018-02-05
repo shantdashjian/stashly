@@ -11,6 +11,7 @@ angular.module('item')
 		
 		var INF_URL = 'https://www.statbureau.org/calculate-inflation-price-jsonp?jsoncallback=?';
 
+		var CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 		
 		var currentDate = function() {
 			var today = new Date();
@@ -66,7 +67,7 @@ angular.module('item')
 		service.updateCurrentValue = function(keywords){
 			return $http({
 				method:'GET',
-				url: 'https://crossorigin.me/' + EBAY_URL 
+				url: CORS_PROXY + EBAY_URL 
 				+ 'OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.12.0&SECURITY-APPNAME='
 				+ APP_NAME
 				+ '&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&'
