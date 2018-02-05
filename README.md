@@ -16,7 +16,7 @@ An AngularJS Spring REST API web application where item collectors can keep trac
 6. [Stumbling and Learning Points](#stumbling-and-learning-points)
 
 ## Application URL
-http://www.mystashly.com/
+http://shaundashjian.com:8080/stashly/#/
 
 ## How to Use the Application
 * User logs in with username and password
