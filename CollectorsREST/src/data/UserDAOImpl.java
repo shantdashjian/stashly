@@ -40,7 +40,6 @@ public class UserDAOImpl implements UserDAO {
                 return null;
             }
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
             String q = "Select u from User u Where u.username = :username";
             managedUser = em.createQuery(q, User.class).setParameter("username", user.getUsername()).getSingleResult();

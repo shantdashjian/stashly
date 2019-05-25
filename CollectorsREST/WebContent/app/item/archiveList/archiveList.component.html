@@ -22,15 +22,16 @@
 		<div class='col-md-12'>
 			<table class='table table-striped table-hover light-background'>
 				<thead>
-						<th>Picture</th>
-						<th ng-click="vm.changeOrderBy('name')">Name</th>
-						<th ng-click="vm.changeOrderBy('PurchaseDate')">Purchase Date
-						<th ng-click="vm.changeOrderBy('PurchasePrice')">Purchase
-							Price</th>
-						<th>Price w/ Inflation</th>
-						<th ng-click="vm.changeOrderBy('currentValue')">Current High
-							Bid on eBay</th>
-						</th>
+					<th>Picture</th>
+					<th ng-click="vm.changeOrderBy('name')">Name</th>
+					<th ng-click="vm.changeOrderBy('PurchaseDate')">Purchase Date
+					
+					<th ng-click="vm.changeOrderBy('PurchasePrice')">Purchase
+						Price</th>
+					<th>Price w/ Inflation</th>
+					<th ng-click="vm.changeOrderBy('currentValue')">Current High
+						Bid on eBay</th>
+					</th>
 				</thead>
 
 				<tbody>
@@ -39,10 +40,14 @@
 						ng-click='vm.showItem(item)'>
 						<td><img class='icon' ng-src="{{item.imageUrl}}"></td>
 						<td class="text-center vert-align">{{item.name}}</td>
-						<td class="text-center vert-align">{{item.purchaseDate | date: "MM-dd-yyyy"}}</td>
-						<td class="text-center vert-align">{{item.purchasePrice | currency}}</td>
-						<td class="text-center vert-align">{{vm.getInflationPrice(item) | currency}}</td>
-						<td class="text-center vert-align" ng-class="vm.updated(item)">{{item.currentValue | currency}}</td>
+						<td class="text-center vert-align">{{item.purchaseDate |
+							date: "MM-dd-yyyy"}}</td>
+						<td class="text-center vert-align">{{item.purchasePrice |
+							currency}}</td>
+						<td class="text-center vert-align">{{vm.getInflationPrice(item)
+							| currency}}</td>
+						<td class="text-center vert-align" ng-class="vm.updated(item)">{{item.currentValue
+							| currency}}</td>
 					</tr>
 				</tbody>
 				<tfoot>
@@ -50,12 +55,15 @@
 						<td></td>
 						<td></td>
 						<td class="text-center vert-align">Total</td>
-						<td class="text-center vert-align">{{vm.totalPurchasePrice() | currency}}</td>
-						<td class="text-center vert-align">{{vm.totalPriceWithInflation() | currency}}</td>
-						<td class="text-center vert-align">{{vm.currentTotalValue() | currency}}</td>
+						<td class="text-center vert-align">{{vm.totalPurchasePrice()
+							| currency}}</td>
+						<td class="text-center vert-align">{{vm.totalPriceWithInflation()
+							| currency}}</td>
+						<td class="text-center vert-align">{{vm.currentTotalValue() |
+							currency}}</td>
 					</tr>
 				</tfoot>
 			</table>
 		</div>
 	</div>
-  </div>
+</div>

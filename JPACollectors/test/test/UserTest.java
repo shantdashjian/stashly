@@ -2,20 +2,14 @@ package test;
 
 import static org.junit.Assert.*;
 
-import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Persistence;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import entities.Category;
 import entities.User;
 
 public class UserTest {
